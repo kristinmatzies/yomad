@@ -1,0 +1,42 @@
+[
+  {
+    "country": "Germany",
+    "city": "Hamburg",
+    "place": "Planten un Blomen",
+    "date": "4th June 2020",
+    "time": "8am",
+    "yogastyle": "Vinyasa"
+  },
+  {
+    "country": "England",
+    "city": "London",
+    "place": "Hyde Park",
+    "date": "2th June 2020",
+    "time": "10am",
+    "yogastyle": "Ashtanga"
+  },
+  {
+    "country": "Sweden",
+    "city": "Stockholm",
+    "place": "Râlambshovsparken",
+    "date": "1th June 2020",
+    "time": "7pm",
+    "yogastyle": "Yin Yoga"
+  },
+  {
+    "country": "Spain",
+    "city": "Sevilla",
+    "place": "Rooftop One Hostel Catedral",
+    "date": "22th June 2020",
+    "time": "10am",
+    "yogastyle": "Hatha"
+  },
+  {
+    "country": "Germany",
+    "city": "München",
+    "place": "Englischer Garten",
+    "date": "2th June 2020",
+    "time": "10am",
+    "yogastyle": "Vinyasa"
+  }
+]
