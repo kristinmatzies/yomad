@@ -1,54 +1,104 @@
 {
   "meet-ups": [
     {
-      "country": "Germany",
       "city": "Hamburg",
       "place": "Planten un Blomen",
       "date": "4th June 2020",
       "time": "8am",
       "yogastyle": "Vinyasa",
-      "join": true,
+      "details": "Meet 10 minutes earlier at Café Seeterrassen.",
+      "save": true,
       "id": 1
     },
     {
-      "country": "England",
-      "city": "London",
-      "place": "Hyde Park",
+      "city": "München",
+      "place": "Englischer Garten",
       "date": "3rd June 2020",
       "time": "10am",
       "yogastyle": "Ashtanga",
-      "join": true,
+      "details": "Meet at Fräulein Grüneis to find a nice spot on the grass together.",
+      "save": true,
       "id": 2
     },
     {
-      "country": "Sweden",
-      "city": "Stockholm",
-      "place": "Râlambshovsparken",
+      "city": "Rostock",
+      "place": "Stadthafen",
       "date": "1st June 2020",
       "time": "7pm",
       "yogastyle": "Yin Yoga",
-      "join": true,
+      "details": "Meet at Besitos, bring Yoga blocks if you like.",
+      "save": true,
       "id": 3
     },
     {
-      "country": "Spain",
-      "city": "Sevilla",
-      "place": "Rooftop One Hostel Catedral",
+      "city": "Köln",
+      "place": "Stadtgarten",
       "date": "25th June 2020",
       "time": "10am",
       "yogastyle": "Hatha",
-      "join": true,
+      "details": "Meet Köln West",
+      "save": false,
       "id": 4
     },
     {
-      "country": "Germany",
       "city": "München",
       "place": "Englischer Garten",
       "date": "2nd June 2020",
       "time": "10am",
-      "yogastyle": "Vinyasa",
-      "join": false,
+      "yogastyle": "Acro Yoga",
+      "details": "Meet at Milchhäusl. If you do not have a partner we find a solution together.",
+      "save": false,
       "id": 5
+    },
+    {
+      "city": "Bremen",
+      "place": "Bürgerpark",
+      "date": "2nd June 2020",
+      "time": "10am",
+      "yogastyle": "Hatha",
+      "details": "Meet 10 minutes earlier at main train station, exit Bürgerweide.",
+      "save": false,
+      "id": 6
+    },
+    {
+      "city": "Hamburg",
+      "place": "Lululemon Store",
+      "date": "2nd June 2020",
+      "time": "8am",
+      "yogastyle": "Vinyasa",
+      "details": "Everyday at Poststraße 9-11, 20354 Hamburg.",
+      "save": false,
+      "id": 7
+    },
+    {
+      "city": "Osnabrück",
+      "place": "Schlossgarten",
+      "date": "2nd June 2020",
+      "time": "10.30am",
+      "yogastyle": "Vinyasa",
+      "details": "Meet in front of the university mensa.",
+      "save": false,
+      "id": 8
+    },
+    {
+      "city": "Berlin",
+      "place": "Tempelhofer Feld",
+      "date": "2nd June 2020",
+      "time": "10am",
+      "yogastyle": "Ashtanga",
+      "details": "Meet at entrance Herrfurthstr./Oderstr. We walk together to the Yoga spot.",
+      "save": false,
+      "id": 9
+    },
+    {
+      "city": "Berlin",
+      "place": "B-Part im Gleisdreieck Park",
+      "date": "2nd June 2020",
+      "time": "10am",
+      "yogastyle": "Vinyasa",
+      "details": "Let's meet on the sunny porch of the B-Part at Gleisdreieck Park.",
+      "save": false,
+      "id": 10
     }
   ]
 }
