@@ -1,0 +1,112 @@
+[
+  {
+    "imageSrc": "./img/meditation_woman_closeup.jpg",
+    "city": "Hamburg",
+    "place": "Planten un Blomen",
+    "date": "4th June 2020",
+    "time": "8am",
+    "yogastyle": "Vinyasa",
+    "details": "Meet 10 minutes earlier at Café Seeterrassen.",
+    "save": true,
+    "id": 1
+  },
+  {
+    "imageSrc": "./img/garden_woman.jpg",
+    "city": "München",
+    "place": "Englischer Garten",
+    "date": "3rd June 2020",
+    "time": "10am",
+    "yogastyle": "Ashtanga",
+    "details": "Meet at Fräulein Grüneis to find a nice spot on the grass together.",
+    "save": true,
+    "id": 2
+  },
+  {
+    "imageSrc": "./img/smudgestick.jpg",
+    "city": "Rostock",
+    "place": "Stadthafen",
+    "date": "1st June 2020",
+    "time": "7pm",
+    "yogastyle": "Yin Yoga",
+    "details": "Meet at Besitos, bring Yoga blocks if you like.",
+    "save": true,
+    "id": 3
+  },
+  {
+    "imageSrc": "./img/lotusflower_2.jpg",
+    "city": "Köln",
+    "place": "Stadtgarten",
+    "date": "25th June 2020",
+    "time": "10am",
+    "yogastyle": "Hatha",
+    "details": "Meet Köln West",
+    "save": false,
+    "id": 4
+  },
+  {
+    "imageSrc": "./img/meditation_woman.jpg",
+    "city": "München",
+    "place": "Englischer Garten",
+    "date": "2nd June 2020",
+    "time": "10am",
+    "yogastyle": "Acro Yoga",
+    "details": "Meet at Milchhäusl. If you do not have a partner we find a solution together.",
+    "save": false,
+    "id": 5
+  },
+  {
+    "imageSrc": "./img/lotusflower_1.jpg",
+    "city": "Bremen",
+    "place": "Bürgerpark",
+    "date": "2nd June 2020",
+    "time": "10am",
+    "yogastyle": "Hatha",
+    "details": "Meet 10 minutes earlier at main train station, exit Bürgerweide.",
+    "save": false,
+    "id": 6
+  },
+  {
+    "imageSrc": "./img/mountain_woman.jpg",
+    "city": "Hamburg",
+    "place": "Lululemon Store",
+    "date": "2nd June 2020",
+    "time": "8am",
+    "yogastyle": "Vinyasa",
+    "details": "Everyday at Poststraße 9-11, 20354 Hamburg.",
+    "save": false,
+    "id": 7
+  },
+  {
+    "imageSrc": "./img/meditation_man.jpg",
+    "city": "Osnabrück",
+    "place": "Schlossgarten",
+    "date": "2nd June 2020",
+    "time": "10.30am",
+    "yogastyle": "Vinyasa",
+    "details": "Meet in front of the university mensa.",
+    "save": false,
+    "id": 8
+  },
+  {
+    "imageSrc": "./img/lotusflower_1.jpg",
+    "city": "Berlin",
+    "place": "Tempelhofer Feld",
+    "date": "2nd June 2020",
+    "time": "10am",
+    "yogastyle": "Ashtanga",
+    "details": "Meet at entrance Herrfurthstr./Oderstr. We walk together to the Yoga spot.",
+    "save": false,
+    "id": 9
+  },
+  {
+    "imageSrc": "./img/lotusflower_1.jpg",
+    "city": "Berlin",
+    "place": "B-Part im Gleisdreieck Park",
+    "date": "2nd June 2020",
+    "time": "10am",
+    "yogastyle": "Vinyasa",
+    "details": "Let's meet on the sunny porch of the B-Part at Gleisdreieck Park.",
+    "save": false,
+    "id": 10
+  }
+]
