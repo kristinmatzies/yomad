@@ -7,7 +7,7 @@ export default createGlobalStyle`
 
     #root {
     display: grid;
-    grid-template-rows: 54px auto;
+    grid-template-rows: 52px auto;
     
  
 }

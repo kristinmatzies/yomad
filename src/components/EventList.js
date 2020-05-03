@@ -6,19 +6,31 @@ export default function EventList() {
   return (
     <Scroller>
       {events.map((event) => (
-        <ScrollContainer>
+        <ScrollContainer key={event.id}>
           <img src={event.imageSrc} alt="" />
           <EventText>
             <p className="event_keys">City</p>
             <p className="event_value">{event.city}</p>
             <p className="event_keys">Place</p>
-            <p className="event_value">{event.place}</p>
+            <p className="event_value">
+              <img src="./img/icon_place.png" alt="" />
+              &nbsp;{event.place}
+            </p>
             <p className="event_keys">Date</p>
-            <p className="event_value">{event.date}</p>
+            <p className="event_value">
+              <img src="./img/icon_calendar.png" alt="" />
+              &nbsp;{event.date}
+            </p>
             <p className="event_keys">Time</p>
-            <p className="event_value">{event.time}</p>
+            <p className="event_value">
+              <img src="./img/icon_clock.png" alt="" />
+              &nbsp;{event.time}
+            </p>
             <p className="event_keys">Yogastyle</p>
-            <p className="event_value">{event.yogastyle}</p>
+            <p className="event_value">
+              <img src="./img/icon_yoga.png" alt="" />
+              &nbsp;{event.yogastyle}
+            </p>
           </EventText>
           <EventDetails>
             <p className="details_headline">Details on meeting point</p>
@@ -64,11 +76,16 @@ const EventText = styled.section`
   justify-self: flex-start;
   margin-left: 12px;
 
+  img {
+    height: 16px;
+    width: 16px;
+  }
+
   .event_keys {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     color: var(--secondary);
   }
 
