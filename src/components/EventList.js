@@ -9,17 +9,27 @@ export default function EventList() {
         <ScrollContainer>
           <img src={event.imageSrc} alt="" />
           <EventText>
-            <p>{event.place}</p>
-            <p>{event.date}</p>
-            <p>{event.time}</p>
-            <p>{event.yogastyle}</p>
+            <p className="event_keys">City</p>
+            <p className="event_value">{event.city}</p>
+            <p className="event_keys">Place</p>
+            <p className="event_value">{event.place}</p>
+            <p className="event_keys">Date</p>
+            <p className="event_value">{event.date}</p>
+            <p className="event_keys">Time</p>
+            <p className="event_value">{event.time}</p>
+            <p className="event_keys">Yogastyle</p>
+            <p className="event_value">{event.yogastyle}</p>
           </EventText>
-          <p className="details_styled">{event.details}</p>
+          <EventDetails>
+            <p className="details_headline">Details on meeting point</p>
+            <p className="details_body">{event.details}</p>
+          </EventDetails>
         </ScrollContainer>
       ))}
     </Scroller>
   )
 }
+
 const Scroller = styled.section`
   display: flex;
   flex-wrap: nowrap;
@@ -33,25 +43,56 @@ const ScrollContainer = styled.section`
   scroll-snap-align: start;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1.5fr 1fr;
   margin-right: 20px;
+
+  :last-child {
+    flex: 0 0 100%;
+  }
 
   img {
     object-fit: cover;
     width: 180px;
-    height: 320px;
+    height: 360px;
     border-radius: 0 12px 12px 0;
-    align-self: center;
-  }
-
-  .details_styled {
-    grid-column: span 2;
-    justify-self: flex-start;
-    padding-left: 12px;
+    align-self: flex-start;
   }
 `
 
 const EventText = styled.section`
-  align-self: center;
+  align-self: flex-start;
   justify-self: flex-start;
   margin-left: 12px;
+
+  .event_keys {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 2px;
+    color: var(--secondary);
+  }
+
+  .event_value {
+    margin: 0;
+  }
+`
+
+const EventDetails = styled.section`
+  grid-column: span 2;
+  justify-self: flex-start;
+  align-self: flex-start;
+  padding-left: 12px;
+
+  .details_headline {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: var(--secondary);
+  }
+
+  .details_body {
+    margin: 0;
+    overflow: ellipsis;
+  }
 `

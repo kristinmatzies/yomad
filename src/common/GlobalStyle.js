@@ -7,7 +7,7 @@ export default createGlobalStyle`
 
     #root {
     display: grid;
-    grid-template-rows: 50px auto;
+    grid-template-rows: 54px auto;
     
  
 }
@@ -26,12 +26,12 @@ export default createGlobalStyle`
   }
 
   p {
-      color: var( --primary-color);
+      color: var( --primary);
   }
 
 
     :root {
-    --primary-color: #352426;
-    --secondary-color: #A17377;
+    --primary: #352426;
+    --secondary: #A17377;
     }
 `
