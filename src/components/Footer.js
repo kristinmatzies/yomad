@@ -4,10 +4,10 @@ import styled from 'styled-components'
 export default function Footer({ isActive, selectedCity }) {
   return (
     <FooterStyled isActive={isActive} selectedCity={selectedCity}>
-      <span className="dot"></span>
-      <span className="dot"></span>
-      <span className="dot"></span>
-      <span className="dot"></span>
+      <span className="filter-dots"></span>
+      <span className="filter-dots"></span>
+      <span className="filter-dots"></span>
+      <span className="filter-dots"></span>
     </FooterStyled>
   )
 }
@@ -15,7 +15,7 @@ export default function Footer({ isActive, selectedCity }) {
 const FooterStyled = styled.footer`
   text-align: center;
 
-  .dot {
+  .filter-dots {
     height: 20px;
     width: 20px;
     margin: 4px;
