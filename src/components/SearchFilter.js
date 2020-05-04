@@ -5,7 +5,7 @@ export default function SearchFilter({ onChange }) {
   return (
     <Form>
       <img src="./img/icon_magnifier.png" alt="Search" />
-      <input type="text" placeholder="Search your city" onChange={onChange} />
+      <input type="search" placeholder="Search your city" onChange={onChange} />
     </Form>
   )
 }
@@ -30,7 +30,7 @@ const Form = styled.form`
   img {
     position: absolute;
     height: 16px;
-    top: 56px;
+    top: 52px;
     left: 20px;
     z-index: 1;
   }
