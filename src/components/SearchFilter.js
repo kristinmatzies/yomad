@@ -1,17 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function SearchFilter({ setSelectedEvents }) {
+export default function SearchFilter({ onChange }) {
   return (
     <Form>
       <img src="./img/icon_magnifier.png" alt="Search" />
-      <input type="text" placeholder="Search your city" onChange={selectCity} />
+      <input type="text" placeholder="Search your city" onChange={onChange} />
     </Form>
   )
-
-  function selectCity(event) {
-    setSelectedEvents(event.target.value)
-  }
 }
 
 const Form = styled.form`
@@ -24,6 +20,7 @@ const Form = styled.form`
     width: 100%;
     padding-left: 36px;
     color: var(--primary);
+    font-size: 16px;
 
     ::placeholder {
       color: var(--secondary);
@@ -33,8 +30,8 @@ const Form = styled.form`
   img {
     position: absolute;
     height: 16px;
-    top: 60px;
-    right: 344px;
+    top: 56px;
+    left: 20px;
     z-index: 1;
   }
 `

@@ -18,7 +18,7 @@ export default createGlobalStyle`
         font-size: 18px;
         line-height: 1.4;
         height: 100vh;
-        overflow-y: hidden;
+        overflow: hidden;  
     }
 
     input, button, textarea {

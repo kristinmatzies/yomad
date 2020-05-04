@@ -4,13 +4,12 @@ import SearchFilter from './components/SearchFilter'
 import EventList from './components/EventList'
 
 export default function Events() {
-  const [events, setEvents] = useState(eventData)
-  const [selectedEvents, setSelectedEvents] = useState([])
+  const [selectedCity, setSelectedCity] = useState('')
 
   return (
     <>
-      <SearchFilter setSelectedEvents={setSelectedEvents} />
-      <EventList events={events} />
+      <SearchFilter onChange={(event) => setSelectedCity(event.target.value)} />
+      <EventList events={eventData} selectedCity={selectedCity} />
     </>
   )
 }
