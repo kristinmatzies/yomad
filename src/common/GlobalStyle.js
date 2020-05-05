@@ -7,9 +7,8 @@ export default createGlobalStyle`
 
     #root {
     display: grid;
-    grid-template-rows: 52px auto;
-    
- 
+    grid-template-rows: 48px auto 48px; 
+    height: 100vh;
 }
 
     body {
@@ -18,7 +17,7 @@ export default createGlobalStyle`
         font-size: 18px;
         line-height: 1.4;
         height: 100vh;
-        overflow-y: hidden;
+        overflow: hidden;  
     }
 
     input, button, textarea {
@@ -29,9 +28,16 @@ export default createGlobalStyle`
       color: var( --primary);
   }
 
+  main {
+      overflow: hidden;
+  }
+
 
     :root {
+    --background: #FFFAF7;
     --primary: #352426;
     --secondary: #A17377;
+    --tertiary: #B79699;
+    --quaternary: #D1B9BB;
     }
 `

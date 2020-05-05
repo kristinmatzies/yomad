@@ -2,7 +2,7 @@ import React from 'react'
 import EventList from './EventList'
 
 export default {
-  title: 'Meet Up',
+  title: 'EventList',
   component: EventList,
 }
 
