@@ -1,9 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import eventData from '../eventlist.json'
 import SaveButton from '../components/SaveButton'
 
-export default function EventList({ selectedCity }) {
+export default function EventList({
+  selectedCity,
+  isClicked,
+  onClick,
+  defaultText,
+  clickedText,
+}) {
   return (
     <Scroller>
       {eventData
@@ -37,7 +43,12 @@ export default function EventList({ selectedCity }) {
                   <img src="./img/icon_yoga.png" alt="" />
                   &nbsp;{event.yogastyle}
                 </p>
-                <SaveButton />
+                <SaveButton
+                  isClicked={isClicked}
+                  defaultText={defaultText}
+                  clickedText={clickedText}
+                  onClick={onClick}
+                />
               </EventText>
               <EventDetails>
                 <p className="details_headline">Details on meeting point</p>

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export default function SearchFilter({ onChange }) {
   return (
@@ -13,7 +13,7 @@ export default function SearchFilter({ onChange }) {
 const Form = styled.form`
   display: flex;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 
   input {
     position: relative;

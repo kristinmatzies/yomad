@@ -1,18 +1,27 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
-export default function SaveButton() {
-  return <SaveButtonStyled>Save</SaveButtonStyled>
+export default function SaveButton({
+  isClicked,
+  defaultText,
+  clickedText,
+  onClick,
+}) {
+  return (
+    <SaveButtonStyled onClick={onClick} isClicked={isClicked}>
+      {isClicked ? clickedText : defaultText}
+    </SaveButtonStyled>
+  )
 }
 
 const SaveButtonStyled = styled.button`
-  padding: 8px 36px;
+  padding: 8px 52px;
   border: none;
-  background: var(--secondary);
+  background: ${(props) =>
+    props.isClicked ? 'var(--secondary)' : 'var(--cta)'};
   color: white;
   border-radius: 16px;
   box-shadow: 2px 2px 2px var(--primary);
-  margin-top: 4px;
   position: absolute;
   top: 304px;
   right: 76px;
