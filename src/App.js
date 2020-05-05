@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import GlobalStyle from './common/GlobalStyle'
+import eventData from './eventlist.json'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import EventList from './components/EventList'
 import { Route, Switch } from 'react-router-dom'
 import SearchFilter from './components/SearchFilter'
 import SaveFilter from './components/SaveFilter'
+import FilteredEvents from './components/FilteredEvents'
 
 export default function App() {
+  const [events, setEvents] = useState(eventData)
   const [selectedCity, setSelectedCity] = useState('')
   const [isActive, setIsActive] = useState(false)
 
@@ -16,14 +19,22 @@ export default function App() {
       <GlobalStyle />
       <Header />
       <main>
-        <SearchFilter onChange={setFilter} />
+        <SearchFilter onSearchFilter={setSearchFilter} />
         <SaveFilter />
         <Switch>
           <Route exact path="/">
-            <EventList selectedCity={selectedCity} />
+            <EventList
+              events={events}
+              setEvents={setEvents}
+              selectedCity={selectedCity}
+            />
           </Route>
           <Route path="/saved">
-            <EventList selectedCity={selectedCity} />
+            <FilteredEvents
+              events={events}
+              setEvents={setEvents}
+              selectedCity={selectedCity}
+            />
           </Route>
         </Switch>
       </main>
@@ -31,7 +42,7 @@ export default function App() {
     </>
   )
 
-  function setFilter(event) {
+  function setSearchFilter(event) {
     setSelectedCity(event.target.value)
     setIsActive(true)
   }

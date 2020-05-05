@@ -1,11 +1,15 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-export default function SearchFilter({ onChange }) {
+export default function SearchFilter({ onSearchFilter }) {
   return (
     <Form>
       <img src="./img/icon_magnifier.png" alt="Search" />
-      <input type="search" placeholder="Search your city" onChange={onChange} />
+      <input
+        type="search"
+        placeholder="Search your city"
+        onChange={onSearchFilter}
+      />
     </Form>
   )
 }

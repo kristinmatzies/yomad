@@ -18,6 +18,5 @@ const SaveFilterLink = styled.section`
 `
 
 const LinkStyled = styled(Link)`
-  text-decoration: none;
-  color: var(--cta);
+  color: var(--secondary);
 `
