@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components/macro'
 
 export default function SaveButton({
-  isClicked,
   defaultText,
   clickedText,
   onClick,
+  saved,
 }) {
   return (
-    <SaveButtonStyled onClick={onClick} isClicked={isClicked}>
-      {isClicked ? clickedText : defaultText}
+    <SaveButtonStyled onClick={onClick} saved={saved}>
+      {saved ? clickedText : defaultText}
     </SaveButtonStyled>
   )
 }
@@ -17,8 +17,7 @@ export default function SaveButton({
 const SaveButtonStyled = styled.button`
   padding: 8px 52px;
   border: none;
-  background: ${(props) =>
-    props.isClicked ? 'var(--secondary)' : 'var(--cta)'};
+  background: ${(props) => (props.saved ? 'var(--secondary)' : 'var(--cta)')};
   color: white;
   border-radius: 16px;
   box-shadow: 2px 2px 2px var(--primary);

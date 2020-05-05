@@ -1,22 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import eventData from '../eventlist.json'
 import SaveButton from '../components/SaveButton'
+import eventData from '../eventlist.json'
 
-export default function EventList({
-  selectedCity,
-  isClicked,
-  onClick,
-  defaultText,
-  clickedText,
-}) {
+export default function EventList({ selectedCity }) {
+  const [events, setEvents] = useState(eventData)
+
   return (
     <Scroller>
-      {eventData
+      {events
         .filter((event) =>
           event.city.toLowerCase().includes(selectedCity.toLowerCase())
         )
-        .map((event) => (
+        .map((event, index) => (
           <>
             <ScrollContainer key={event.id}>
               <img src={event.imageSrc} alt="" />
@@ -44,10 +40,10 @@ export default function EventList({
                   &nbsp;{event.yogastyle}
                 </p>
                 <SaveButton
-                  isClicked={isClicked}
-                  defaultText={defaultText}
-                  clickedText={clickedText}
-                  onClick={onClick}
+                  defaultText="save"
+                  clickedText="saved"
+                  onClick={() => saveEvent(index)}
+                  saved={event.saved}
                 />
               </EventText>
               <EventDetails>
@@ -59,6 +55,15 @@ export default function EventList({
         ))}
     </Scroller>
   )
+
+  function saveEvent(index) {
+    const event = events[index]
+    setEvents([
+      ...events.slice(0, index),
+      { ...event, saved: !event.saved },
+      ...events.slice(index + 1),
+    ])
+  }
 }
 
 const Scroller = styled.section`
