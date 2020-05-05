@@ -27,6 +27,7 @@ export default function App() {
               events={events}
               setEvents={setEvents}
               selectedCity={selectedCity}
+              saveEvent={saveEvent}
             />
           </Route>
           <Route path="/saved">
@@ -34,6 +35,7 @@ export default function App() {
               events={events}
               setEvents={setEvents}
               selectedCity={selectedCity}
+              saveEvent={saveEvent}
             />
           </Route>
         </Switch>
@@ -45,5 +47,14 @@ export default function App() {
   function setSearchFilter(event) {
     setSelectedCity(event.target.value)
     setIsActive(true)
+  }
+
+  function saveEvent(index) {
+    const event = events[index]
+    setEvents([
+      ...events.slice(0, index),
+      { ...event, saved: !event.saved },
+      ...events.slice(index + 1),
+    ])
   }
 }

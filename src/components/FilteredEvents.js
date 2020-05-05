@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
 
-export default function FilteredEvents({ events, setEvents, selectedCity }) {
+export default function FilteredEvents({ events, selectedCity, saveEvent }) {
   return (
     <Scroller>
       {events
@@ -54,14 +54,6 @@ export default function FilteredEvents({ events, setEvents, selectedCity }) {
         ))}
     </Scroller>
   )
-  function saveEvent(index) {
-    const event = events[index]
-    setEvents([
-      ...events.slice(0, index),
-      { ...event, saved: !event.saved },
-      ...events.slice(index + 1),
-    ])
-  }
 }
 
 const Scroller = styled.section`
