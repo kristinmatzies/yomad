@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import eventData from '../eventlist.json'
 
-export default function EventList({ events, selectedCity }) {
+export default function EventList({ selectedCity }) {
   return (
     <Scroller>
-      {events
+      {eventData
         .filter((event) =>
           event.city.toLowerCase().includes(selectedCity.toLowerCase())
         )

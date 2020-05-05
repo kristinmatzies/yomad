@@ -28,6 +28,10 @@ export default createGlobalStyle`
       color: var( --primary);
   }
 
+  main {
+      overflow: hidden;
+  }
+
 
     :root {
     --background: #FFFAF7;

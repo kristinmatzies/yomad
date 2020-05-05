@@ -14,6 +14,7 @@ export default function Footer({ isActive, selectedCity }) {
 
 const FooterStyled = styled.footer`
   text-align: center;
+  align-self: center;
 
   .filter-dots {
     height: 20px;
@@ -23,12 +24,11 @@ const FooterStyled = styled.footer`
     display: inline-block;
 
     :first-child {
-     background-color: ${(props) =>
-       props.isActive && props.selectedCity !== ''
-         ? 'var(--primary )'
-         : 'var(--primary)'};
+      background-color: ${(props) =>
+        props.isActive && props.selectedCity !== ''
+          ? 'var(--primary )'
+          : 'var(--primary)'};
     }
-    
 
     :nth-child(2) {
       background: ${(props) =>
@@ -47,6 +47,6 @@ const FooterStyled = styled.footer`
     :nth-child(4) {
       background: ${(props) =>
         props.isActive && props.selectedCity !== '' ? '' : 'var(--quaternary)'};
-    }*/
+    }
   }
 `
