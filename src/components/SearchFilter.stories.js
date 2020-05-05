@@ -7,4 +7,8 @@ export default {
   component: SearchFilter,
 }
 
-export const searchfilter = () => <SearchFilter onChange={action('onChange')} />
+export const searchfilter = () => (
+  <div style={{ margin: 44 }}>
+    <SearchFilter onSearchFilter={action('onChange')} />
+  </div>
+)

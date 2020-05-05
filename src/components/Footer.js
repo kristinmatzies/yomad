@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-export default function Footer({ isActive, selectedCity }) {
+export default function Footer({ isFiltered, selectedCity }) {
   return (
-    <FooterStyled isActive={isActive} selectedCity={selectedCity}>
+    <FooterStyled isFiltered={isFiltered} selectedCity={selectedCity}>
       <span className="filter-dots"></span>
       <span className="filter-dots"></span>
       <span className="filter-dots"></span>
@@ -25,28 +25,30 @@ const FooterStyled = styled.footer`
 
     :first-child {
       background: ${(props) =>
-        props.isActive && props.selectedCity !== ''
+        props.isFiltered && props.selectedCity !== ''
           ? 'var(--primary )'
           : 'var(--primary)'};
     }
 
     :nth-child(2) {
       background: ${(props) =>
-        props.isActive && props.selectedCity !== ''
+        props.isFiltered && props.selectedCity !== ''
           ? 'var(--primary)'
           : 'var(--secondary)'};
     }
 
     :nth-child(3) {
       background: ${(props) =>
-        props.isActive && props.selectedCity !== ''
+        props.isFiltered && props.selectedCity !== ''
           ? 'var(--primary)'
           : 'var(--tertiary)'};
     }
 
     :nth-child(4) {
       background: ${(props) =>
-        props.isActive && props.selectedCity !== '' ? '' : 'var(--quaternary)'};
+        props.isFiltered && props.selectedCity !== ''
+          ? ''
+          : 'var(--quaternary)'};
     }
   }
 `
