@@ -55,7 +55,6 @@ export default function EventList({ selectedCity }) {
         ))}
     </Scroller>
   )
-
   function saveEvent(index) {
     const event = events[index]
     setEvents([
