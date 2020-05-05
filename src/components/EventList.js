@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import eventData from '../eventlist.json'
+import SaveButton from '../components/SaveButton'
 
 export default function EventList({ selectedCity }) {
   return (
@@ -36,6 +37,7 @@ export default function EventList({ selectedCity }) {
                   <img src="./img/icon_yoga.png" alt="" />
                   &nbsp;{event.yogastyle}
                 </p>
+                <SaveButton />
               </EventText>
               <EventDetails>
                 <p className="details_headline">Details on meeting point</p>
@@ -73,7 +75,7 @@ const ScrollContainer = styled.section`
   img {
     object-fit: cover;
     width: 180px;
-    height: 360px;
+    height: 364px;
     border-radius: 0 12px 12px 0;
     align-self: flex-start;
   }
@@ -83,6 +85,7 @@ const EventText = styled.section`
   align-self: flex-start;
   justify-self: flex-start;
   margin-left: 12px;
+  position: relative;
 
   img {
     height: 16px;
@@ -97,7 +100,7 @@ const EventText = styled.section`
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
-    margin-bottom: 4px;
+    margin-bottom: 0;
     color: var(--secondary);
   }
 

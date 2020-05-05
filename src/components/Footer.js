@@ -24,7 +24,7 @@ const FooterStyled = styled.footer`
     display: inline-block;
 
     :first-child {
-      background-color: ${(props) =>
+      background: ${(props) =>
         props.isActive && props.selectedCity !== ''
           ? 'var(--primary )'
           : 'var(--primary)'};
