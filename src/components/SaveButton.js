@@ -1,5 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+
+SaveButton.propTypes = {
+  default: PropTypes.string,
+  clickedText: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  saved: PropTypes.bool.isRequired,
+}
 
 export default function SaveButton({
   defaultText,

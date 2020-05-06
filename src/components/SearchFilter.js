@@ -1,5 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+
+SearchFilter.propTypes = {
+  onSearchFilter: PropTypes.func.isRequired,
+}
 
 export default function SearchFilter({ onSearchFilter }) {
   return (
@@ -19,13 +24,16 @@ const Form = styled.form`
   justify-content: center;
   margin-bottom: 8px;
   position: relative;
+  border: 1px solid var(--secondary);
 
   input {
     width: 100%;
-    padding-left: 2.4em;
+    padding-left: 36px;
     color: var(--primary);
     font-size: 16px;
     position: relative;
+    border: none;
+    height: 24px;
 
     ::placeholder {
       color: var(--secondary);
@@ -35,8 +43,8 @@ const Form = styled.form`
   img {
     position: absolute;
     height: 16px;
-    top: 6px;
-    left: 20px;
+    top: 4px;
+    left: 16px;
     z-index: 1;
   }
 `

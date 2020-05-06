@@ -1,6 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
+
+FilteredEvents.propTypes = {
+  events: PropTypes.array.isRequired,
+  selectedCity: PropTypes.string.isRequired,
+  saveEvent: PropTypes.func.isRequired,
+}
 
 export default function FilteredEvents({ events, selectedCity, saveEvent }) {
   return (
