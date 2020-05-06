@@ -6,7 +6,7 @@ export default function SearchFilter({ onSearchFilter }) {
     <Form>
       <img src="./img/icon_magnifier.png" alt="Search" />
       <input
-        type="search"
+        type="text"
         placeholder="Search your city"
         onChange={onSearchFilter}
       />
@@ -18,24 +18,24 @@ const Form = styled.form`
   display: flex;
   justify-content: center;
   margin-bottom: 8px;
+  position: relative;
 
   input {
-    position: relative;
     width: 100%;
-    padding-left: 36px;
+    padding-left: 2.4em;
     color: var(--primary);
     font-size: 16px;
+    position: relative;
 
     ::placeholder {
       color: var(--secondary);
-      padding-left: 32px;
     }
   }
 
   img {
     position: absolute;
     height: 16px;
-    top: 52px;
+    top: 6px;
     left: 20px;
     z-index: 1;
   }
