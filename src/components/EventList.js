@@ -17,45 +17,43 @@ export default function EventList({ events, selectedCity, saveEvent }) {
           event.city.toLowerCase().includes(selectedCity.toLowerCase())
         )
         .map((event, index) => (
-          <>
-            <ScrollContainer key={event.id}>
-              <img src={event.imageSrc} alt="" />
-              <EventText>
-                <p className="event_key">City</p>
-                <p className="event_title">{event.city}</p>
-                <p className="event_key">Place</p>
-                <p className="event_value">
-                  <img src="./img/icon_place.png" alt="" />
-                  &nbsp;{event.place}
-                </p>
-                <p className="event_key">Date</p>
-                <p className="event_value">
-                  <img src="./img/icon_calendar.png" alt="" />
-                  &nbsp;{event.date}
-                </p>
-                <p className="event_key">Time</p>
-                <p className="event_value">
-                  <img src="./img/icon_clock.png" alt="" />
-                  &nbsp;{event.time}
-                </p>
-                <p className="event_key">Yogastyle</p>
-                <p className="event_value">
-                  <img src="./img/icon_yoga.png" alt="" />
-                  &nbsp;{event.yogastyle}
-                </p>
-                <SaveButton
-                  defaultText="save"
-                  clickedText="saved"
-                  onClick={() => saveEvent(index)}
-                  saved={event.saved}
-                />
-              </EventText>
-              <EventDetails>
-                <p className="details_headline">Details on meeting point</p>
-                <p className="details_body">{event.details}</p>
-              </EventDetails>
-            </ScrollContainer>
-          </>
+          <ScrollContainer key={event.id}>
+            <img src={event.imageSrc} alt="" />
+            <EventText>
+              <p className="event_key">City</p>
+              <p className="event_title">{event.city}</p>
+              <p className="event_key">Place</p>
+              <p className="event_value">
+                <img src="./img/icon_place.png" alt="" />
+                &nbsp;{event.place}
+              </p>
+              <p className="event_key">Date</p>
+              <p className="event_value">
+                <img src="./img/icon_calendar.png" alt="" />
+                &nbsp;{event.date}
+              </p>
+              <p className="event_key">Time</p>
+              <p className="event_value">
+                <img src="./img/icon_clock.png" alt="" />
+                &nbsp;{event.time}
+              </p>
+              <p className="event_key">Yogastyle</p>
+              <p className="event_value">
+                <img src="./img/icon_yoga.png" alt="" />
+                &nbsp;{event.yogastyle}
+              </p>
+              <SaveButton
+                defaultText="save"
+                clickedText="saved"
+                onClick={() => saveEvent(index)}
+                saved={event.saved}
+              />
+            </EventText>
+            <EventDetails>
+              <p className="details_headline">Details on meeting point</p>
+              <p className="details_body">{event.details}</p>
+            </EventDetails>
+          </ScrollContainer>
         ))}
     </Scroller>
   )

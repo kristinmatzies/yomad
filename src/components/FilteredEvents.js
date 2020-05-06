@@ -19,7 +19,7 @@ export default function FilteredEvents({ events, selectedCity, saveEvent }) {
         .map((event, index) => (
           <>
             {event.saved === true && (
-              <ScrollContainer key={event.id}>
+              <ScrollContainer>
                 <img src={event.imageSrc} alt="" />
                 <EventText>
                   <p className="event_key">City</p>
