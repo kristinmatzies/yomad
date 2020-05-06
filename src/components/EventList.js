@@ -58,9 +58,8 @@ const Scroller = styled.section`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  overflow-y: hidden;
+
   scroll-snap-type: x mandatory;
-  height: 100vh;
 `
 
 const ScrollContainer = styled.section`
@@ -82,6 +81,11 @@ const ScrollContainer = styled.section`
     height: 364px;
     border-radius: 0 12px 12px 0;
     align-self: flex-start;
+
+    @media (max-height: 650px) {
+      width: 120px;
+      height: 360px;
+    }
   }
 `
 

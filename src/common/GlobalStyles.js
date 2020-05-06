@@ -16,8 +16,8 @@ export default createGlobalStyle`
         font-family: sans-serif;
         font-size: 18px;
         line-height: 1.4;
+        overflow: hidden;
         height: 100vh;
-        overflow: hidden;  
     }
 
     input, button, textarea {
@@ -29,7 +29,11 @@ export default createGlobalStyle`
   }
 
   main {
-      overflow: hidden;
+      overflow: hidden; 
+
+      @media (max-height: 650px) {
+          overflow: scroll;
+      }
   }
 
 
