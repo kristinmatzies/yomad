@@ -28,6 +28,7 @@ const Form = styled.form`
 
     ::placeholder {
       color: var(--secondary);
+      padding-left: 32px;
     }
   }
 
