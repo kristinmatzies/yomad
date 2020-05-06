@@ -34,10 +34,11 @@ export default createGlobalStyle`
 
 
     :root {
-    --background: #FFFAF7;
+    --background: #FCF9F9; 
     --primary: #352426;
     --secondary: #A17377;
     --tertiary: #B79699;
     --quaternary: #D1B9BB;
+    --cta: #476B64
     }
 `

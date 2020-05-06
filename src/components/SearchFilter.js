@@ -1,11 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
-export default function SearchFilter({ onChange }) {
+export default function SearchFilter({ onSearchFilter }) {
   return (
     <Form>
       <img src="./img/icon_magnifier.png" alt="Search" />
-      <input type="search" placeholder="Search your city" onChange={onChange} />
+      <input
+        type="search"
+        placeholder="Search your city"
+        onChange={onSearchFilter}
+      />
     </Form>
   )
 }
@@ -13,7 +17,7 @@ export default function SearchFilter({ onChange }) {
 const Form = styled.form`
   display: flex;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 
   input {
     position: relative;

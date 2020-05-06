@@ -8,4 +8,4 @@ export default {
 
 export const FliterDots = () => <Footer />
 
-export const activeFliterDots = () => <Footer isActive />
+export const activeFliterDots = () => <Footer isFiltered />

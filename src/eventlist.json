@@ -8,7 +8,7 @@
     "time": "8am",
     "yogastyle": "Vinyasa",
     "details": "Meet 10 minutes earlier at Café Seeterrassen.",
-    "save": true
+    "saved": true
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "time": "10am",
     "yogastyle": "Ashtanga",
     "details": "Meet at Fräulein Grüneis to find a nice spot on the grass together.",
-    "save": true
+    "saved": true
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "time": "7pm",
     "yogastyle": "Yin Yoga",
     "details": "Meet at Besitos, bring Yoga blocks if you like.",
-    "save": true
+    "saved": true
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "time": "10am",
     "yogastyle": "Hatha",
     "details": "Meet Köln West",
-    "save": false
+    "saved": false
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@
     "time": "10am",
     "yogastyle": "Acro Yoga",
     "details": "Meet at Milchhäusl. If you do not have a partner we find a solution together.",
-    "save": false
+    "saved": false
   },
   {
     "id": 6,
@@ -63,7 +63,7 @@
     "time": "10am",
     "yogastyle": "Hatha",
     "details": "Meet 10 minutes earlier at main train station, exit Bürgerweide.",
-    "save": false
+    "saved": false
   },
   {
     "id": 7,
@@ -74,7 +74,7 @@
     "time": "8am",
     "yogastyle": "Vinyasa",
     "details": "Everyday at Poststraße 9-11, 20354 Hamburg.",
-    "save": false
+    "saved": false
   },
   {
     "id": 8,
@@ -85,7 +85,7 @@
     "time": "10.30am",
     "yogastyle": "Vinyasa",
     "details": "Meet in front of the university mensa.",
-    "save": false
+    "saved": false
   },
   {
     "id": 9,
@@ -96,7 +96,7 @@
     "time": "10am",
     "yogastyle": "Ashtanga",
     "details": "Meet at entrance Herrfurthstr./Oderstr. We walk together to the Yoga spot.",
-    "save": false
+    "saved": false
   },
   {
     "id": 10,
@@ -107,6 +107,6 @@
     "time": "10am",
     "yogastyle": "Vinyasa",
     "details": "Let's meet on the sunny porch of the B-Part at Gleisdreieck Park.",
-    "save": false
+    "saved": false
   }
 ]
