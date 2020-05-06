@@ -1,1 +1,8 @@
-{ "plugins": ["eslint-plugin-cypress"], "env": { "cypress/globals": true } }
+{
+  "extends": ["plugin:prettier/recommended", "plugin:cypress/recommended"],
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "plugins": ["prettier", "cypress"]
+}
