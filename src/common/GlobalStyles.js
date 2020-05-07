@@ -22,10 +22,11 @@ export default createGlobalStyle`
 
     input, button, textarea {
     font-size: 1em;
+    font-family: sans-serif;
   }
 
   p {
-      color: var( --primary);
+      color: var(--primary);
   }
 
   main {

@@ -1,6 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
+
+Events.propTypes = {
+  index: PropTypes.number,
+  saveEvent: PropTypes.func.isRequired,
+}
 
 export default function Events({ event, index, saveEvent }) {
   return (

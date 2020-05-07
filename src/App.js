@@ -8,6 +8,7 @@ import EventList from './components/EventList'
 import SearchFilter from './components/SearchFilter'
 import Navigation from './components/Navigation'
 import FilteredEvents from './components/FilteredEvents'
+import CreateEvent from './components/CreateEvent'
 import { saveToStorage, loadFromStorage } from './services'
 
 export default function App() {
@@ -41,6 +42,9 @@ export default function App() {
               saveEvent={saveEvent}
             />
           </Route>
+          <Route path="/create">
+            <CreateEvent addEntry={addEntry} />
+          </Route>
         </Switch>
       </main>
       <Footer isFiltered={isFiltered} selectedCity={selectedCity} />
@@ -59,5 +63,10 @@ export default function App() {
       { ...event, saved: !event.saved },
       ...events.slice(index + 1),
     ])
+  }
+
+  function addEntry(data) {
+    setEvents([...events, { ...data }])
+    console.log(events)
   }
 }
