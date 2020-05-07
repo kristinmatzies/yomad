@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import GlobalStyles from './common/GlobalStyles'
 import { Route, Switch } from 'react-router-dom'
 import eventData from './eventlist.json'
@@ -8,11 +8,16 @@ import EventList from './components/EventList'
 import SearchFilter from './components/SearchFilter'
 import Navigation from './components/Navigation'
 import FilteredEvents from './components/FilteredEvents'
+import { saveToStorage, loadFromStorage } from './services'
 
 export default function App() {
-  const [events, setEvents] = useState(eventData)
+  const [events, setEvents] = useState(loadFromStorage('events') || eventData)
   const [selectedCity, setSelectedCity] = useState('')
   const [isFiltered, setIsFiltered] = useState(false)
+
+  useEffect(() => {
+    saveToStorage('events', events)
+  }, [events])
 
   return (
     <>
@@ -25,7 +30,6 @@ export default function App() {
           <Route exact path="/">
             <EventList
               events={events}
-              setEvents={setEvents}
               selectedCity={selectedCity}
               saveEvent={saveEvent}
             />
@@ -33,7 +37,6 @@ export default function App() {
           <Route path="/saved">
             <FilteredEvents
               events={events}
-              setEvents={setEvents}
               selectedCity={selectedCity}
               saveEvent={saveEvent}
             />
