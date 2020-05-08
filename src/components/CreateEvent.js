@@ -17,7 +17,10 @@ export default function CreateEvent({
   return (
     <FormWrapper>
       <FormStyled onSubmit={handleSubmit}>
-        <ImageUpload />
+        <ImageUpload
+          updateEventEntry={updateEventEntry}
+          imageSrc={eventEntry.imageSrc}
+        />
         <label htmlFor="city">City*</label>
         <input
           id="city"
@@ -97,6 +100,7 @@ const FormStyled = styled.form`
   flex-direction: column;
   margin: 20px;
   font-size: 12px;
+  border-radius: 4px;
 
   label {
     text-transform: uppercase;

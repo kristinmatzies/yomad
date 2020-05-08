@@ -18,7 +18,7 @@ export default function EventList({
 }) {
   return (
     <Wrapper>
-      <SearchFilter onSearchFilter={onSearchFilter} />
+      <SearchFilter className="span" onSearchFilter={onSearchFilter} />
       <Scroller>
         {events
           .filter((event) =>
@@ -57,6 +57,7 @@ const ScrollContainer = styled.section`
   grid-template-rows: 1.5fr 1fr;
   margin-right: 4px;
   background: var(--background);
+  height: 100vh;
 
   :last-child {
     flex: 0 0 100%;

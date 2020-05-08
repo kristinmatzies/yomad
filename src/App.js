@@ -18,6 +18,7 @@ export default function App() {
   const [selectedCity, setSelectedCity] = useState('')
   const [isFiltered, setIsFiltered] = useState(false)
   const [eventEntry, setEventEntry] = useState({
+    imageSrc: '',
     city: '',
     place: '',
     date: '',
