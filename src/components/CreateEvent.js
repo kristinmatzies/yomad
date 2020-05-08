@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
-import { useHistory } from 'react-router-dom'
+import ImageUpload from './ImageUpload'
+import PropTypes from 'prop-types'
 
-export default function CreateEvent({ addEntry }) {
-  const history = useHistory()
-  const [eventEntry, setEventEntry] = useState({
-    city: '',
-    place: '',
-    date: '',
-    time: '',
-    yogastyle: '',
-    details: '',
-  })
+CreateEvent.propTypes = {
+  eventEntry: PropTypes.object,
+  updateEventEntry: PropTypes.func,
+  handleSubmit: PropTypes.func,
+}
 
+export default function CreateEvent({
+  eventEntry,
+  updateEventEntry,
+  handleSubmit,
+}) {
   return (
     <FormWrapper>
       <FormStyled onSubmit={handleSubmit}>
-        <label htmlFor="city">City</label>
+        <ImageUpload />
+        <label htmlFor="city">City*</label>
         <input
           id="city"
           type="text"
@@ -24,8 +26,9 @@ export default function CreateEvent({ addEntry }) {
           onChange={updateEventEntry}
           value={eventEntry.city}
           placeholder="e.g. Hamburg"
+          required
         />
-        <label htmlFor="place">Place</label>
+        <label htmlFor="place">Place*</label>
         <input
           id="place"
           type="text"
@@ -33,27 +36,30 @@ export default function CreateEvent({ addEntry }) {
           placeholder="e.g. Schanzenpark"
           onChange={updateEventEntry}
           value={eventEntry.place}
+          required
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">Date*</label>
         <input
           id="date"
           type="date"
           name="date"
-          placeholder="2nd November 2020"
+          placeholder="2020-05-11"
           onChange={updateEventEntry}
           value={eventEntry.date}
+          required
         />
-        <label htmlFor="time">Time</label>
+        <label htmlFor="time">Time*</label>
         <input
           id="time"
           type="time"
           name="time"
-          placeholder="8.00 am"
+          placeholder="e.g. 8:00"
           onChange={updateEventEntry}
           value={eventEntry.time}
+          required
         />
 
-        <label htmlFor="yogastyle">Yogastyle</label>
+        <label htmlFor="yogastyle">Yogastyle*</label>
         <input
           id="yogastyle"
           type="text"
@@ -61,6 +67,7 @@ export default function CreateEvent({ addEntry }) {
           placeholder="e.g. Vinyasa"
           onChange={updateEventEntry}
           value={eventEntry.yogastyle}
+          required
         />
         <label htmlFor="details">Details on meeting point</label>
         <textarea
@@ -71,34 +78,18 @@ export default function CreateEvent({ addEntry }) {
           onChange={updateEventEntry}
           value={eventEntry.details}
         />
+        <p>*Mandatory fields</p>
         <SubmitButtonStyled type="submit">Add</SubmitButtonStyled>
       </FormStyled>
     </FormWrapper>
   )
-
-  function updateEventEntry(event) {
-    setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    addEntry(eventEntry)
-    setEventEntry({
-      city: '',
-      place: '',
-      date: '',
-      time: '',
-      yogastyle: '',
-      details: '',
-    })
-    history.push('/')
-  }
 }
 
-const FormWrapper = styled.section`
+const FormWrapper = styled.main`
   display: grid;
   grid-template-rows: auto;
-  height: 100vh;
+  color: var(--primary);
+  overflow-y: scroll;
 `
 
 const FormStyled = styled.form`
@@ -106,10 +97,8 @@ const FormStyled = styled.form`
   flex-direction: column;
   margin: 20px;
   font-size: 12px;
-  overflow-y: scroll;
 
   label {
-    color: var(--primary);
     text-transform: uppercase;
   }
 
@@ -128,13 +117,17 @@ const FormStyled = styled.form`
     border: none;
     border-radius: 4px;
     height: 60px;
-    margin-bottom: 12px;
+  }
+
+  p {
+    margin: 0;
   }
 `
 
 const SubmitButtonStyled = styled.button`
+  font-size: 18px;
   padding: 8px 48px;
-  margin: 0 20px;
+  margin: 12px 20px;
   border: none;
   background: var(--cta);
   color: white;

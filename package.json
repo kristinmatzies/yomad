@@ -46,6 +46,7 @@
     "cypress": "^4.5.0",
     "eslint-plugin-cypress": "^2.10.3",
     "prop-types": "^15.7.2",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "uuidv4": "^6.0.8"
   }
 }

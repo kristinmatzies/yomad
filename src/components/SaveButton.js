@@ -23,6 +23,7 @@ export default function SaveButton({
 }
 
 const SaveButtonStyled = styled.button`
+  font-size: 18px;
   padding: 8px 48px;
   border: none;
   background: ${(props) => (props.saved ? 'var(--cta)' : 'var(--secondary)')};

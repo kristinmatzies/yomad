@@ -25,6 +25,7 @@ const Form = styled.form`
   margin-bottom: 8px;
   position: relative;
   border: 1px solid var(--secondary);
+  height: 32px;
 
   input {
     width: 100%;

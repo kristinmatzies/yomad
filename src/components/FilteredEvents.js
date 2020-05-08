@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from './Events'
+import SearchFilter from './SearchFilter'
 
 FilteredEvents.propTypes = {
   events: PropTypes.array.isRequired,
@@ -9,37 +10,49 @@ FilteredEvents.propTypes = {
   saveEvent: PropTypes.func.isRequired,
 }
 
-export default function FilteredEvents({ events, selectedCity, saveEvent }) {
+export default function FilteredEvents({
+  events,
+  selectedCity,
+  saveEvent,
+  onSearchFilter,
+}) {
   return (
-    <Scroller>
-      {events
-        .filter((event) =>
-          event.city.toLowerCase().includes(selectedCity.toLowerCase())
-        )
-        .map((event, index) => (
-          <>
-            {event.saved === true && (
-              <ScrollContainer key={event.id}>
-                <Events
-                  events={events}
-                  saveEvent={saveEvent}
-                  event={event}
-                  index={index}
-                />
-              </ScrollContainer>
-            )}
-          </>
-        ))}
-    </Scroller>
+    <Wrapper>
+      <SearchFilter onSearchFilter={onSearchFilter} />
+      <Scroller>
+        {events
+          .filter((event) =>
+            event.city.toLowerCase().includes(selectedCity.toLowerCase())
+          )
+          .map((event, index) => (
+            <>
+              {event.saved === true && (
+                <ScrollContainer key={event.id}>
+                  <Events
+                    events={events}
+                    saveEvent={saveEvent}
+                    event={event}
+                    index={index}
+                  />
+                </ScrollContainer>
+              )}
+            </>
+          ))}
+      </Scroller>
+    </Wrapper>
   )
 }
 
-const Scroller = styled.section`
+const Wrapper = styled.main`
+  overflow-y: hidden;
+`
+
+const Scroller = styled.main`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-
   scroll-snap-type: x mandatory;
+  overflow-y: hidden;
 `
 
 const ScrollContainer = styled.section`
