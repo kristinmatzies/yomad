@@ -114,7 +114,7 @@ const FormStyled = styled.form`
   }
 
   input {
-    background: lightgray;
+    background: var(--quaternary);
     padding: 12px;
     border: none;
     border-radius: 4px;
@@ -123,7 +123,7 @@ const FormStyled = styled.form`
   }
 
   textarea {
-    background: lightgray;
+    background: var(--quaternary);
     padding: 12px;
     border: none;
     border-radius: 4px;
