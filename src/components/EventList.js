@@ -17,7 +17,7 @@ export default function EventList({ events, selectedCity, saveEvent }) {
           event.city.toLowerCase().includes(selectedCity.toLowerCase())
         )
         .map((event, index) => (
-          <ScrollContainer key={event.id}>
+          <ScrollContainer key={index}>
             <Events saveEvent={saveEvent} event={event} index={index} />
           </ScrollContainer>
         ))}

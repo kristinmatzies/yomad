@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 export default function CreateEvent({ addEntry }) {
   const history = useHistory()
-  const [event, setEvent] = useState({
+  const [eventEntry, setEventEntry] = useState({
     city: '',
     place: '',
     date: '',
@@ -22,7 +22,7 @@ export default function CreateEvent({ addEntry }) {
           type="text"
           name="city"
           onChange={updateEventEntry}
-          value={event.city}
+          value={eventEntry.city}
           placeholder="e.g. Hamburg"
         />
         <label htmlFor="place">Place</label>
@@ -32,7 +32,7 @@ export default function CreateEvent({ addEntry }) {
           name="place"
           placeholder="e.g. Schanzenpark"
           onChange={updateEventEntry}
-          value={event.place}
+          value={eventEntry.place}
         />
         <label htmlFor="date">Date</label>
         <input
@@ -41,7 +41,7 @@ export default function CreateEvent({ addEntry }) {
           name="date"
           placeholder="2nd November 2020"
           onChange={updateEventEntry}
-          value={event.date}
+          value={eventEntry.date}
         />
         <label htmlFor="time">Time</label>
         <input
@@ -50,17 +50,17 @@ export default function CreateEvent({ addEntry }) {
           name="time"
           placeholder="8.00 am"
           onChange={updateEventEntry}
-          value={event.time}
+          value={eventEntry.time}
         />
 
         <label htmlFor="yogastyle">Yogastyle</label>
         <input
           id="yogastyle"
           type="text"
-          name="time"
+          name="yogastyle"
           placeholder="e.g. Vinyasa"
           onChange={updateEventEntry}
-          value={event.yogastyle}
+          value={eventEntry.yogastyle}
         />
         <label htmlFor="details">Details on meeting point</label>
         <textarea
@@ -69,7 +69,7 @@ export default function CreateEvent({ addEntry }) {
           name="details"
           placeholder="e.g. Meet in front of Peter Pane"
           onChange={updateEventEntry}
-          value={event.details}
+          value={eventEntry.details}
         />
         <SubmitButtonStyled type="submit">Add</SubmitButtonStyled>
       </FormStyled>
@@ -77,13 +77,13 @@ export default function CreateEvent({ addEntry }) {
   )
 
   function updateEventEntry(event) {
-    setEvent({ ...event, [event.target.name]: event.target.value })
+    setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
   }
 
   function handleSubmit(event) {
     event.preventDefault()
-    addEntry({ event })
-    setEvent({
+    addEntry(eventEntry)
+    setEventEntry({
       city: '',
       place: '',
       date: '',

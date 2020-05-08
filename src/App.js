@@ -65,8 +65,8 @@ export default function App() {
     ])
   }
 
-  function addEntry(data) {
-    setEvents([...events, { ...data }])
+  function addEntry(entry) {
+    setEvents([...events, { ...entry }])
     console.log(events)
   }
 }
