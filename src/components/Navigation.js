@@ -11,6 +11,9 @@ export default function SaveFilter() {
       <LinkStyled to="/saved" activeClassName="selected">
         saved
       </LinkStyled>
+      <LinkStyled to="/create" activeClassName="selected">
+        create event
+      </LinkStyled>
     </SaveFilterLink>
   )
 }

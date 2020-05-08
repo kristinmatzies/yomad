@@ -33,11 +33,7 @@ const Form = styled.form`
     font-size: 16px;
     position: relative;
     border: none;
-    height: 24px;
-
-    ::placeholder {
-      color: var(--secondary);
-    }
+    height: 28px;
   }
 
   img {

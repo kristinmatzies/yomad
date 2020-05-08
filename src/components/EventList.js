@@ -17,13 +17,8 @@ export default function EventList({ events, selectedCity, saveEvent }) {
           event.city.toLowerCase().includes(selectedCity.toLowerCase())
         )
         .map((event, index) => (
-          <ScrollContainer key={event.id}>
-            <Events
-              events={events}
-              saveEvent={saveEvent}
-              event={event}
-              index={index}
-            />
+          <ScrollContainer key={index}>
+            <Events saveEvent={saveEvent} event={event} index={index} />
           </ScrollContainer>
         ))}
     </Scroller>
@@ -34,7 +29,6 @@ const Scroller = styled.section`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-
   scroll-snap-type: x mandatory;
 `
 
