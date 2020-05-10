@@ -13,14 +13,12 @@ export default function CreateEvent({
   eventEntry,
   updateEventEntry,
   handleSubmit,
+  updateImage,
 }) {
   return (
     <FormWrapper>
       <FormStyled onSubmit={handleSubmit}>
-        <ImageUpload
-          updateEventEntry={updateEventEntry}
-          imageSrc={eventEntry.imageSrc}
-        />
+        <ImageUpload updateImage={updateImage} />
         <label htmlFor="city">City*</label>
         <input
           id="city"
@@ -29,7 +27,7 @@ export default function CreateEvent({
           onChange={updateEventEntry}
           value={eventEntry.city}
           placeholder="e.g. Hamburg"
-          required
+          //required
         />
         <label htmlFor="place">Place*</label>
         <input
@@ -39,7 +37,7 @@ export default function CreateEvent({
           placeholder="e.g. Schanzenpark"
           onChange={updateEventEntry}
           value={eventEntry.place}
-          required
+          //required
         />
         <label htmlFor="date">Date*</label>
         <input
@@ -49,7 +47,7 @@ export default function CreateEvent({
           placeholder="2020-05-11"
           onChange={updateEventEntry}
           value={eventEntry.date}
-          required
+          //required
         />
         <label htmlFor="time">Time*</label>
         <input
@@ -59,7 +57,7 @@ export default function CreateEvent({
           placeholder="e.g. 8:00"
           onChange={updateEventEntry}
           value={eventEntry.time}
-          required
+          //required
         />
 
         <label htmlFor="yogastyle">Yogastyle*</label>
@@ -70,7 +68,7 @@ export default function CreateEvent({
           placeholder="e.g. Vinyasa"
           onChange={updateEventEntry}
           value={eventEntry.yogastyle}
-          required
+          // required
         />
         <label htmlFor="details">Details on meeting point</label>
         <textarea

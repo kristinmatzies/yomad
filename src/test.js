@@ -17,7 +17,8 @@ export default function App() {
   const [events, setEvents] = useState(loadFromStorage('events') || eventData)
   const [selectedCity, setSelectedCity] = useState('')
   const [isFiltered, setIsFiltered] = useState(false)
-  const [previewImage, setPreviewImage] = useState({ imageUrl: '' })
+  const [image, setImage] = useState('')
+  const [previewImage, setPreviewImage] = useState({ ImageUrl: '' })
   const [eventEntry, setEventEntry] = useState({
     city: '',
     place: '',
@@ -59,7 +60,7 @@ export default function App() {
             eventEntry={eventEntry}
             updateEventEntry={updateEventEntry}
             handleSubmit={handleSubmit}
-            updateImage={handleImageUpload}
+            updateImage={updateImage}
           />
         </Route>
       </Switch>
@@ -81,31 +82,17 @@ export default function App() {
     ])
   }
 
-  /* function updateImage(event) {
+  function updateImage(event) {
     setImage(event.target.files[0])
-  } */
+  }
 
   function updateEventEntry(event) {
     setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
   }
 
-  function addEntry(entry) {
-    const uniqueEventId = uuidv4()
-    setEvents([
-      ...events,
-      {
-        ...entry,
-        saved: false,
-        id: uniqueEventId,
-        imageSrc: previewImage.imageUrl,
-      },
-    ])
-    console.log(events)
-  }
-
-  function handleImageUpload(event) {
-    const image = event.target.files[0]
+  function handleImageUpload(image) {
     const uploadTask = storage.ref(`images/${image.name}`).put(image)
+    console.log(image)
     uploadTask.on(
       'state_changed',
       (snapshot) => {},
@@ -118,14 +105,31 @@ export default function App() {
           .child(image.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
-            setPreviewImage({ imageUrl: fireBaseUrl })
+            setPreviewImage({ ImageUrl: fireBaseUrl })
+            console.log(fireBaseUrl)
+            console.log(previewImage)
           })
       }
     )
   }
 
+  function addEntry(entry) {
+    const uniqueEventId = uuidv4()
+    setEvents([
+      ...events,
+      {
+        ...entry,
+        saved: false,
+        id: uniqueEventId,
+        imageSrc: previewImage.ImageUrl,
+      },
+    ])
+    console.log(events)
+  }
+
   function handleSubmit(event) {
     event.preventDefault()
+    handleImageUpload(image)
     addEntry(eventEntry)
     setEventEntry({
       city: '',
