@@ -13,13 +13,13 @@ CreateEvent.propTypes = {
 export default function CreateEvent({
   eventEntry,
   updateEventEntry,
-  handleSubmit,
+  submitNewEvent,
   updateImage,
   previewImage,
 }) {
   return (
     <FormWrapper>
-      <FormStyled onSubmit={handleSubmit}>
+      <FormStyled onSubmit={submitNewEvent}>
         <ImageUpload updateImage={updateImage} previewImage={previewImage} />
         <label htmlFor="city">City*</label>
         <input

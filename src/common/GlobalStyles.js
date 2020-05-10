@@ -29,13 +29,6 @@ export default createGlobalStyle`
       color: var(--primary);
   }
 
-/*main {
-    overflow: hidden;
-
-  @media (max-height: 650px) {
-    overflow: scroll;
-  }
-}*/
 
     :root {
     --background: #FCF9F9; 
