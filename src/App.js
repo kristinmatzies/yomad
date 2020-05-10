@@ -61,7 +61,7 @@ export default function App() {
           <CreateEvent
             eventEntry={eventEntry}
             updateEventEntry={updateEventEntry}
-            handleSubmit={handleSubmit}
+            submitNewEvent={submitNewEvent}
             updateImage={handleImageUpload}
             previewImage={previewImage}
           />
@@ -89,12 +89,12 @@ export default function App() {
     setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
   }
 
-  function addEntry(entry) {
+  function addEntry(newEvent) {
     const uniqueEventId = uuidv4()
     setEvents([
       ...events,
       {
-        ...entry,
+        ...newEvent,
         saved: false,
         id: uniqueEventId,
         imageSrc: previewImage.imageUrl,
@@ -124,7 +124,7 @@ export default function App() {
     )
   }
 
-  function handleSubmit(event) {
+  function submitNewEvent(event) {
     event.preventDefault()
     addEntry(eventEntry)
     setEventEntry({
