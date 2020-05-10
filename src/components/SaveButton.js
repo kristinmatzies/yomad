@@ -16,14 +16,18 @@ export default function SaveButton({
   saved,
 }) {
   return (
-    <SaveButtonStyled onClick={onClick} saved={saved}>
+    <SaveButtonStyled
+      className="button-position"
+      onClick={onClick}
+      saved={saved}
+    >
       {saved ? clickedText : defaultText}
     </SaveButtonStyled>
   )
 }
 
 const SaveButtonStyled = styled.button`
-  font-size: 18px;
+  font-size: 16px;
   padding: 8px 48px;
   border: none;
   background: ${(props) => (props.saved ? 'var(--cta)' : 'var(--secondary)')};

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import Button from './Button'
 
 export default function ImageUpload({ updateImage, previewImage }) {
   return (
@@ -13,14 +14,18 @@ export default function ImageUpload({ updateImage, previewImage }) {
           <Image src="./img/default_img.jpg" alt="" />
         </ImageWrapper>
       )}
-      <label htmlFor="image">Upload an image*</label>
-      <input
-        id="image"
-        type="file"
-        name="image"
-        accept="image/*"
-        onChange={updateImage}
-      />
+      <UploadWrapper>
+        <Button text="Upload Image" />
+        <label htmlFor="image"></label>
+        <input
+          id="image"
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={updateImage}
+          className="file-default"
+        />
+      </UploadWrapper>
     </>
   )
 }
@@ -35,4 +40,14 @@ const Image = styled.img`
   width: 340px;
   object-fit: cover;
   border-radius: 4px;
+`
+
+const UploadWrapper = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  .file-default {
+    opacity: 0;
+    position: absolute;
+  }
 `

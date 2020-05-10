@@ -17,7 +17,10 @@ export default function App() {
   const [events, setEvents] = useState(loadFromStorage('events') || eventData)
   const [selectedCity, setSelectedCity] = useState('')
   const [isFiltered, setIsFiltered] = useState(false)
-  const [previewImage, setPreviewImage] = useState({ imageUrl: '' })
+  const [previewImage, setPreviewImage] = useState({
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
+  })
   const [eventEntry, setEventEntry] = useState({
     city: '',
     place: '',
@@ -132,7 +135,7 @@ export default function App() {
       yogastyle: '',
       details: '',
     })
-    history.push('/')
     setPreviewImage('')
+    history.push('/')
   }
 }

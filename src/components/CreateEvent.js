@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import ImageUpload from './ImageUpload'
 import PropTypes from 'prop-types'
+import Button from './Button'
 
 CreateEvent.propTypes = {
   eventEntry: PropTypes.object,
@@ -81,7 +82,7 @@ export default function CreateEvent({
           value={eventEntry.details}
         />
         <p>*Mandatory fields</p>
-        <SubmitButtonStyled type="submit">Add</SubmitButtonStyled>
+        <Button type="submit" text="Add new meet-up" />
       </FormStyled>
     </FormWrapper>
   )
@@ -125,16 +126,4 @@ const FormStyled = styled.form`
   p {
     margin: 0;
   }
-`
-
-const SubmitButtonStyled = styled.button`
-  font-size: 18px;
-  padding: 8px 48px;
-  margin: 12px 20px;
-  border: none;
-  background: var(--cta);
-  color: white;
-  border-radius: 16px;
-  box-shadow: 2px 2px 2px var(--primary);
-  justify-content: center;
 `
