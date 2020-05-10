@@ -1,8 +1,18 @@
 import React from 'react'
+import styled from 'styled-components/macro'
 
-export default function ImageUpload({ updateImage }) {
+export default function ImageUpload({ updateImage, previewImage }) {
   return (
     <>
+      {previewImage.imageUrl ? (
+        <ImageWrapper>
+          <Image src={previewImage.imageUrl} alt="" />
+        </ImageWrapper>
+      ) : (
+        <ImageWrapper>
+          <Image src="./img/default_img.jpg" alt="" />
+        </ImageWrapper>
+      )}
       <label htmlFor="image">Upload an image*</label>
       <input
         id="image"
@@ -15,12 +25,14 @@ export default function ImageUpload({ updateImage }) {
   )
 }
 
-/* const DefaultImg = styled.img`
-  object-fit: fill;
-  width: 100%;
-  height: 200px;
-  border-radius: 4px;
+const ImageWrapper = styled.div`
   align-self: center;
-  margin-bottom: 12px;
+  height: 200px;
 `
- */
+
+const Image = styled.img`
+  height: 200px;
+  width: 340px;
+  object-fit: cover;
+  border-radius: 4px;
+`

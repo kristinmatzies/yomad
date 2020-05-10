@@ -60,7 +60,7 @@ export default function App() {
             eventEntry={eventEntry}
             updateEventEntry={updateEventEntry}
             handleSubmit={handleSubmit}
-            updateImage={updateImage}
+            updateImage={() => setImage(event.target.files[0])}
           />
         </Route>
       </Switch>
@@ -80,10 +80,6 @@ export default function App() {
       { ...event, saved: !event.saved },
       ...events.slice(index + 1),
     ])
-  }
-
-  function updateImage(event) {
-    setImage(event.target.files[0])
   }
 
   function updateEventEntry(event) {

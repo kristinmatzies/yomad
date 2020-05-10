@@ -60,6 +60,7 @@ export default function App() {
             updateEventEntry={updateEventEntry}
             handleSubmit={handleSubmit}
             updateImage={handleImageUpload}
+            previewImage={previewImage}
           />
         </Route>
       </Switch>
@@ -80,10 +81,6 @@ export default function App() {
       ...events.slice(index + 1),
     ])
   }
-
-  /* function updateImage(event) {
-    setImage(event.target.files[0])
-  } */
 
   function updateEventEntry(event) {
     setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
