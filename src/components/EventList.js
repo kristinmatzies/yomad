@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from './Events'
+import SearchFilter from './SearchFilter'
 
 EventList.propTypes = {
   events: PropTypes.array.isRequired,
@@ -9,21 +10,37 @@ EventList.propTypes = {
   saveEvent: PropTypes.func.isRequired,
 }
 
-export default function EventList({ events, selectedCity, saveEvent }) {
+export default function EventList({
+  events,
+  selectedCity,
+  saveEvent,
+  onSearchFilter,
+}) {
   return (
-    <Scroller>
-      {events
-        .filter((event) =>
-          event.city.toLowerCase().includes(selectedCity.toLowerCase())
-        )
-        .map((event, index) => (
-          <ScrollContainer key={index}>
-            <Events saveEvent={saveEvent} event={event} index={index} />
-          </ScrollContainer>
-        ))}
-    </Scroller>
+    <Wrapper>
+      <SearchFilter className="span" onSearchFilter={onSearchFilter} />
+      <Scroller>
+        {events
+          .filter((event) =>
+            event.city.toLowerCase().includes(selectedCity.toLowerCase())
+          )
+          .map((event, index) => (
+            <ScrollContainer key={index}>
+              <Events saveEvent={saveEvent} event={event} index={index} />
+            </ScrollContainer>
+          ))}
+      </Scroller>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.main`
+  overflow-y: hidden;
+
+  @media (max-height: 650px) {
+    overflow-y: scroll;
+  }
+`
 
 const Scroller = styled.section`
   display: flex;
@@ -40,6 +57,7 @@ const ScrollContainer = styled.section`
   grid-template-rows: 1.5fr 1fr;
   margin-right: 4px;
   background: var(--background);
+  height: 100vh;
 
   :last-child {
     flex: 0 0 100%;

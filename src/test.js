@@ -17,10 +17,8 @@ export default function App() {
   const [events, setEvents] = useState(loadFromStorage('events') || eventData)
   const [selectedCity, setSelectedCity] = useState('')
   const [isFiltered, setIsFiltered] = useState(false)
-  const [previewImage, setPreviewImage] = useState({
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
-  })
+  const [image, setImage] = useState('')
+  const [previewImage, setPreviewImage] = useState({ ImageUrl: '' })
   const [eventEntry, setEventEntry] = useState({
     city: '',
     place: '',
@@ -62,8 +60,7 @@ export default function App() {
             eventEntry={eventEntry}
             updateEventEntry={updateEventEntry}
             handleSubmit={handleSubmit}
-            updateImage={handleImageUpload}
-            previewImage={previewImage}
+            updateImage={() => setImage(event.target.files[0])}
           />
         </Route>
       </Switch>
@@ -89,23 +86,9 @@ export default function App() {
     setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
   }
 
-  function addEntry(entry) {
-    const uniqueEventId = uuidv4()
-    setEvents([
-      ...events,
-      {
-        ...entry,
-        saved: false,
-        id: uniqueEventId,
-        imageSrc: previewImage.imageUrl,
-      },
-    ])
-    console.log(events)
-  }
-
-  function handleImageUpload(event) {
-    const image = event.target.files[0]
+  function handleImageUpload(image) {
     const uploadTask = storage.ref(`images/${image.name}`).put(image)
+    console.log(image)
     uploadTask.on(
       'state_changed',
       (snapshot) => {},
@@ -118,14 +101,31 @@ export default function App() {
           .child(image.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
-            setPreviewImage({ imageUrl: fireBaseUrl })
+            setPreviewImage({ ImageUrl: fireBaseUrl })
+            console.log(fireBaseUrl)
+            console.log(previewImage)
           })
       }
     )
   }
 
+  function addEntry(entry) {
+    const uniqueEventId = uuidv4()
+    setEvents([
+      ...events,
+      {
+        ...entry,
+        saved: false,
+        id: uniqueEventId,
+        imageSrc: previewImage.ImageUrl,
+      },
+    ])
+    console.log(events)
+  }
+
   function handleSubmit(event) {
     event.preventDefault()
+    handleImageUpload(image)
     addEntry(eventEntry)
     setEventEntry({
       city: '',
@@ -135,7 +135,7 @@ export default function App() {
       yogastyle: '',
       details: '',
     })
-    setPreviewImage('')
     history.push('/')
+    setPreviewImage('')
   }
 }

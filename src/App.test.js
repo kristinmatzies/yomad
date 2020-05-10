@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import App from './App'
 import { MemoryRouter } from 'react-router-dom'
 
-test('renders learn react link', () => {
+test('renders App', () => {
   const { getByPlaceholderText } = render(
     <MemoryRouter>
       <App />

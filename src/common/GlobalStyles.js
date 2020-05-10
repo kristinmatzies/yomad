@@ -7,7 +7,7 @@ export default createGlobalStyle`
 
     #root {
     display: grid;
-    grid-template-rows: 48px auto 48px; 
+    grid-template-rows: 48px 32px auto 48px; 
     height: 100vh;
 }
 
@@ -20,7 +20,7 @@ export default createGlobalStyle`
         height: 100vh;
     }
 
-    input, button, textarea {
+    input, textarea {
     font-size: 1em;
     font-family: sans-serif;
   }
@@ -29,14 +29,13 @@ export default createGlobalStyle`
       color: var(--primary);
   }
 
-  main {
-      overflow: hidden; 
+/*main {
+    overflow: hidden;
 
-      @media (max-height: 650px) {
-          overflow: scroll;
-      }
+  @media (max-height: 650px) {
+    overflow: scroll;
   }
-
+}*/
 
     :root {
     --background: #FCF9F9; 
