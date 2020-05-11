@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from './Events'
 import SearchFilter from './SearchFilter'
-import FilterDots from './FilterDots'
 
 FilteredEvents.propTypes = {
   events: PropTypes.array.isRequired,
