@@ -22,7 +22,7 @@ export default function SearchFilter({ onSearchFilter }) {
 const Form = styled.form`
   display: flex;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   position: relative;
   border: 1px solid var(--secondary);
   height: 32px;

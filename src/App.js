@@ -3,9 +3,8 @@ import GlobalStyles from './common/GlobalStyles'
 import { Route, Switch } from 'react-router-dom'
 import eventData from './eventlist.json'
 import Header from './components/Header'
-import Footer from './components/Footer'
 import EventList from './components/EventList'
-import Navigation from './components/Navigation'
+import FooterNav from './components/FooterNav'
 import FilteredEvents from './components/FilteredEvents'
 import CreateEvent from './components/CreateEvent'
 import { saveToStorage, loadFromStorage } from './services'
@@ -39,7 +38,6 @@ export default function App() {
     <>
       <GlobalStyles />
       <Header />
-      <Navigation />
       <Switch>
         <Route exact path="/">
           <EventList
@@ -47,14 +45,7 @@ export default function App() {
             selectedCity={selectedCity}
             saveEvent={saveEvent}
             onSearchFilter={setSearchFilter}
-          />
-        </Route>
-        <Route path="/saved">
-          <FilteredEvents
-            events={events}
-            selectedCity={selectedCity}
-            saveEvent={saveEvent}
-            onSearchFilter={setSearchFilter}
+            isFiltered={isFiltered}
           />
         </Route>
         <Route path="/create">
@@ -66,8 +57,17 @@ export default function App() {
             previewImage={previewImage}
           />
         </Route>
+        <Route path="/saved">
+          <FilteredEvents
+            events={events}
+            selectedCity={selectedCity}
+            saveEvent={saveEvent}
+            onSearchFilter={setSearchFilter}
+            isFiltered={isFiltered}
+          />
+        </Route>
       </Switch>
-      <Footer isFiltered={isFiltered} selectedCity={selectedCity} />
+      <FooterNav />
     </>
   )
 

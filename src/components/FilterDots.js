@@ -2,29 +2,29 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-Footer.propTypes = {
+FilterDots.propTypes = {
   isFiltered: PropTypes.bool.isRequired,
   selectedCity: PropTypes.string.isRequired,
 }
 
-export default function Footer({ isFiltered, selectedCity }) {
+export default function FilterDots({ isFiltered, selectedCity }) {
   return (
-    <FooterStyled isFiltered={isFiltered} selectedCity={selectedCity}>
+    <FilterDotsContainer isFiltered={isFiltered} selectedCity={selectedCity}>
       <span className="filter-dots"></span>
       <span className="filter-dots"></span>
       <span className="filter-dots"></span>
       <span className="filter-dots"></span>
-    </FooterStyled>
+    </FilterDotsContainer>
   )
 }
 
-const FooterStyled = styled.footer`
+const FilterDotsContainer = styled.div`
   text-align: center;
   align-self: center;
 
   .filter-dots {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     margin: 4px;
     border-radius: 50%;
     display: inline-block;

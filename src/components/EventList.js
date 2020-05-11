@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from './Events'
 import SearchFilter from './SearchFilter'
+import FilterDots from './FilterDots'
 
 EventList.propTypes = {
   events: PropTypes.array.isRequired,
@@ -15,10 +16,12 @@ export default function EventList({
   selectedCity,
   saveEvent,
   onSearchFilter,
+  isFiltered,
 }) {
   return (
     <Wrapper>
       <SearchFilter className="span" onSearchFilter={onSearchFilter} />
+      <FilterDots isFiltered={isFiltered} selectedCity={selectedCity} />
       <Scroller>
         {events
           .filter((event) =>
@@ -54,7 +57,7 @@ const ScrollContainer = styled.section`
   scroll-snap-align: start;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1.5fr 1fr;
+  grid-template-rows: 1.3fr 1fr;
   margin-right: 4px;
   background: var(--background);
   height: 100vh;
