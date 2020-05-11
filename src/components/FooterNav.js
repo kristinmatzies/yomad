@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { NavLink } from 'react-router-dom'
 import { TiHome } from 'react-icons/ti'
-import { FaPlus } from 'react-icons/fa'
+import { BsPlusCircleFill } from 'react-icons/bs'
 import { IoIosSave } from 'react-icons/io'
 
 export default function FooterNav() {
@@ -13,7 +13,7 @@ export default function FooterNav() {
       </LinkStyled>
       <LinkStyled to="/create">
         <button>
-          <FaPlus className="calendar-icon" />
+          <BsPlusCircleFill className="create-icon" />
         </button>
       </LinkStyled>
       <LinkStyled to="/saved">
@@ -33,7 +33,6 @@ const Footer = styled.footer`
 
 const LinkStyled = styled(NavLink)`
   .home-icon,
-  .calendar-icon,
   .save-icon {
     height: 28px;
     width: 28px;
@@ -44,17 +43,25 @@ const LinkStyled = styled(NavLink)`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
+    padding: 0;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    border: solid 4px var(--quaternary);
+    border: none;
     margin-bottom: 28px;
-    background: var(--background);
+    background: var(--quaternary);
+  }
+
+  .create-icon {
+    height: 80%;
+    width: 80%;
+    margin: 0;
+    color: var(--primary);
   }
 
   &.active {
     .home-icon,
-    .calendar-icon,
+    .create-icon,
     .save-icon {
       color: var(--secondary);
     }

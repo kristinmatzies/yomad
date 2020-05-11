@@ -101,6 +101,7 @@ const FormStyled = styled.form`
   margin: 20px;
   font-size: 12px;
   border-radius: 4px;
+  padding-bottom: 20px;
 
   label {
     text-transform: uppercase;
