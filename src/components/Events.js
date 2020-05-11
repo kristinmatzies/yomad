@@ -2,17 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
+import { RiDeleteBin6Line } from 'react-icons/ri'
 
 Events.propTypes = {
   index: PropTypes.number,
   saveEvent: PropTypes.func.isRequired,
 }
 
-export default function Events({ event, index, saveEvent }) {
+export default function Events({ event, index, saveEvent, deleteEvent }) {
   return (
     <>
       <ImgStyled src={event.imageSrc} alt="" />
       <EventText>
+        <RiDeleteBin6Line className="delete-button" onClick={deleteEvent} />
         <p className="event_key">City</p>
         <p className="event_title">{event.city}</p>
         <p className="event_key">Place</p>
@@ -68,6 +70,13 @@ const EventText = styled.section`
   justify-self: flex-start;
   margin-left: 12px;
   position: relative;
+
+  .delete-button {
+    position: absolute;
+    left: 116px;
+    top: 4px;
+    color: var(--primary);
+  }
 
   img {
     height: 16px;

@@ -16,6 +16,7 @@ export default function EventList({
   saveEvent,
   onSearchFilter,
   isFiltered,
+  deleteEvent,
 }) {
   return (
     <Wrapper>
@@ -32,7 +33,12 @@ export default function EventList({
           )
           .map((event, index) => (
             <ScrollContainer key={index}>
-              <Events saveEvent={saveEvent} event={event} index={index} />
+              <Events
+                saveEvent={saveEvent}
+                event={event}
+                index={index}
+                deleteEvent={() => deleteEvent(index)}
+              />
             </ScrollContainer>
           ))}
       </Scroller>
