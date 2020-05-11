@@ -34,12 +34,7 @@ export default function FilteredEvents({
             <>
               {event.saved === true && (
                 <ScrollContainer key={event.id}>
-                  <Events
-                    events={events}
-                    saveEvent={saveEvent}
-                    event={event}
-                    index={index}
-                  />
+                  <Events saveEvent={saveEvent} event={event} index={index} />
                 </ScrollContainer>
               )}
             </>
@@ -57,12 +52,11 @@ const Wrapper = styled.main`
   }
 `
 
-const Scroller = styled.main`
+const Scroller = styled.section`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  overflow-y: hidden;
 `
 
 const ScrollContainer = styled.section`
@@ -70,9 +64,10 @@ const ScrollContainer = styled.section`
   scroll-snap-align: start;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1.5fr 1fr;
+  grid-template-rows: 1.3fr 1fr;
   margin-right: 4px;
   background: var(--background);
+  height: 100vh;
 
   :last-child {
     flex: 0 0 100%;
