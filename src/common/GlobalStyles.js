@@ -7,7 +7,7 @@ export default createGlobalStyle`
 
     #root {
     display: grid;
-    grid-template-rows: 48px 32px auto 48px; 
+    grid-template-rows: 48px auto 52px; 
     height: 100vh;
 }
 
@@ -36,6 +36,6 @@ export default createGlobalStyle`
     --secondary: #A17377;
     --tertiary: #B79699;
     --quaternary: #E7E2E3;
-    --cta: #476B64
+    --cta: #476B64;
     }
 `

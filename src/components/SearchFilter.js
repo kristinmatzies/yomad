@@ -1,15 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+import FilterDots from './FilterDots'
 
 SearchFilter.propTypes = {
   onSearchFilter: PropTypes.func.isRequired,
 }
 
-export default function SearchFilter({ onSearchFilter }) {
+export default function SearchFilter({
+  onSearchFilter,
+  isFiltered,
+  selectedCity,
+}) {
   return (
     <Form>
       <img src="./img/icon_magnifier.png" alt="Search" />
+      <FilterDots isFiltered={isFiltered} selectedCity={selectedCity} />
       <input
         type="text"
         placeholder="Search your city"
@@ -22,14 +28,15 @@ export default function SearchFilter({ onSearchFilter }) {
 const Form = styled.form`
   display: flex;
   justify-content: center;
-  margin-bottom: 8px;
+  align-items: center;
+  margin-bottom: 12px;
   position: relative;
   border: 1px solid var(--secondary);
-  height: 32px;
+  height: 36px;
 
   input {
     width: 100%;
-    padding-left: 36px;
+    padding-left: 40px;
     color: var(--primary);
     font-size: 16px;
     position: relative;
@@ -40,7 +47,7 @@ const Form = styled.form`
   img {
     position: absolute;
     height: 16px;
-    top: 4px;
+    top: 8px;
     left: 16px;
     z-index: 1;
   }

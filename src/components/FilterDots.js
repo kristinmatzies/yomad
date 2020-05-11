@@ -2,59 +2,75 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-Footer.propTypes = {
+FilterDots.propTypes = {
   isFiltered: PropTypes.bool.isRequired,
   selectedCity: PropTypes.string.isRequired,
 }
 
-export default function Footer({ isFiltered, selectedCity }) {
+export default function FilterDots({ isFiltered, selectedCity }) {
   return (
-    <FooterStyled isFiltered={isFiltered} selectedCity={selectedCity}>
+    <FilterDotsContainer isFiltered={isFiltered} selectedCity={selectedCity}>
       <span className="filter-dots"></span>
       <span className="filter-dots"></span>
       <span className="filter-dots"></span>
       <span className="filter-dots"></span>
-    </FooterStyled>
+    </FilterDotsContainer>
   )
 }
 
-const FooterStyled = styled.footer`
-  text-align: center;
-  align-self: center;
-
+const FilterDotsContainer = styled.div`
   .filter-dots {
-    height: 20px;
-    width: 20px;
-    margin: 4px;
+    height: 16px;
+    width: 16px;
     border-radius: 50%;
     display: inline-block;
 
     :first-child {
+      position: absolute;
+      top: 8px;
+      right: 80px;
+      z-index: 1;
+
       background: ${(props) =>
         props.isFiltered && props.selectedCity !== ''
-          ? 'var(--primary )'
-          : 'var(--primary)'};
+          ? ''
+          : 'var(--quaternary)'};
     }
 
     :nth-child(2) {
-      background: ${(props) =>
-        props.isFiltered && props.selectedCity !== ''
-          ? 'var(--primary)'
-          : 'var(--secondary)'};
-    }
+      position: absolute;
+      top: 8px;
+      right: 60px;
+      z-index: 1;
 
-    :nth-child(3) {
       background: ${(props) =>
         props.isFiltered && props.selectedCity !== ''
           ? 'var(--primary)'
           : 'var(--tertiary)'};
     }
 
-    :nth-child(4) {
+    :nth-child(3) {
+      position: absolute;
+      top: 8px;
+      right: 40px;
+      z-index: 1;
+
       background: ${(props) =>
         props.isFiltered && props.selectedCity !== ''
-          ? ''
-          : 'var(--quaternary)'};
+          ? 'var(--primary)'
+          : 'var(--secondary)'};
+    }
+
+    :nth-child(4) {
+      position: absolute;
+      top: 8px;
+      right: 20px;
+      z-index: 1;
+
+      background: ${(props) =>
+        props.isFiltered && props.selectedCity !== ''
+          ? 'var(--primary )'
+          : 'var(--primary)'};
     }
   }
 `

@@ -15,10 +15,16 @@ export default function EventList({
   selectedCity,
   saveEvent,
   onSearchFilter,
+  isFiltered,
 }) {
   return (
     <Wrapper>
-      <SearchFilter className="span" onSearchFilter={onSearchFilter} />
+      <SearchFilter
+        className="span"
+        onSearchFilter={onSearchFilter}
+        isFiltered={isFiltered}
+        selectedCity={selectedCity}
+      />
       <Scroller>
         {events
           .filter((event) =>
@@ -54,7 +60,7 @@ const ScrollContainer = styled.section`
   scroll-snap-align: start;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1.5fr 1fr;
+  grid-template-rows: 1.3fr 1fr;
   margin-right: 4px;
   background: var(--background);
   height: 100vh;

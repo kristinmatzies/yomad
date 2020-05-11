@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from './Events'
 import SearchFilter from './SearchFilter'
+import FilterDots from './FilterDots'
 
 FilteredEvents.propTypes = {
   events: PropTypes.array.isRequired,
@@ -15,10 +16,15 @@ export default function FilteredEvents({
   selectedCity,
   saveEvent,
   onSearchFilter,
+  isFiltered,
 }) {
   return (
     <Wrapper>
-      <SearchFilter onSearchFilter={onSearchFilter} />
+      <SearchFilter
+        onSearchFilter={onSearchFilter}
+        isFiltered={isFiltered}
+        selectedCity={selectedCity}
+      />
       <Scroller>
         {events
           .filter((event) =>
@@ -45,6 +51,10 @@ export default function FilteredEvents({
 
 const Wrapper = styled.main`
   overflow-y: hidden;
+
+  @media (max-height: 650px) {
+    overflow-y: scroll;
+  }
 `
 
 const Scroller = styled.main`
