@@ -46,6 +46,7 @@ export default function App() {
             saveEvent={saveEvent}
             onSearchFilter={setSearchFilter}
             isFiltered={isFiltered}
+            deleteEvent={deleteEvent}
           />
         </Route>
         <Route path="/create">
@@ -95,12 +96,11 @@ export default function App() {
       ...events,
       {
         ...newEvent,
-        saved: false,
+        saved: true,
         id: uniqueEventId,
         imageSrc: previewImage.imageUrl,
       },
     ])
-    console.log(events)
   }
 
   function handleImageUpload(event) {
@@ -137,5 +137,9 @@ export default function App() {
     })
     setPreviewImage('')
     history.push('/')
+  }
+
+  function deleteEvent(index) {
+    setEvents([...events.slice(0, index), ...events.slice(index + 1)])
   }
 }
