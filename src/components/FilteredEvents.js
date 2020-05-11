@@ -20,8 +20,11 @@ export default function FilteredEvents({
 }) {
   return (
     <Wrapper>
-      <SearchFilter onSearchFilter={onSearchFilter} />
-      <FilterDots isFiltered={isFiltered} selectedCity={selectedCity} />
+      <SearchFilter
+        onSearchFilter={onSearchFilter}
+        isFiltered={isFiltered}
+        selectedCity={selectedCity}
+      />
       <Scroller>
         {events
           .filter((event) =>

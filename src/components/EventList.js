@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from './Events'
 import SearchFilter from './SearchFilter'
-import FilterDots from './FilterDots'
 
 EventList.propTypes = {
   events: PropTypes.array.isRequired,
@@ -20,8 +19,12 @@ export default function EventList({
 }) {
   return (
     <Wrapper>
-      <SearchFilter className="span" onSearchFilter={onSearchFilter} />
-      <FilterDots isFiltered={isFiltered} selectedCity={selectedCity} />
+      <SearchFilter
+        className="span"
+        onSearchFilter={onSearchFilter}
+        isFiltered={isFiltered}
+        selectedCity={selectedCity}
+      />
       <Scroller>
         {events
           .filter((event) =>
