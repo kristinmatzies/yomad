@@ -1,13 +1,15 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import ImageUpload from './ImageUpload'
+import ImageUpload from '../components/ImageUpload'
 import PropTypes from 'prop-types'
-import Button from './Button'
+import Button from '../components/Button'
 
 CreateEvent.propTypes = {
   eventEntry: PropTypes.object,
   updateEventEntry: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  submitNewEvent: PropTypes.func,
+  updateImage: PropTypes.func,
+  previewImage: PropTypes.string,
 }
 
 export default function CreateEvent({
@@ -72,7 +74,7 @@ export default function CreateEvent({
           value={eventEntry.yogastyle}
           required
         />
-        <label htmlFor="details">Details on meeting point</label>
+        <label htmlFor="details">Details on meeting point (max. 140)</label>
         <textarea
           id="details"
           type="text"
@@ -80,6 +82,7 @@ export default function CreateEvent({
           placeholder="e.g. Meet in front of Peter Pane"
           onChange={updateEventEntry}
           value={eventEntry.details}
+          maxlength="140"
         />
         <p>*Mandatory fields</p>
         <Button type="submit" text="Add new meet-up" />

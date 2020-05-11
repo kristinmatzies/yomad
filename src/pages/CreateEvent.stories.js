@@ -11,7 +11,8 @@ export default {
 
 export const form = () => (
   <CreateEvent
-    eventEntry={'I am a state related Object'}
+    eventEntry={'I am state related'}
+    previewImage={'I am  state related'}
     updateEventEntry={action('onInput')}
     handleSubmit={action('onClick')}
   />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 SaveButton.propTypes = {
-  default: PropTypes.string,
+  defaultText: PropTypes.string,
   clickedText: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   saved: PropTypes.bool.isRequired,
@@ -16,11 +16,7 @@ export default function SaveButton({
   saved,
 }) {
   return (
-    <SaveButtonStyled
-      className="button-position"
-      onClick={onClick}
-      saved={saved}
-    >
+    <SaveButtonStyled onClick={onClick} saved={saved}>
       {saved ? clickedText : defaultText}
     </SaveButtonStyled>
   )

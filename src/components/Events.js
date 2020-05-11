@@ -5,8 +5,10 @@ import SaveButton from './SaveButton'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 
 Events.propTypes = {
+  event: PropTypes.object,
   index: PropTypes.number,
   saveEvent: PropTypes.func.isRequired,
+  deleteEvent: PropTypes.func,
 }
 
 export default function Events({ event, index, saveEvent, deleteEvent }) {

@@ -1,11 +1,21 @@
 import React from 'react'
-import Footer from './Footer'
+import FilterDots from './FilterDots'
+import withMobileWrapper from '../../.storybook/withMobileWrapper'
 
 export default {
-  title: 'Footer',
-  component: Footer,
+  title: 'FilterDots',
+  component: FilterDots,
+  decorators: [withMobileWrapper],
 }
 
-export const FliterDots = () => <Footer />
+export const FliterDots = () => (
+  <div style={{ position: 'relative' }}>
+    <FilterDots />
+  </div>
+)
 
-export const activeFliterDots = () => <Footer isFiltered />
+export const activeFliterDots = () => (
+  <div style={{ position: 'relative' }}>
+    <FilterDots isFiltered />
+  </div>
+)

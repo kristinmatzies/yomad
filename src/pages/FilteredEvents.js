@@ -1,16 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import Events from './Events'
-import SearchFilter from './SearchFilter'
+import Events from '../components/Events'
+import SearchFilter from '../components/SearchFilter'
 
-EventList.propTypes = {
+FilteredEvents.propTypes = {
   events: PropTypes.array.isRequired,
   selectedCity: PropTypes.string.isRequired,
   saveEvent: PropTypes.func.isRequired,
+  onSearchFilter: PropTypes.func.isRequired,
+  isFiltered: PropTypes.bool,
+  deleteEvent: PropTypes.func.isRequired,
 }
 
-export default function EventList({
+export default function FilteredEvents({
   events,
   selectedCity,
   saveEvent,
@@ -21,7 +24,6 @@ export default function EventList({
   return (
     <Wrapper>
       <SearchFilter
-        className="span"
         onSearchFilter={onSearchFilter}
         isFiltered={isFiltered}
         selectedCity={selectedCity}
@@ -32,14 +34,18 @@ export default function EventList({
             event.city.toLowerCase().includes(selectedCity.toLowerCase())
           )
           .map((event, index) => (
-            <ScrollContainer key={index}>
-              <Events
-                saveEvent={saveEvent}
-                event={event}
-                index={index}
-                deleteEvent={() => deleteEvent(index)}
-              />
-            </ScrollContainer>
+            <>
+              {event.saved === true && (
+                <ScrollContainer key={event.id}>
+                  <Events
+                    saveEvent={saveEvent}
+                    event={event}
+                    index={index}
+                    deleteEvent={() => deleteEvent(index)}
+                  />
+                </ScrollContainer>
+              )}
+            </>
           ))}
       </Scroller>
     </Wrapper>

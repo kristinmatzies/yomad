@@ -1,11 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 
-export default function AddButton({ text, onClick }) {
-  return <Button onClick={onClick}>{text}</Button>
+Button.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
-export const Button = styled.button`
+export default function Button({ text, onClick }) {
+  return <ButtonStyled onClick={onClick}>{text}</ButtonStyled>
+}
+
+export const ButtonStyled = styled.button`
   font-size: 16px;
   padding: 8px 48px;
   border: none;
