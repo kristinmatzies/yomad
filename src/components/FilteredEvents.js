@@ -16,6 +16,7 @@ export default function FilteredEvents({
   saveEvent,
   onSearchFilter,
   isFiltered,
+  deleteEvent,
 }) {
   return (
     <Wrapper>
@@ -33,7 +34,12 @@ export default function FilteredEvents({
             <>
               {event.saved === true && (
                 <ScrollContainer key={event.id}>
-                  <Events saveEvent={saveEvent} event={event} index={index} />
+                  <Events
+                    saveEvent={saveEvent}
+                    event={event}
+                    index={index}
+                    deleteEvent={() => deleteEvent(index)}
+                  />
                 </ScrollContainer>
               )}
             </>

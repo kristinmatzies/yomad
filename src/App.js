@@ -65,6 +65,7 @@ export default function App() {
             saveEvent={saveEvent}
             onSearchFilter={setSearchFilter}
             isFiltered={isFiltered}
+            deleteEvent={deleteEvent}
           />
         </Route>
       </Switch>
