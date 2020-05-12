@@ -1,19 +1,20 @@
 import React from 'react'
-import CreateEvent from '../pages/CreateEvent'
+import CreateForm from './CreateForm'
 import { action } from '@storybook/addon-actions'
 import withMobileWrapper from '../../.storybook/withMobileWrapper'
 
 export default {
-  title: 'CreateEvent',
-  component: CreateEvent,
+  title: 'CreateForm',
+  component: CreateForm,
   decorators: [withMobileWrapper],
 }
 
 export const form = () => (
-  <CreateEvent
+  <CreateForm
     eventEntry={'I am state related'}
-    previewImage={'I am  state related'}
+    previewImage={'I am state related'}
     updateEventEntry={action('onInput')}
-    handleSubmit={action('onClick')}
+    submitNewEvent={action('onClick')}
+    updateImage={action('onClick')}
   />
 )
