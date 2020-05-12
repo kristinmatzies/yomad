@@ -8,7 +8,7 @@ export default createGlobalStyle`
     #root {
     display: grid;
     grid-template-rows: 48px auto 52px; 
-    height: 100vh;
+    height: 100%;
 }
 
     body {
@@ -17,7 +17,7 @@ export default createGlobalStyle`
         font-size: 18px;
         line-height: 1.4;
         overflow: hidden;
-        height: 100vh;
+        height: 100%;
     }
 
     input, textarea {

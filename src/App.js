@@ -5,7 +5,6 @@ import eventData from './eventlist.json'
 import Header from './components/Header'
 import EventList from './pages/EventList'
 import FooterNav from './components/FooterNav'
-import FilteredEvents from './pages/FilteredEvents'
 import CreateEvent from './pages/CreateEvent'
 import { saveToStorage, loadFromStorage } from './services'
 import { v4 as uuidv4 } from 'uuid'
@@ -59,13 +58,14 @@ export default function App() {
           />
         </Route>
         <Route path="/saved">
-          <FilteredEvents
+          <EventList
             events={events}
             selectedCity={selectedCity}
             saveEvent={saveEvent}
             onSearchFilter={setSearchFilter}
             isFiltered={isFiltered}
             deleteEvent={deleteEvent}
+            onlySaved={true}
           />
         </Route>
       </Switch>

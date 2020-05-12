@@ -20,6 +20,7 @@ export default function EventList({
   onSearchFilter,
   isFiltered,
   deleteEvent,
+  onlySaved,
 }) {
   return (
     <Wrapper>
@@ -34,6 +35,7 @@ export default function EventList({
           .filter((event) =>
             event.city.toLowerCase().includes(selectedCity.toLowerCase())
           )
+          .filter((event) => (onlySaved ? event.saved : true))
           .map((event, index) => (
             <ScrollContainer key={index}>
               <Events
@@ -52,7 +54,7 @@ export default function EventList({
 const Wrapper = styled.main`
   overflow-y: hidden;
 
-  @media (max-height: 650px) {
+  @media (max-height: 580px) {
     overflow-y: scroll;
   }
 `
@@ -72,7 +74,7 @@ const ScrollContainer = styled.section`
   grid-template-rows: 1.3fr 1fr;
   margin-right: 4px;
   background: var(--background);
-  height: 100vh;
+  height: 100%;
 
   :last-child {
     flex: 0 0 100%;

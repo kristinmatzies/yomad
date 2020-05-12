@@ -27,7 +27,7 @@ const Footer = styled.footer`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  box-shadow: 0 -1px 16px 0 lightgrey;
+  box-shadow: 0 -1px 8px 0 lightgrey;
   position: relative;
 `
 

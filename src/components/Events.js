@@ -61,7 +61,7 @@ const ImgStyled = styled.img`
   border-radius: 0 12px 12px 0;
   align-self: flex-start;
 
-  @media (max-height: 650px) {
+  @media (max-height: 580px) {
     width: 120px;
     height: 360px;
   }

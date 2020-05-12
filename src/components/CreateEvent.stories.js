@@ -1,5 +1,5 @@
 import React from 'react'
-import CreateEvent from './CreateEvent'
+import CreateEvent from '../pages/CreateEvent'
 import { action } from '@storybook/addon-actions'
 import withMobileWrapper from '../../.storybook/withMobileWrapper'
 
