@@ -37,7 +37,6 @@ export default function ImageUpload({ updateImage, previewImage }) {
 }
 
 const ImageWrapper = styled.div`
-  align-self: center;
   height: 200px;
 `
 
@@ -46,6 +45,10 @@ const Image = styled.img`
   width: 340px;
   object-fit: cover;
   border-radius: 4px;
+
+  @media (max-width: 360px) {
+    width: 280px;
+  }
 `
 
 const UploadWrapper = styled.section`

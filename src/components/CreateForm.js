@@ -97,6 +97,10 @@ const FormStyled = styled.form`
   border-radius: 4px;
   padding-bottom: 20px;
 
+  @media (max-width: 360px) {
+    width: 280px;
+  }
+
   label {
     text-transform: uppercase;
   }
