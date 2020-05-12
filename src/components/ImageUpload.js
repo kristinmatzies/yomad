@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 import Button from './Button'
+
+ImageUpload.propTypes = {
+  updateImage: PropTypes.func,
+  previewImage: PropTypes.object,
+}
 
 export default function ImageUpload({ updateImage, previewImage }) {
   return (
