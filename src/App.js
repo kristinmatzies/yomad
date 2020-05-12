@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import GlobalStyles from './common/GlobalStyles'
 import { Route, Switch } from 'react-router-dom'
-import eventData from './eventlist.json'
 import Header from './components/Header'
 import EventList from './pages/EventList'
 import FooterNav from './components/FooterNav'
 import CreateEvent from './pages/CreateEvent'
-import { saveToStorage, loadFromStorage } from './services'
 import { useHistory } from 'react-router-dom'
 import { storage } from './firebase'
 import { db } from './firebase'
 
 export default function App() {
-  const [events, setEvents] = useState(loadFromStorage('events') || eventData)
+  const [events, setEvents] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
   const [isFiltered, setIsFiltered] = useState(false)
   const [previewImage, setPreviewImage] = useState({
@@ -30,8 +28,14 @@ export default function App() {
   const history = useHistory()
 
   useEffect(() => {
-    saveToStorage('events', events)
-  }, [events])
+    db.collection('events').onSnapshot((snapshot) => {
+      const allEvents = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setEvents(allEvents)
+    })
+  }, [])
 
   return (
     <>
@@ -118,7 +122,7 @@ export default function App() {
       imageSrc: previewImage.imageUrl,
       city: eventEntry.city,
       place: eventEntry.place,
-      date: eventEntry.place,
+      date: eventEntry.date,
       time: eventEntry.time,
       yogastyle: eventEntry.yogastyle,
       details: eventEntry.details,
