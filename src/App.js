@@ -7,9 +7,9 @@ import EventList from './pages/EventList'
 import FooterNav from './components/FooterNav'
 import CreateEvent from './pages/CreateEvent'
 import { saveToStorage, loadFromStorage } from './services'
-import { v4 as uuidv4 } from 'uuid'
 import { useHistory } from 'react-router-dom'
 import { storage } from './firebase'
+import { db } from './firebase'
 
 export default function App() {
   const [events, setEvents] = useState(loadFromStorage('events') || eventData)
@@ -91,19 +91,6 @@ export default function App() {
     setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
   }
 
-  function addEntry(newEvent) {
-    const uniqueEventId = uuidv4()
-    setEvents([
-      ...events,
-      {
-        ...newEvent,
-        saved: true,
-        id: uniqueEventId,
-        imageSrc: previewImage.imageUrl,
-      },
-    ])
-  }
-
   function handleImageUpload(event) {
     const image = event.target.files[0]
     const uploadTask = storage.ref(`images/${image.name}`).put(image)
@@ -127,7 +114,17 @@ export default function App() {
 
   function submitNewEvent(event) {
     event.preventDefault()
-    addEntry(eventEntry)
+    let newEvent = {
+      imageSrc: previewImage.imageUrl,
+      city: eventEntry.city,
+      place: eventEntry.place,
+      date: eventEntry.place,
+      time: eventEntry.time,
+      yogastyle: eventEntry.yogastyle,
+      details: eventEntry.details,
+      saved: true,
+    }
+    db.collection('events').add(newEvent)
     setEventEntry({
       city: '',
       place: '',
