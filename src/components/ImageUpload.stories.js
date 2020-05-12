@@ -1,7 +1,7 @@
 import React from 'react'
 import ImageUpload from './ImageUpload'
 import { action } from '@storybook/addon-actions'
-import withMobileWrapper from '../../.storybook/withMobileWrapper'
+import withMobileWrapper from '../../.storybook/preview'
 
 export default {
   title: 'ImageUpload',

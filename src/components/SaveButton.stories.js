@@ -1,7 +1,7 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import SaveButton from './SaveButton'
-import withMobileWrapper from '../../.storybook/withMobileWrapper'
+import withMobileWrapper from '../../.storybook/preview'
 
 export default {
   title: 'SaveButton',

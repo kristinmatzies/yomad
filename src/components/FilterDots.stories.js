@@ -1,6 +1,6 @@
 import React from 'react'
 import FilterDots from './FilterDots'
-import withMobileWrapper from '../../.storybook/withMobileWrapper'
+import withMobileWrapper from '../../.storybook/preview'
 
 export default {
   title: 'FilterDots',

@@ -7,8 +7,8 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 Events.propTypes = {
   event: PropTypes.object,
   index: PropTypes.number,
-  saveEvent: PropTypes.func.isRequired,
-  deleteEvent: PropTypes.func,
+  saveEvent: PropTypes.func,
+  deleteEvent: PropTypes.func.isRequired,
 }
 
 export default function Events({ event, index, saveEvent, deleteEvent }) {

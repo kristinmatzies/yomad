@@ -1,14 +1,11 @@
 import React from 'react'
 import FooterNav from './FooterNav'
-import { MemoryRouter } from 'react-router-dom'
+import withMobileWrapper from '../../.storybook/preview'
 
 export default {
   title: 'FooterNav',
   component: FooterNav,
+  decorators: [withMobileWrapper],
 }
 
-export const footer = () => (
-  <MemoryRouter>
-    <FooterNav />
-  </MemoryRouter>
-)
+export const footer = () => <FooterNav />
