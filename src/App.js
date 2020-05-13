@@ -16,6 +16,7 @@ export default function App() {
   const [previewImage, setPreviewImage] = useState({
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
+    imageName: '',
   })
   const [eventEntry, setEventEntry] = useState({
     city: '',
@@ -112,7 +113,7 @@ export default function App() {
           .child(image.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
-            setPreviewImage({ imageUrl: fireBaseUrl })
+            setPreviewImage({ imageUrl: fireBaseUrl, imageName: image.name })
           })
       }
     )
@@ -121,6 +122,7 @@ export default function App() {
   function submitNewEvent(event) {
     event.preventDefault()
     const newEvent = {
+      imageTitle: previewImage.imageName,
       imageSrc: previewImage.imageUrl,
       city: eventEntry.city,
       place: eventEntry.place,
@@ -149,6 +151,13 @@ export default function App() {
       .doc(event.id)
       .delete()
       .then(() => console.log('Document successfully deleted!'))
+      .catch((error) =>
+        alert('Oops something went wrong. Try again later.', error)
+      )
+    const image = storage.ref(`images/${event.imageTitle}`)
+    image
+      .delete()
+      .then(() => console.log('Image successfully deleted!'))
       .catch((error) =>
         alert('Oops something went wrong. Try again later.', error)
       )
