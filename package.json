@@ -49,6 +49,7 @@
     "eslint-plugin-cypress": "^2.10.3",
     "prop-types": "^15.7.2",
     "styled-components": "^5.1.0",
+    "sweetalert": "^2.1.2",
     "uuidv4": "^6.0.8"
   }
 }

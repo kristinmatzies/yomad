@@ -8,6 +8,7 @@ import CreateEvent from './pages/CreateEvent'
 import { useHistory } from 'react-router-dom'
 import { storage } from './firebase'
 import { db } from './firebase'
+import swal from 'sweetalert'
 
 export default function App() {
   const [events, setEvents] = useState([])
@@ -88,7 +89,7 @@ export default function App() {
     db.collection('events')
       .doc(event.id)
       .update({ saved: !event.saved })
-      .then(() => console.log('Save boolean updated!'))
+      .then(() => console.log('Save state updated!'))
       .catch((error) =>
         alert('Oops something went wrong. Try again later.', error)
       )
@@ -147,18 +148,33 @@ export default function App() {
   }
 
   function deleteEvent(event) {
-    db.collection('events')
-      .doc(event.id)
-      .delete()
-      .then(() => console.log('Document successfully deleted!'))
-      .catch((error) =>
-        alert('Oops something went wrong. Try again later.', error)
-      )
     const image = storage.ref(`images/${event.imageTitle}`)
-    event.imageTitle !== '' &&
-      image
-        .delete()
-        .then(() => console.log('Image successfully deleted!'))
-        .catch((error) => console.log('Image delete failed', error))
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this event!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal('Ok. Your event has been deleted!', {
+          icon: 'success',
+        })
+        db.collection('events')
+          .doc(event.id)
+          .delete()
+          .then(() => console.log('Document successfully deleted!'))
+          .catch((error) =>
+            alert('Oops something went wrong. Try again later.', error)
+          )
+        event.imageTitle !== '' &&
+          image
+            .delete()
+            .then(() => console.log('Image successfully deleted!'))
+            .catch((error) => console.log('Image delete failed', error))
+      } else {
+        swal('Your event is safe!')
+      }
+    })
   }
 }
