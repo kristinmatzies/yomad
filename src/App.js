@@ -88,7 +88,7 @@ export default function App() {
     db.collection('events')
       .doc(event.id)
       .update({ saved: !event.saved })
-      .then(() => console.log('Document successfully updated!'))
+      .then(() => console.log('Save boolean updated!'))
       .catch((error) =>
         alert('Oops something went wrong. Try again later.', error)
       )
@@ -155,11 +155,10 @@ export default function App() {
         alert('Oops something went wrong. Try again later.', error)
       )
     const image = storage.ref(`images/${event.imageTitle}`)
-    image
-      .delete()
-      .then(() => console.log('Image successfully deleted!'))
-      .catch((error) =>
-        alert('Oops something went wrong. Try again later.', error)
-      )
+    event.imageTitle !== '' &&
+      image
+        .delete()
+        .then(() => console.log('Image successfully deleted!'))
+        .catch((error) => console.log('Image delete failed', error))
   }
 }
