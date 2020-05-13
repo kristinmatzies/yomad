@@ -42,7 +42,7 @@ export default function Events({ event, index, saveEvent, deleteEvent }) {
         <SaveButton
           defaultText="save"
           clickedText="saved"
-          onClick={() => saveEvent(index)}
+          onClick={() => saveEvent(event)}
           saved={event.saved}
         />
       </EventText>

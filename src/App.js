@@ -17,7 +17,7 @@ export default function App() {
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
   })
-  const [eventEntry, setEventEntry] = useState({
+  const [event, setEvent] = useState({
     city: '',
     place: '',
     date: '',
@@ -25,6 +25,7 @@ export default function App() {
     yogastyle: '',
     details: '',
   })
+
   const history = useHistory()
 
   useEffect(() => {
@@ -54,7 +55,7 @@ export default function App() {
         </Route>
         <Route path="/create">
           <CreateEvent
-            eventEntry={eventEntry}
+            event={event}
             updateEventEntry={updateEventEntry}
             submitNewEvent={submitNewEvent}
             updateImage={handleImageUpload}
@@ -82,17 +83,12 @@ export default function App() {
     setIsFiltered(true)
   }
 
-  function saveEvent(index) {
-    const event = events[index]
-    setEvents([
-      ...events.slice(0, index),
-      { ...event, saved: !event.saved },
-      ...events.slice(index + 1),
-    ])
+  function saveEvent(event) {
+    db.collection('events').doc(event.id).update({ saved: !event.saved })
   }
 
   function updateEventEntry(event) {
-    setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
+    setEvent({ ...event, [event.target.name]: event.target.value })
   }
 
   function handleImageUpload(event) {
@@ -118,18 +114,19 @@ export default function App() {
 
   function submitNewEvent(event) {
     event.preventDefault()
-    let newEvent = {
+    const newEvent = {
       imageSrc: previewImage.imageUrl,
-      city: eventEntry.city,
-      place: eventEntry.place,
-      date: eventEntry.date,
-      time: eventEntry.time,
-      yogastyle: eventEntry.yogastyle,
-      details: eventEntry.details,
+      city: event.city,
+      place: event.place,
+      date: event.date,
+      time: event.time,
+      yogastyle: event.yogastyle,
+      details: event.details,
       saved: true,
     }
+
     db.collection('events').add(newEvent)
-    setEventEntry({
+    setEvent({
       city: '',
       place: '',
       date: '',
