@@ -17,7 +17,7 @@ export default function App() {
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
   })
-  const [event, setEvent] = useState({
+  const [eventEntry, setEventEntry] = useState({
     city: '',
     place: '',
     date: '',
@@ -55,7 +55,7 @@ export default function App() {
         </Route>
         <Route path="/create">
           <CreateEvent
-            event={event}
+            eventEntry={eventEntry}
             updateEventEntry={updateEventEntry}
             submitNewEvent={submitNewEvent}
             updateImage={handleImageUpload}
@@ -84,11 +84,17 @@ export default function App() {
   }
 
   function saveEvent(event) {
-    db.collection('events').doc(event.id).update({ saved: !event.saved })
+    db.collection('events')
+      .doc(event.id)
+      .update({ saved: !event.saved })
+      .then(() => console.log('Document successfully updated!'))
+      .catch((error) =>
+        alert('Oops something went wrong. Try again later.', error)
+      )
   }
 
   function updateEventEntry(event) {
-    setEvent({ ...event, [event.target.name]: event.target.value })
+    setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
   }
 
   function handleImageUpload(event) {
@@ -116,17 +122,17 @@ export default function App() {
     event.preventDefault()
     const newEvent = {
       imageSrc: previewImage.imageUrl,
-      city: event.city,
-      place: event.place,
-      date: event.date,
-      time: event.time,
-      yogastyle: event.yogastyle,
-      details: event.details,
+      city: eventEntry.city,
+      place: eventEntry.place,
+      date: eventEntry.date,
+      time: eventEntry.time,
+      yogastyle: eventEntry.yogastyle,
+      details: eventEntry.details,
       saved: true,
     }
 
     db.collection('events').add(newEvent)
-    setEvent({
+    setEventEntry({
       city: '',
       place: '',
       date: '',
@@ -138,7 +144,13 @@ export default function App() {
     history.push('/')
   }
 
-  function deleteEvent(index) {
-    setEvents([...events.slice(0, index), ...events.slice(index + 1)])
+  function deleteEvent(event) {
+    db.collection('events')
+      .doc(event.id)
+      .delete()
+      .then(() => console.log('Document successfully deleted!'))
+      .catch((error) =>
+        alert('Oops something went wrong. Try again later.', error)
+      )
   }
 }

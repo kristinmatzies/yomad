@@ -12,7 +12,7 @@ CreateEvent.propTypes = {
 }
 
 export default function CreateEvent({
-  event,
+  eventEntry,
   updateEventEntry,
   submitNewEvent,
   updateImage,
@@ -21,7 +21,7 @@ export default function CreateEvent({
   return (
     <FormWrapper>
       <CreateForm
-        event={event}
+        eventEntry={eventEntry}
         updateEventEntry={updateEventEntry}
         submitNewEvent={submitNewEvent}
         updateImage={updateImage}

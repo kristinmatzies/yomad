@@ -13,7 +13,7 @@ CreateForm.propTypes = {
 }
 
 export default function CreateForm({
-  event,
+  eventEntry,
   updateEventEntry,
   submitNewEvent,
   updateImage,
@@ -28,7 +28,7 @@ export default function CreateForm({
         type="text"
         name="city"
         onChange={updateEventEntry}
-        value={event.city}
+        value={eventEntry.city}
         placeholder="e.g. Hamburg"
         required
       />
@@ -39,7 +39,7 @@ export default function CreateForm({
         name="place"
         placeholder="e.g. Schanzenpark"
         onChange={updateEventEntry}
-        value={event.place}
+        value={eventEntry.place}
         required
       />
       <label htmlFor="date">Date*</label>
@@ -49,7 +49,7 @@ export default function CreateForm({
         name="date"
         placeholder="2020-05-11"
         onChange={updateEventEntry}
-        value={event.date}
+        value={eventEntry.date}
         required
       />
       <label htmlFor="time">Time*</label>
@@ -59,7 +59,7 @@ export default function CreateForm({
         name="time"
         placeholder="e.g. 8:00"
         onChange={updateEventEntry}
-        value={event.time}
+        value={eventEntry.time}
         required
       />
 
@@ -70,7 +70,7 @@ export default function CreateForm({
         name="yogastyle"
         placeholder="e.g. Vinyasa"
         onChange={updateEventEntry}
-        value={event.yogastyle}
+        value={eventEntry.yogastyle}
         required
       />
       <label htmlFor="details">Details on meeting point (max. 140)</label>
@@ -80,7 +80,7 @@ export default function CreateForm({
         name="details"
         placeholder="e.g. Meet in front of Peter Pane"
         onChange={updateEventEntry}
-        value={event.details}
+        value={eventEntry.details}
         maxLength="140"
       />
       <p>*Mandatory fields</p>
