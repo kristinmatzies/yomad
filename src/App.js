@@ -157,13 +157,14 @@ export default function App() {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal('Ok. Your event has been deleted!', {
-          icon: 'success',
-        })
         db.collection('events')
           .doc(event.id)
           .delete()
-          .then(() => console.log('Document successfully deleted!'))
+          .then(
+            swal('Ok. Your event has been deleted!', {
+              icon: 'success',
+            })
+          )
           .catch((error) =>
             alert('Oops something went wrong. Try again later.', error)
           )
