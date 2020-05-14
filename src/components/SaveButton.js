@@ -31,6 +31,5 @@ const SaveButtonStyled = styled.button`
   border-radius: 16px;
   box-shadow: 2px 2px 2px var(--primary);
   position: absolute;
-  top: 304px;
-  /*  right: 76px; */
+  top: 320px;
 `
