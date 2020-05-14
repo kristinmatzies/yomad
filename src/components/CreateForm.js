@@ -30,6 +30,7 @@ export default function CreateForm({
         onChange={updateEventEntry}
         value={eventEntry.city}
         placeholder="e.g. Hamburg"
+        maxLength="20"
         required
       />
       <label htmlFor="place">Place*</label>
@@ -40,6 +41,7 @@ export default function CreateForm({
         placeholder="e.g. Schanzenpark"
         onChange={updateEventEntry}
         value={eventEntry.place}
+        maxLength="20"
         required
       />
       <label htmlFor="date">Date*</label>
@@ -71,6 +73,7 @@ export default function CreateForm({
         placeholder="e.g. Vinyasa"
         onChange={updateEventEntry}
         value={eventEntry.yogastyle}
+        maxLength="20"
         required
       />
       <label htmlFor="details">Details on meeting point (max. 120)</label>
