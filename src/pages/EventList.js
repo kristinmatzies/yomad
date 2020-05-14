@@ -22,6 +22,12 @@ export default function EventList({
   deleteEvent,
   onlySaved,
 }) {
+  const filteredEvents = events.filter(
+    (event) =>
+      event.city.toLowerCase().includes(selectedCity.toLowerCase()) &&
+      (onlySaved ? event.saved : true)
+  )
+
   return (
     <Wrapper>
       <SearchFilter
@@ -31,12 +37,10 @@ export default function EventList({
         selectedCity={selectedCity}
       />
       <Scroller>
-        {events
-          .filter((event) =>
-            event.city.toLowerCase().includes(selectedCity.toLowerCase())
-          )
-          .filter((event) => (onlySaved ? event.saved : true))
-          .map((event, index) => (
+        {filteredEvents.length === 0 ? (
+          <p>No search results found.</p>
+        ) : (
+          filteredEvents.map((event, index) => (
             <ScrollContainer key={index}>
               <Events
                 saveEvent={saveEvent}
@@ -44,7 +48,8 @@ export default function EventList({
                 deleteEvent={deleteEvent}
               />
             </ScrollContainer>
-          ))}
+          ))
+        )}
       </Scroller>
     </Wrapper>
   )
