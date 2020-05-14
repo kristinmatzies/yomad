@@ -11,12 +11,15 @@ Events.propTypes = {
   deleteEvent: PropTypes.func.isRequired,
 }
 
-export default function Events({ event, index, saveEvent, deleteEvent }) {
+export default function Events({ event, saveEvent, deleteEvent }) {
   return (
     <>
       <ImgStyled src={event.imageSrc} alt="" />
       <EventText>
-        <RiDeleteBin6Line className="delete-button" onClick={deleteEvent} />
+        <RiDeleteBin6Line
+          className="delete-button"
+          onClick={() => deleteEvent(event)}
+        />
         <p className="event_key">City</p>
         <p className="event_title">{event.city}</p>
         <p className="event_key">Place</p>
@@ -42,7 +45,7 @@ export default function Events({ event, index, saveEvent, deleteEvent }) {
         <SaveButton
           defaultText="save"
           clickedText="saved"
-          onClick={() => saveEvent(index)}
+          onClick={() => saveEvent(event)}
           saved={event.saved}
         />
       </EventText>

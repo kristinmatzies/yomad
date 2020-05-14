@@ -41,8 +41,7 @@ export default function EventList({
               <Events
                 saveEvent={saveEvent}
                 event={event}
-                index={index}
-                deleteEvent={() => deleteEvent(index)}
+                deleteEvent={deleteEvent}
               />
             </ScrollContainer>
           ))}
