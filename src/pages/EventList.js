@@ -37,19 +37,15 @@ export default function EventList({
         selectedCity={selectedCity}
       />
       <Scroller>
-        {filteredEvents.length === 0 ? (
-          <p>No search results found.</p>
-        ) : (
-          filteredEvents.map((event, index) => (
-            <ScrollContainer key={index}>
-              <Events
-                saveEvent={saveEvent}
-                event={event}
-                deleteEvent={deleteEvent}
-              />
-            </ScrollContainer>
-          ))
-        )}
+        {filteredEvents.map((event, index) => (
+          <ScrollContainer key={index}>
+            <Events
+              saveEvent={saveEvent}
+              event={event}
+              deleteEvent={deleteEvent}
+            />
+          </ScrollContainer>
+        ))}
       </Scroller>
     </Wrapper>
   )
