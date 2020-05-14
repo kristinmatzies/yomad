@@ -134,7 +134,12 @@ export default function App() {
       saved: true,
     }
 
-    db.collection('events').add(newEvent)
+    db.collection('events')
+      .add(newEvent)
+      .then(() => console.log('New event added'))
+      .catch((error) =>
+        alert('Oops something went wrong. Try again later.', error)
+      )
     setEventEntry({
       city: '',
       place: '',
@@ -143,7 +148,11 @@ export default function App() {
       yogastyle: '',
       details: '',
     })
-    setPreviewImage('')
+    setPreviewImage({
+      imageUrl:
+        'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
+      imageName: '',
+    })
     history.push('/')
   }
 
