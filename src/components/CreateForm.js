@@ -73,7 +73,7 @@ export default function CreateForm({
         value={eventEntry.yogastyle}
         required
       />
-      <label htmlFor="details">Details on meeting point (max. 140)</label>
+      <label htmlFor="details">Details on meeting point (max. 120)</label>
       <textarea
         id="details"
         type="text"
@@ -81,7 +81,7 @@ export default function CreateForm({
         placeholder="e.g. Meet in front of Peter Pane"
         onChange={updateEventEntry}
         value={eventEntry.details}
-        maxLength="140"
+        maxLength="120"
       />
       <p>*Mandatory fields</p>
       <Button type="submit" text="Add new meet-up" />

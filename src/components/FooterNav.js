@@ -36,7 +36,7 @@ const LinkStyled = styled(NavLink)`
   .save-icon {
     height: 28px;
     width: 28px;
-    color: var(--primary);
+    color: var(--secondary);
   }
 
   button {
@@ -56,14 +56,14 @@ const LinkStyled = styled(NavLink)`
     height: 80%;
     width: 80%;
     margin: 0;
-    color: var(--primary);
+    color: var(--secondary);
   }
 
   &.active {
     .home-icon,
     .create-icon,
     .save-icon {
-      color: var(--secondary);
+      color: var(--primary);
     }
   }
 `
