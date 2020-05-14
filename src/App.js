@@ -138,7 +138,7 @@ export default function App() {
       .add(newEvent)
       .then(() => console.log('New event added'))
       .catch((error) =>
-        console.log('Oops something went wrong. Try again later.', error)
+        alert('Oops something went wrong. Try again later.', error)
       )
     setEventEntry({
       city: '',
