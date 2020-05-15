@@ -21,7 +21,12 @@ export default function SearchFilter({
         <FilterDots isFiltered={isFiltered} selectedCity={selectedCity} />
         <Autocomplete
           disableClearable
-          options={events.map((option) => option.city)}
+          options={events
+            .filter(
+              (event, index, self) =>
+                index === self.findIndex((t) => t.city === event.city)
+            )
+            .map((option) => option.city)}
           renderInput={(params) => (
             <TextField
               {...params}
