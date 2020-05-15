@@ -31,25 +31,21 @@ export default function EventList({
   return (
     <Wrapper>
       <SearchFilter
-        className="span"
         onSearchFilter={onSearchFilter}
         isFiltered={isFiltered}
         selectedCity={selectedCity}
+        events={events}
       />
       <Scroller>
-        {filteredEvents.length === 0 ? (
-          <p>No search results found.</p>
-        ) : (
-          filteredEvents.map((event, index) => (
-            <ScrollContainer key={index}>
-              <Events
-                saveEvent={saveEvent}
-                event={event}
-                deleteEvent={deleteEvent}
-              />
-            </ScrollContainer>
-          ))
-        )}
+        {filteredEvents.map((event, index) => (
+          <ScrollContainer key={index}>
+            <Events
+              saveEvent={saveEvent}
+              event={event}
+              deleteEvent={deleteEvent}
+            />
+          </ScrollContainer>
+        ))}
       </Scroller>
     </Wrapper>
   )

@@ -20,27 +20,28 @@ export default function Events({ event, saveEvent, deleteEvent }) {
           className="delete-button"
           onClick={() => deleteEvent(event)}
         />
+
         <p className="event_key">City</p>
         <p className="event_title">{event.city}</p>
         <p className="event_key">Place</p>
         <p className="event_value">
           <img src="./img/icon_place.png" alt="" />
-          &nbsp;{event.place}
+          {event.place}
         </p>
         <p className="event_key">Date</p>
         <p className="event_value">
           <img src="./img/icon_calendar.png" alt="" />
-          &nbsp;{event.date}
+          {event.date}
         </p>
         <p className="event_key">Time</p>
         <p className="event_value">
           <img src="./img/icon_clock.png" alt="" />
-          &nbsp;{event.time}
+          {event.time}
         </p>
         <p className="event_key">Yogastyle</p>
         <p className="event_value">
           <img src="./img/icon_yoga.png" alt="" />
-          &nbsp;{event.yogastyle}
+          {event.yogastyle}
         </p>
         <SaveButton
           defaultText="save"
@@ -86,10 +87,16 @@ const EventText = styled.section`
   img {
     height: 16px;
     width: 16px;
+    margin-right: 4px;
   }
+
   .event_title {
     font-weight: bold;
     margin: 0;
+
+    ::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   .event_key {

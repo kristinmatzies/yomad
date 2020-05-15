@@ -27,8 +27,8 @@ const FilterDotsContainer = styled.div`
 
     :first-child {
       position: absolute;
-      top: 8px;
-      right: 80px;
+      top: 20px;
+      right: 64px;
       z-index: 1;
 
       background: ${(props) =>
@@ -39,8 +39,8 @@ const FilterDotsContainer = styled.div`
 
     :nth-child(2) {
       position: absolute;
-      top: 8px;
-      right: 60px;
+      top: 20px;
+      right: 44px;
       z-index: 1;
 
       background: ${(props) =>
@@ -51,8 +51,8 @@ const FilterDotsContainer = styled.div`
 
     :nth-child(3) {
       position: absolute;
-      top: 8px;
-      right: 40px;
+      top: 20px;
+      right: 24px;
       z-index: 1;
 
       background: ${(props) =>
@@ -63,8 +63,8 @@ const FilterDotsContainer = styled.div`
 
     :nth-child(4) {
       position: absolute;
-      top: 8px;
-      right: 20px;
+      top: 20px;
+      right: 4px;
       z-index: 1;
 
       background: ${(props) =>
