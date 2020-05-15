@@ -4,7 +4,6 @@ import styled from 'styled-components/macro'
 import FilterDots from './FilterDots'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
-import cities from '../cities.json'
 
 SearchFilter.propTypes = {
   onSearchFilter: PropTypes.func.isRequired,
@@ -14,6 +13,7 @@ export default function SearchFilter({
   onSearchFilter,
   isFiltered,
   selectedCity,
+  events,
 }) {
   return (
     <Form>
@@ -21,7 +21,7 @@ export default function SearchFilter({
         <FilterDots isFiltered={isFiltered} selectedCity={selectedCity} />
         <Autocomplete
           disableClearable
-          options={cities.map((option) => option.title)}
+          options={events.map((option) => option.city)}
           renderInput={(params) => (
             <TextField
               {...params}

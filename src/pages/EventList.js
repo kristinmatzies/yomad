@@ -31,10 +31,10 @@ export default function EventList({
   return (
     <Wrapper>
       <SearchFilter
-        className="span"
         onSearchFilter={onSearchFilter}
         isFiltered={isFiltered}
         selectedCity={selectedCity}
+        events={events}
       />
       <Scroller>
         {filteredEvents.map((event, index) => (
