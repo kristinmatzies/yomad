@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import FilterDots from './FilterDots'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
@@ -9,18 +8,11 @@ SearchFilter.propTypes = {
   onSearchFilter: PropTypes.func.isRequired,
 }
 
-export default function SearchFilter({
-  onSearchFilter,
-  isFiltered,
-  selectedCity,
-  events,
-}) {
+export default function SearchFilter({ onSearchFilter, events }) {
   return (
     <Form>
       <SearchField>
-        <FilterDots isFiltered={isFiltered} selectedCity={selectedCity} />
         <Autocomplete
-          disableClearable
           options={events
             .filter(
               (event, index, self) =>

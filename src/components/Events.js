@@ -20,7 +20,6 @@ export default function Events({ event, saveEvent, deleteEvent }) {
           className="delete-button"
           onClick={() => deleteEvent(event)}
         />
-
         <p className="event_key">City</p>
         <p className="event_title">{event.city}</p>
         <p className="event_key">Place</p>

@@ -13,7 +13,6 @@ import swal from 'sweetalert'
 export default function App() {
   const [events, setEvents] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
-  const [isFiltered, setIsFiltered] = useState(false)
   const [previewImage, setPreviewImage] = useState({
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
@@ -51,7 +50,6 @@ export default function App() {
             selectedCity={selectedCity}
             saveEvent={saveEvent}
             onSearchFilter={setSearchFilter}
-            isFiltered={isFiltered}
             deleteEvent={deleteEvent}
           />
         </Route>
@@ -70,7 +68,6 @@ export default function App() {
             selectedCity={selectedCity}
             saveEvent={saveEvent}
             onSearchFilter={setSearchFilter}
-            isFiltered={isFiltered}
             deleteEvent={deleteEvent}
             onlySaved={true}
           />
@@ -82,7 +79,6 @@ export default function App() {
 
   function setSearchFilter(event) {
     setSelectedCity(event.target.value)
-    setIsFiltered(true)
   }
 
   function saveEvent(event) {

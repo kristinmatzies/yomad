@@ -18,7 +18,6 @@ export default function EventList({
   selectedCity,
   saveEvent,
   onSearchFilter,
-  isFiltered,
   deleteEvent,
   onlySaved,
 }) {
@@ -30,22 +29,24 @@ export default function EventList({
 
   return (
     <Wrapper>
-      <SearchFilter
-        onSearchFilter={onSearchFilter}
-        isFiltered={isFiltered}
-        selectedCity={selectedCity}
-        events={events}
-      />
+      <SearchFilter onSearchFilter={onSearchFilter} events={events} />
       <Scroller>
-        {filteredEvents.map((event, index) => (
-          <ScrollContainer key={index}>
-            <Events
-              saveEvent={saveEvent}
-              event={event}
-              deleteEvent={deleteEvent}
-            />
-          </ScrollContainer>
-        ))}
+        {filteredEvents
+          .slice()
+          .sort(
+            (eventA, eventB) =>
+              eventA.date.localeCompare(eventB.date) ||
+              eventA.time.localeCompare(eventB.time)
+          )
+          .map((event, index) => (
+            <ScrollContainer key={index}>
+              <Events
+                saveEvent={saveEvent}
+                event={event}
+                deleteEvent={deleteEvent}
+              />
+            </ScrollContainer>
+          ))}
       </Scroller>
     </Wrapper>
   )
