@@ -9,8 +9,8 @@ EventList.propTypes = {
   selectedCity: PropTypes.string.isRequired,
   saveEvent: PropTypes.func.isRequired,
   onSearchFilter: PropTypes.func.isRequired,
-  isFiltered: PropTypes.bool,
   deleteEvent: PropTypes.func.isRequired,
+  onlySaved: PropTypes.bool,
 }
 
 export default function EventList({
@@ -26,7 +26,6 @@ export default function EventList({
       event.city.toLowerCase().includes(selectedCity.toLowerCase()) &&
       (onlySaved ? event.saved : true)
   )
-
   return (
     <Wrapper>
       <SearchFilter onSearchFilter={onSearchFilter} events={events} />

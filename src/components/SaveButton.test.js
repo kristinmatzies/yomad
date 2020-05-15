@@ -6,14 +6,14 @@ test('rendering button default text', () => {
   const { getByText } = render(
     <SaveButton saved={false} defaultText="save" onClick={() => done()} />
   )
-  const linkElement = getByText(/save/i)
-  expect(linkElement).toBeInTheDocument()
+  const content = getByText(/save/i)
+  expect(content).toBeInTheDocument()
 })
 
 test('rendering button clicked text', () => {
   const { getByText } = render(
     <SaveButton saved={true} clickedText="saved" onClick={() => done()} />
   )
-  const linkElement = getByText(/saved/i)
-  expect(linkElement).toBeInTheDocument()
+  const content = getByText(/saved/i)
+  expect(content).toBeInTheDocument()
 })

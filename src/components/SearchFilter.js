@@ -5,10 +5,11 @@ import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
 SearchFilter.propTypes = {
+  events: PropTypes.array.isRequired,
   onSearchFilter: PropTypes.func.isRequired,
 }
 
-export default function SearchFilter({ onSearchFilter, events }) {
+export default function SearchFilter({ events, onSearchFilter }) {
   return (
     <Form>
       <SearchField>
