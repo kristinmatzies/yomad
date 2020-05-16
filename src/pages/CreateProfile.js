@@ -5,7 +5,7 @@ import { db } from '../firebase'
 import { useHistory } from 'react-router-dom'
 import ProfileForm from '../components/ProfileForm'
 
-export default function CreateProfile({ profiles }) {
+export default function CreateProfile() {
   const [profile, setProfile] = useState({
     name: '',
     city: '',
@@ -17,6 +17,7 @@ export default function CreateProfile({ profiles }) {
       'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/profile%2Fuser_default.png?alt=media&token=19fad0bb-7eb8-4bef-b5de-b819b8152507',
     profileImageName: '',
   })
+
   const history = useHistory()
 
   return (

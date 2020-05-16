@@ -39,3 +39,11 @@ const LinkStyled = styled(NavLink)`
     cursor: default;
   }
 `
+
+const Image = styled.img`
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: default;
+`
