@@ -64,9 +64,15 @@ export default function App() {
           />
         </Route>
         <Route path="/profile">
-          <Profile profiles={profiles} events={events} />
+          <Profile
+            profiles={profiles}
+            events={events}
+            deleteProfile={deleteProfile}
+            saveEvent={saveEvent}
+            deleteEvent={deleteEvent}
+          />
         </Route>
-        <Route path="/addprofile">
+        <Route path="/createprofile">
           <CreateProfile />
         </Route>
       </Switch>
@@ -116,6 +122,38 @@ export default function App() {
             .catch((error) => console.log('Image delete failed', error))
       } else {
         swal('Your event is safe!')
+      }
+    })
+  }
+
+  function deleteProfile(profile) {
+    const image = storage.ref(`profile/${profile.imageTitle}`)
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this profile!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        db.collection('profiles')
+          .doc(profile.id)
+          .delete()
+          .then(
+            swal('Ok. Your profile has been deleted!', {
+              icon: 'success',
+            })
+          )
+          .catch((error) =>
+            alert('Oops something went wrong. Try again later.', error)
+          )
+        profile.imageTitle !== '' &&
+          image
+            .delete()
+            .then(() => console.log('Image successfully deleted!'))
+            .catch((error) => console.log('Image delete failed', error))
+      } else {
+        swal('Your profile is safe!')
       }
     })
   }

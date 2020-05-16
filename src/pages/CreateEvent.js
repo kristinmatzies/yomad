@@ -70,6 +70,7 @@ export default function CreateEvent({ profiles }) {
       yogastyle: eventEntry.yogastyle,
       details: eventEntry.details,
       saved: true,
+      userId: 1,
     }
 
     db.collection('events')
