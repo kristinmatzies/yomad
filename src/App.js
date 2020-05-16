@@ -5,29 +5,16 @@ import Header from './components/Header'
 import EventList from './pages/EventList'
 import FooterNav from './components/FooterNav'
 import CreateEvent from './pages/CreateEvent'
-import { useHistory } from 'react-router-dom'
 import { storage } from './firebase'
 import { db } from './firebase'
 import swal from 'sweetalert'
+import Profile from './pages/Profile'
+import CreateProfile from './pages/CreateProfile'
 
 export default function App() {
   const [events, setEvents] = useState([])
+  const [profiles, setProfiles] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
-  const [previewImage, setPreviewImage] = useState({
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
-    imageName: '',
-  })
-  const [eventEntry, setEventEntry] = useState({
-    city: '',
-    place: '',
-    date: '',
-    time: '',
-    yogastyle: '',
-    details: '',
-  })
-
-  const history = useHistory()
 
   useEffect(() => {
     db.collection('events').onSnapshot((snapshot) => {
@@ -36,6 +23,16 @@ export default function App() {
         ...doc.data(),
       }))
       setEvents(allEvents)
+    })
+  }, [])
+
+  useEffect(() => {
+    db.collection('profiles').onSnapshot((snapshot) => {
+      const allProfiles = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setProfiles(allProfiles)
     })
   }, [])
 
@@ -54,13 +51,7 @@ export default function App() {
           />
         </Route>
         <Route path="/create">
-          <CreateEvent
-            eventEntry={eventEntry}
-            updateEventEntry={updateEventEntry}
-            submitNewEvent={submitNewEvent}
-            updateImage={handleImageUpload}
-            previewImage={previewImage}
-          />
+          <CreateEvent profiles={profiles} />
         </Route>
         <Route path="/saved">
           <EventList
@@ -71,6 +62,18 @@ export default function App() {
             deleteEvent={deleteEvent}
             onlySaved={true}
           />
+        </Route>
+        <Route path="/profile">
+          <Profile
+            profiles={profiles}
+            events={events}
+            deleteProfile={deleteProfile}
+            saveEvent={saveEvent}
+            deleteEvent={deleteEvent}
+          />
+        </Route>
+        <Route path="/createprofile">
+          <CreateProfile />
         </Route>
       </Switch>
       <FooterNav />
@@ -89,67 +92,6 @@ export default function App() {
       .catch((error) =>
         alert('Oops something went wrong. Try again later.', error)
       )
-  }
-
-  function updateEventEntry(event) {
-    setEventEntry({ ...eventEntry, [event.target.name]: event.target.value })
-  }
-
-  function handleImageUpload(event) {
-    const image = event.target.files[0]
-    const uploadTask = storage.ref(`images/${image.name}`).put(image)
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {},
-      (error) => {
-        alert('An error occurred, please try again.')
-      },
-      () => {
-        storage
-          .ref('images')
-          .child(image.name)
-          .getDownloadURL()
-          .then((fireBaseUrl) => {
-            setPreviewImage({ imageUrl: fireBaseUrl, imageName: image.name })
-          })
-      }
-    )
-  }
-
-  function submitNewEvent(event) {
-    event.preventDefault()
-    const newEvent = {
-      imageTitle: previewImage.imageName,
-      imageSrc: previewImage.imageUrl,
-      city: eventEntry.city,
-      place: eventEntry.place,
-      date: eventEntry.date,
-      time: eventEntry.time,
-      yogastyle: eventEntry.yogastyle,
-      details: eventEntry.details,
-      saved: true,
-    }
-
-    db.collection('events')
-      .add(newEvent)
-      .then(() => console.log('New event added'))
-      .catch((error) =>
-        alert('Oops something went wrong. Try again later.', error)
-      )
-    setEventEntry({
-      city: '',
-      place: '',
-      date: '',
-      time: '',
-      yogastyle: '',
-      details: '',
-    })
-    setPreviewImage({
-      imageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
-      imageName: '',
-    })
-    history.push('/')
   }
 
   function deleteEvent(event) {
@@ -180,6 +122,38 @@ export default function App() {
             .catch((error) => console.log('Image delete failed', error))
       } else {
         swal('Your event is safe!')
+      }
+    })
+  }
+
+  function deleteProfile(profile) {
+    const image = storage.ref(`profile/${profile.imageTitle}`)
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this profile!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        db.collection('profiles')
+          .doc(profile.id)
+          .delete()
+          .then(
+            swal('Ok. Your profile has been deleted!', {
+              icon: 'success',
+            })
+          )
+          .catch((error) =>
+            alert('Oops something went wrong. Try again later.', error)
+          )
+        profile.imageTitle !== '' &&
+          image
+            .delete()
+            .then(() => console.log('Image successfully deleted!'))
+            .catch((error) => console.log('Image delete failed', error))
+      } else {
+        swal('Your profile is safe!')
       }
     })
   }

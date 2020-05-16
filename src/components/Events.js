@@ -24,7 +24,15 @@ export default function Events({ event, saveEvent, deleteEvent }) {
         <p className="event_key">Place</p>
         <p className="event_value">
           <img src="./img/icon_place.png" alt="" />
-          {event.place}
+          <a
+            href={
+              'https://www.google.com/maps/search/?api=1&query=' + event.place
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {event.place}
+          </a>
         </p>
         <p className="event_key">Date</p>
         <p className="event_value">
@@ -86,6 +94,11 @@ const EventText = styled.section`
     height: 16px;
     width: 16px;
     margin-right: 4px;
+  }
+
+  a {
+    color: var(--primary);
+    cursor: default;
   }
 
   .event_title {
