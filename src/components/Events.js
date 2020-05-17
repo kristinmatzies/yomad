@@ -15,10 +15,9 @@ export default function Events({ event, saveEvent, deleteEvent }) {
     <>
       <ImgStyled src={event.imageSrc} alt="" />
       <EventText>
-        <RiDeleteBin6Line
-          className="delete-button"
-          onClick={() => deleteEvent(event)}
-        />
+        <button className="delete-button" onClick={() => deleteEvent(event)}>
+          x
+        </button>
         <p className="event_key">City</p>
         <p className="event_title">{event.city}</p>
         <p className="event_key">Place</p>
@@ -88,6 +87,12 @@ const EventText = styled.section`
     left: 116px;
     top: 4px;
     color: var(--primary);
+    border-radius: 50%;
+    border: none;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    background: var(--quaternary);
   }
 
   img {
