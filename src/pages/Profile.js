@@ -11,8 +11,11 @@ export default function Profile({
   saveEvent,
   deleteEvent,
 }) {
-  const filteredEventsById = events.filter((event) => event.userId === 1)
-  console.log(filteredEventsById)
+  const profile = profiles.map((profile) => profile.id)
+
+  const filteredEventsById = events.filter(
+    (event) => event.userId !== profile.id
+  )
 
   return (
     <Wrapper>

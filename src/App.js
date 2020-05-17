@@ -10,6 +10,7 @@ import { db } from './firebase'
 import swal from 'sweetalert'
 import Profile from './pages/Profile'
 import CreateProfile from './pages/CreateProfile'
+import Login from './pages/Login'
 
 export default function App() {
   const [events, setEvents] = useState([])
@@ -39,9 +40,12 @@ export default function App() {
   return (
     <>
       <GlobalStyles />
-      <Header />
       <Switch>
         <Route exact path="/">
+          <Login profiles={profiles} />
+        </Route>
+        <Route path="/home">
+          <Header />
           <EventList
             events={events}
             selectedCity={selectedCity}
@@ -49,11 +53,15 @@ export default function App() {
             onSearchFilter={setSearchFilter}
             deleteEvent={deleteEvent}
           />
+          <FooterNav />
         </Route>
         <Route path="/create">
+          <Header />
           <CreateEvent profiles={profiles} />
+          <FooterNav />
         </Route>
         <Route path="/saved">
+          <Header />
           <EventList
             events={events}
             selectedCity={selectedCity}
@@ -62,8 +70,10 @@ export default function App() {
             deleteEvent={deleteEvent}
             onlySaved={true}
           />
+          <FooterNav />
         </Route>
         <Route path="/profile">
+          <Header />
           <Profile
             profiles={profiles}
             events={events}
@@ -71,12 +81,14 @@ export default function App() {
             saveEvent={saveEvent}
             deleteEvent={deleteEvent}
           />
+          <FooterNav />
         </Route>
         <Route path="/createprofile">
+          <Header />
           <CreateProfile />
+          <FooterNav />
         </Route>
       </Switch>
-      <FooterNav />
     </>
   )
 

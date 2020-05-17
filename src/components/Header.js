@@ -7,7 +7,7 @@ import { FaUserCircle } from 'react-icons/fa'
 export default function Header() {
   return (
     <HeaderStyled>
-      <LinkStyled exact to="/">
+      <LinkStyled exact to="/home">
         <img src={logo} alt="yomad" />
       </LinkStyled>
       <LinkStyled to="/profile">

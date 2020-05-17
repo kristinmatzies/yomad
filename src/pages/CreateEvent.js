@@ -21,6 +21,10 @@ export default function CreateEvent({ profiles }) {
   })
   const history = useHistory()
 
+  const profileId = profiles
+    .filter((profile) => profile.name !== '')
+    .map((profile) => profile.id)
+
   return (
     <FormWrapper>
       <CreateForm
@@ -70,7 +74,7 @@ export default function CreateEvent({ profiles }) {
       yogastyle: eventEntry.yogastyle,
       details: eventEntry.details,
       saved: true,
-      userId: 1,
+      userId: profileId,
     }
 
     db.collection('events')
