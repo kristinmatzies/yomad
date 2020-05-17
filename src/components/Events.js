@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
-import { RiDeleteBin6Line } from 'react-icons/ri'
 
 Events.propTypes = {
   event: PropTypes.object.isRequired,
