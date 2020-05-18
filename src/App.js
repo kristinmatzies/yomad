@@ -44,7 +44,7 @@ export default function App() {
         <Route exact path="/">
           <Login users={users} />
         </Route>
-        <Route path="/home">
+        <Route path="/home/">
           <Header />
           <EventList
             events={events}
@@ -60,7 +60,7 @@ export default function App() {
           <CreateEvent users={users} />
           <FooterNav />
         </Route>
-        <Route path="/saved">
+        <Route path="/saved/">
           <Header />
           <EventList
             events={events}
@@ -72,7 +72,7 @@ export default function App() {
           />
           <FooterNav />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile/">
           <Header />
           <Profile
             users={users}
@@ -139,7 +139,11 @@ export default function App() {
   }
 
   function deleteProfile(user) {
-    const image = storage.ref(`profile/${user.imageTitle}`)
+    const filteredEvents = events.filter((event) => event.userId === user.id)
+    const filteredEventForImg = events.filter(
+      (event) => event.userId === user.id
+    )
+
     swal({
       title: 'Are you sure?',
       text: 'Once deleted, you will not be able to recover this profile!',
@@ -159,11 +163,32 @@ export default function App() {
           .catch((error) =>
             alert('Oops something went wrong. Try again later.', error)
           )
+
         user.imageTitle !== '' &&
-          image
+          storage
+            .ref(`profile/${user.imageTitle}`)
             .delete()
-            .then(() => console.log('Image successfully deleted!'))
-            .catch((error) => console.log('Image delete failed', error))
+            .then(() => console.log('Profile image deleted!'))
+            .catch((error) => console.log('Profile image delete failed', error))
+
+        filteredEvents.forEach((event) =>
+          db
+            .collection('events')
+            .doc(event.id)
+            .delete()
+            .then(() => console.log('FilteredEvent deleted'))
+            .catch((error) => console.log('Delete filteredEvent failed', error))
+        )
+
+        filteredEventForImg.forEach(
+          (event) =>
+            event.imageTitle !== '' &&
+            storage
+              .ref(`images/${event.imageTitle}`)
+              .delete()
+              .then(() => console.log('Image successfully deleted!'))
+              .catch((error) => console.log('Image delete failed', error))
+        )
       } else {
         swal('Your profile is safe!')
       }

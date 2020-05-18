@@ -24,6 +24,7 @@ export default function CreateEvent({ users }) {
   const user_Id = users
     .filter((user) => user.name !== '')
     .map((user) => user.id)
+    .toString()
 
   return (
     <FormWrapper>

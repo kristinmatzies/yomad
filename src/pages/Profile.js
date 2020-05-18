@@ -10,9 +10,10 @@ export default function Profile({
   saveEvent,
   deleteEvent,
 }) {
-  const user = users.map((user) => user.id)
+  const user = users.map((user) => user)
 
   const filteredEventsById = events.filter((event) => event.userId !== user.id)
+  console.log(filteredEventsById)
 
   return (
     <Wrapper>
@@ -27,24 +28,23 @@ export default function Profile({
                 <img src={user.imageSrc} alt="" />
                 <ProfileText>
                   <button
-                    className="delete-button"
+                    className="delete_button"
                     onClick={() => deleteProfile(user)}
                   >
                     x
                   </button>
-                  <p className="profile_key">Name</p>
-                  <p className="profile_value">{user.name}</p>
-                  <p className="profile_key">City</p>
-                  <p className="profile_value">{user.city}</p>
-                  <p className="profile_key">Yogalevel</p>
-                  <p className="profile_value">{user.yogalevel}</p>
+                  <p className="profile_title">{user.name}</p>
+                  <span className="profile_key">from</span>
+                  <span className="profile_value">{user.city}</span> <br />
+                  <span className="profile_key">being a Yoga</span>
+                  <span className="profile_value">{user.yogalevel}</span>
                 </ProfileText>
               </>
             )}
           </ProfileContainer>
         ))}
       </section>
-      <h2 className="my-event-headline">My Yoga Sessions</h2>
+      <h2 className="my_event_headline">My Yoga Sessions</h2>
       <Scroller>
         {filteredEventsById
           .slice()
@@ -78,26 +78,28 @@ const LinkStyled = styled(NavLink)`
 const Wrapper = styled.main`
   overflow-y: scroll;
 
-  .my-event-headline {
+  .my_event_headline {
     color: var(--primary);
     font-size: 20px;
     padding-left: 12px;
     margin-bottom: 0;
   }
+
+  section {
+    background: var(--background);
+  }
 `
 
 const ProfileContainer = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  margin-bottom: 16px;
-  background: var(--background);
-  padding-left: 12px;
+  grid-template-columns: 1fr 2fr;
+  margin-bottom: 20px;
 
   img {
-    height: 172px;
-    width: 172px;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
-    border: 8px solid var(--quaternary);
+    margin: 0 4px 0 12px;
     justify-self: flex-start;
     align-self: center;
   }
@@ -109,12 +111,17 @@ const ProfileText = styled.section`
   margin-left: 12px;
   position: relative;
 
+  .profile_title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
   .profile_key {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
-    margin-top: 4px;
-    margin-bottom: 0;
+    margin: 4px 4px 0 0;
     color: var(--secondary);
   }
 
@@ -122,10 +129,10 @@ const ProfileText = styled.section`
     margin: 0;
   }
 
-  .delete-button {
+  .delete_button {
     position: absolute;
     left: 116px;
-    top: 4px;
+    top: -32px;
     color: var(--primary);
     border-radius: 50%;
     border: none;
@@ -133,7 +140,6 @@ const ProfileText = styled.section`
     width: 24px;
     text-align: center;
     background: var(--quaternary);
-  }
   }
 `
 
