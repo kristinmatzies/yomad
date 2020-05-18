@@ -1,50 +1,50 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { RiDeleteBin6Line } from 'react-icons/ri'
 import Events from '../components/Events'
 
 export default function Profile({
-  profiles,
+  users,
   deleteProfile,
   events,
   saveEvent,
   deleteEvent,
 }) {
-  const profile = profiles.map((profile) => profile.id)
+  const user = users.map((user) => user.id)
 
-  const filteredEventsById = events.filter(
-    (event) => event.userId !== profile.id
-  )
+  const filteredEventsById = events.filter((event) => event.userId !== user.id)
 
   return (
     <Wrapper>
-      {profiles.length === 1 && (
+      {users.length === 1 && (
         <LinkStyled to="/createprofile">create profile</LinkStyled>
       )}
       <section>
-        {profiles.map((profile, index) => (
+        {users.map((user, index) => (
           <ProfileContainer key={index}>
-            {profile.name !== '' && (
+            {user.name !== '' && (
               <>
-                <img src={profile.imageSrc} alt="" />
+                <img src={user.imageSrc} alt="" />
                 <ProfileText>
-                  <RiDeleteBin6Line
+                  <button
                     className="delete-button"
-                    onClick={() => deleteProfile(profile)}
-                  />
+                    onClick={() => deleteProfile(user)}
+                  >
+                    x
+                  </button>
                   <p className="profile_key">Name</p>
-                  <p className="profile_value">{profile.name}</p>
+                  <p className="profile_value">{user.name}</p>
                   <p className="profile_key">City</p>
-                  <p className="profile_value">{profile.city}</p>
+                  <p className="profile_value">{user.city}</p>
                   <p className="profile_key">Yogalevel</p>
-                  <p className="profile_value">{profile.yogalevel}</p>
+                  <p className="profile_value">{user.yogalevel}</p>
                 </ProfileText>
               </>
             )}
           </ProfileContainer>
         ))}
       </section>
+      <h2 className="my-event-headline">My Yoga Sessions</h2>
       <Scroller>
         {filteredEventsById
           .slice()
@@ -77,19 +77,28 @@ const LinkStyled = styled(NavLink)`
 
 const Wrapper = styled.main`
   overflow-y: scroll;
+
+  .my-event-headline {
+    color: var(--primary);
+    font-size: 20px;
+    padding-left: 12px;
+    margin-bottom: 0;
+  }
 `
 
 const ProfileContainer = styled.section`
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   margin-bottom: 16px;
+  background: var(--background);
+  padding-left: 12px;
 
   img {
     height: 172px;
     width: 172px;
     border-radius: 50%;
     border: 8px solid var(--quaternary);
-    justify-self: center;
+    justify-self: flex-start;
     align-self: center;
   }
 `
@@ -115,9 +124,16 @@ const ProfileText = styled.section`
 
   .delete-button {
     position: absolute;
-    left: 100px;
+    left: 116px;
     top: 4px;
     color: var(--primary);
+    border-radius: 50%;
+    border: none;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    background: var(--quaternary);
+  }
   }
 `
 

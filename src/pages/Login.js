@@ -4,7 +4,7 @@ import Button from '../components/Button'
 import styled from 'styled-components/macro'
 import logo from '../logo.png'
 
-export default function Login({ profiles }) {
+export default function Login({ users }) {
   const [inputValue, setInputValue] = useState('')
 
   return (

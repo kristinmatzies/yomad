@@ -27,7 +27,7 @@ const Footer = styled.footer`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  box-shadow: 0 -1px 8px 0 lightgrey;
+  box-shadow: 0 -1px 4px 0 lightgrey;
   position: relative;
 `
 
@@ -44,8 +44,8 @@ const LinkStyled = styled(NavLink)`
     align-items: center;
     justify-content: center;
     padding: 0;
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: none;
     margin-bottom: 28px;
