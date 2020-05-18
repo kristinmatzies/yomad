@@ -84,24 +84,21 @@ const Wrapper = styled.main`
     padding-left: 12px;
     margin-bottom: 0;
   }
-
-  section {
-    background: var(--background);
-  }
 `
 
 const ProfileContainer = styled.section`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   margin-bottom: 20px;
+  background: var(--background);
+  margin-left: 4px;
 
   img {
+    align-self: center;
+    justify-self: flex-start;
     height: 150px;
     width: 150px;
     border-radius: 50%;
-    margin: 0 4px 0 12px;
-    justify-self: flex-start;
-    align-self: center;
   }
 `
 
@@ -131,7 +128,7 @@ const ProfileText = styled.section`
 
   .delete_button {
     position: absolute;
-    left: 116px;
+    left: 108px;
     top: -32px;
     color: var(--primary);
     border-radius: 50%;
