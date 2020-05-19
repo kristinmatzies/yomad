@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 import ProfileForm from '../components/ProfileForm'
 
 export default function CreateProfile() {
-  const [profile, setProfile] = useState({
+  const [user, setUser] = useState({
     name: '',
     city: '',
     yogalevel: '',
@@ -23,7 +23,7 @@ export default function CreateProfile() {
   return (
     <FormWrapper>
       <ProfileForm
-        profile={profile}
+        user={user}
         updateProfile={updateProfile}
         submitNewProfile={submitNewProfile}
         updateProfileImage={handleImageUploadProfile}
@@ -33,7 +33,7 @@ export default function CreateProfile() {
   )
 
   function updateProfile(event) {
-    setProfile({ ...profile, [event.target.name]: event.target.value })
+    setUser({ ...user, [event.target.name]: event.target.value })
   }
 
   function handleImageUploadProfile(event) {
@@ -65,18 +65,18 @@ export default function CreateProfile() {
     const newProfile = {
       imageTitle: previewProfileImage.profileImageName,
       imageSrc: previewProfileImage.profileImageUrl,
-      name: profile.name,
-      city: profile.city,
-      yogalevel: profile.yogalevel,
+      name: user.name,
+      city: user.city,
+      yogalevel: user.yogalevel,
     }
 
-    db.collection('profiles')
+    db.collection('users')
       .add(newProfile)
-      .then(() => console.log('New profile added'))
+      .then(() => console.log('New user added'))
       .catch((error) =>
         alert('Oops something went wrong. Try again later.', error)
       )
-    setProfile({
+    setUser({
       name: '',
       city: '',
       yogalevel: '',

@@ -8,16 +8,16 @@ import { IoIosSave } from 'react-icons/io'
 export default function FooterNav() {
   return (
     <Footer>
-      <LinkStyled exact to="/">
-        <TiHome className="home-icon" />
+      <LinkStyled to="/home">
+        <TiHome className="home_icon" />
       </LinkStyled>
       <LinkStyled to="/create">
-        <button>
-          <BsPlusCircleFill className="create-icon" />
-        </button>
+        <IconWrapper>
+          <BsPlusCircleFill className="create_icon" />
+        </IconWrapper>
       </LinkStyled>
       <LinkStyled to="/saved">
-        <IoIosSave className="save-icon" />
+        <IoIosSave className="save_icon" />
       </LinkStyled>
     </Footer>
   )
@@ -27,43 +27,45 @@ const Footer = styled.footer`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  box-shadow: 0 -1px 8px 0 lightgrey;
+  box-shadow: 0 -1px 4px 0 lightgrey;
   position: relative;
 `
 
 const LinkStyled = styled(NavLink)`
-  .home-icon,
-  .save-icon {
+  .home_icon,
+  .save_icon {
     height: 28px;
     width: 28px;
     color: var(--secondary);
+    cursor: default;
   }
 
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: none;
-    margin-bottom: 28px;
-    background: var(--quaternary);
-  }
-
-  .create-icon {
+  .create_icon {
     height: 80%;
     width: 80%;
     margin: 0;
     color: var(--secondary);
+    cursor: default;
   }
 
   &.active {
-    .home-icon,
-    .create-icon,
-    .save-icon {
+    .home_icon,
+    .create_icon,
+    .save_icon {
       color: var(--primary);
     }
   }
+`
+const IconWrapper = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  margin-bottom: 28px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3), inset 0px 4px 1px 1px white,
+    inset 0px -4px 1px 1px rgba(204, 198, 197, 0.5);
+  height: 60px;
+  width: 60px;
 `

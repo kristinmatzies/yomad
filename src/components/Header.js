@@ -2,16 +2,16 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import logo from '../logo.png'
 import { NavLink } from 'react-router-dom'
-import { FaUserCircle } from 'react-icons/fa'
+import { BsPersonFill } from 'react-icons/bs'
 
 export default function Header() {
   return (
     <HeaderStyled>
-      <LinkStyled exact to="/">
+      <LinkStyled exact to="/home">
         <img src={logo} alt="yomad" />
       </LinkStyled>
       <LinkStyled to="/profile">
-        <FaUserCircle className="profile-icon" />
+        <BsPersonFill className="profile_icon" />
       </LinkStyled>
     </HeaderStyled>
   )
@@ -31,11 +31,17 @@ const HeaderStyled = styled.header`
   }
 `
 const LinkStyled = styled(NavLink)`
-  .profile-icon {
-    color: var(--primary);
+  .profile_icon {
+    color: var(--secondary);
     height: 32px;
     width: 32px;
-    margin: 8px 8px 0 0;
     cursor: default;
+    margin-top: 8px;
+  }
+
+  &.active {
+    .profile_icon {
+      color: var(--primary);
+    }
   }
 `

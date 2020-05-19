@@ -4,7 +4,7 @@ import ImageUploadProfile from './ImageUploadProfile'
 import Button from './Button'
 
 export default function ProfileForm({
-  profile,
+  user,
   updateProfile,
   submitNewProfile,
   updateProfileImage,
@@ -22,7 +22,7 @@ export default function ProfileForm({
         type="text"
         name="name"
         onChange={updateProfile}
-        value={profile.name}
+        value={user.name}
         placeholder="e.g. Maxi"
         maxLength="20"
         required
@@ -34,7 +34,7 @@ export default function ProfileForm({
         name="city"
         placeholder="e.g. Berlin"
         onChange={updateProfile}
-        value={profile.city}
+        value={user.city}
         maxLength="25"
         required
       />
@@ -45,7 +45,7 @@ export default function ProfileForm({
         name="yogalevel"
         placeholder="e.g. Beginner or Professional"
         onChange={updateProfile}
-        value={profile.yogalevel}
+        value={user.yogalevel}
       />
       <p>*Mandatory fields</p>
       <Button type="submit" text="Add your profile" />

@@ -5,15 +5,15 @@ import Header from './components/Header'
 import EventList from './pages/EventList'
 import FooterNav from './components/FooterNav'
 import CreateEvent from './pages/CreateEvent'
-import { storage } from './firebase'
-import { db } from './firebase'
+import { db, storage } from './firebase'
 import swal from 'sweetalert'
 import Profile from './pages/Profile'
 import CreateProfile from './pages/CreateProfile'
+import Login from './pages/Login'
 
 export default function App() {
   const [events, setEvents] = useState([])
-  const [profiles, setProfiles] = useState([])
+  const [users, setUsers] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
 
   useEffect(() => {
@@ -27,21 +27,24 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    db.collection('profiles').onSnapshot((snapshot) => {
-      const allProfiles = snapshot.docs.map((doc) => ({
+    db.collection('users').onSnapshot((snapshot) => {
+      const allUsers = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }))
-      setProfiles(allProfiles)
+      setUsers(allUsers)
     })
   }, [])
 
   return (
     <>
       <GlobalStyles />
-      <Header />
       <Switch>
         <Route exact path="/">
+          <Login users={users} />
+        </Route>
+        <Route path="/home/">
+          <Header />
           <EventList
             events={events}
             selectedCity={selectedCity}
@@ -49,11 +52,15 @@ export default function App() {
             onSearchFilter={setSearchFilter}
             deleteEvent={deleteEvent}
           />
+          <FooterNav />
         </Route>
         <Route path="/create">
-          <CreateEvent profiles={profiles} />
+          <Header />
+          <CreateEvent users={users} />
+          <FooterNav />
         </Route>
-        <Route path="/saved">
+        <Route path="/saved/">
+          <Header />
           <EventList
             events={events}
             selectedCity={selectedCity}
@@ -62,21 +69,25 @@ export default function App() {
             deleteEvent={deleteEvent}
             onlySaved={true}
           />
+          <FooterNav />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile/">
+          <Header />
           <Profile
-            profiles={profiles}
+            users={users}
             events={events}
             deleteProfile={deleteProfile}
             saveEvent={saveEvent}
             deleteEvent={deleteEvent}
           />
+          <FooterNav />
         </Route>
         <Route path="/createprofile">
+          <Header />
           <CreateProfile />
+          <FooterNav />
         </Route>
       </Switch>
-      <FooterNav />
     </>
   )
 
@@ -126,8 +137,12 @@ export default function App() {
     })
   }
 
-  function deleteProfile(profile) {
-    const image = storage.ref(`profile/${profile.imageTitle}`)
+  function deleteProfile(user) {
+    const filteredEvents = events.filter((event) => event.userId === user.id)
+    const filteredEventForImg = events.filter(
+      (event) => event.userId === user.id
+    )
+
     swal({
       title: 'Are you sure?',
       text: 'Once deleted, you will not be able to recover this profile!',
@@ -136,8 +151,8 @@ export default function App() {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        db.collection('profiles')
-          .doc(profile.id)
+        db.collection('users')
+          .doc(user.id)
           .delete()
           .then(
             swal('Ok. Your profile has been deleted!', {
@@ -147,11 +162,32 @@ export default function App() {
           .catch((error) =>
             alert('Oops something went wrong. Try again later.', error)
           )
-        profile.imageTitle !== '' &&
-          image
+
+        user.imageTitle !== '' &&
+          storage
+            .ref(`profile/${user.imageTitle}`)
             .delete()
-            .then(() => console.log('Image successfully deleted!'))
-            .catch((error) => console.log('Image delete failed', error))
+            .then(() => console.log('Profile image deleted!'))
+            .catch((error) => console.log('Profile image delete failed', error))
+
+        filteredEvents.forEach((event) =>
+          db
+            .collection('events')
+            .doc(event.id)
+            .delete()
+            .then(() => console.log('FilteredEvent deleted'))
+            .catch((error) => console.log('Delete filteredEvent failed', error))
+        )
+
+        filteredEventForImg.forEach(
+          (event) =>
+            event.imageTitle !== '' &&
+            storage
+              .ref(`images/${event.imageTitle}`)
+              .delete()
+              .then(() => console.log('Image successfully deleted!'))
+              .catch((error) => console.log('Image delete failed', error))
+        )
       } else {
         swal('Your profile is safe!')
       }

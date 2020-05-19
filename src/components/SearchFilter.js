@@ -19,6 +19,8 @@ export default function SearchFilter({ events, onSearchFilter }) {
               (event, index, self) =>
                 index === self.findIndex((t) => t.city === event.city)
             )
+            .slice()
+            .sort((eventA, eventB) => eventA.city > eventB.city)
             .map((option) => option.city)}
           renderInput={(params) => (
             <TextField
