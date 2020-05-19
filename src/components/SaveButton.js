@@ -40,7 +40,7 @@ const SaveButtonStyled = styled.button`
   transition-delay: 0s, 0.15s;
   background-position: ${(props) => props.saved && '100% 100%'};
   border-radius: 16px;
-  box-shadow: 2px 2px 2px var(--cta);
+  box-shadow: 0 2px 2px 0 var(--primary);
   position: absolute;
   top: 320px;
 `
