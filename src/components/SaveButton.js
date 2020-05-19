@@ -35,7 +35,7 @@ const SaveButtonStyled = styled.button`
   );
   background-size: 200%;
   color: white;
-  transition: background-position 0.3s cubic-bezier(0.45, 0.25, 0.6, 0.95),
+  transition: background-position 0.3s cubic-bezier(0.45, 0.1, 1, 0.95),
     color 0.2s linear;
   transition-delay: 0s, 0.15s;
   background-position: ${(props) => props.saved && '100% 100%'};
