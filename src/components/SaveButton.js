@@ -26,10 +26,21 @@ const SaveButtonStyled = styled.button`
   font-size: 16px;
   padding: 8px 32px;
   border: none;
-  background: ${(props) => (props.saved ? 'var(--cta)' : 'var(--secondary)')};
+  background-image: linear-gradient(
+    90deg,
+    var(--secondary) 0%,
+    var(--secondary) 50%,
+    var(--cta) 50%,
+    var(--cta) 100%
+  );
+  background-size: 200%;
   color: white;
+  transition: background-position 0.3s cubic-bezier(0.45, 0.1, 1, 0.95),
+    color 0.2s linear;
+  transition-delay: 0s, 0.15s;
+  background-position: ${(props) => props.saved && '100% 100%'};
   border-radius: 16px;
-  box-shadow: 2px 2px 2px var(--primary);
+  box-shadow: 2px 2px 2px var(--cta);
   position: absolute;
   top: 320px;
 `

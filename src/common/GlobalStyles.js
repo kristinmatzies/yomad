@@ -41,6 +41,6 @@ export default createGlobalStyle`
     --secondary: #A17377;
     --tertiary: #B79699;
     --quaternary: #E7E2E3;
-    --cta: #476B64;
+    --cta: #193635;
     }
 `

@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import logo from '../logo.png'
 import { NavLink } from 'react-router-dom'
 import { BsPersonFill } from 'react-icons/bs'
 
 export default function Header() {
   return (
     <HeaderStyled>
-      <LinkStyled exact to="/home">
-        <img src={logo} alt="yomad" />
+      <LinkStyled exact to="/">
+        <img src="./img/logo.png" alt="yomad" />
       </LinkStyled>
       <LinkStyled to="/profile">
         <BsPersonFill className="profile_icon" />
