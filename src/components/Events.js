@@ -13,12 +13,14 @@ export default function Events({ event, saveEvent, deleteEvent }) {
   return (
     <>
       <ImgStyled src={event.imageSrc} alt="" />
-      <EventText>
+      <EventText data-cy="eventtext">
         <button className="delete-button" onClick={() => deleteEvent(event)}>
           x
         </button>
         <p className="event_key">City</p>
-        <p className="event_title">{event.city}</p>
+        <p className="event_title" data-cy="event_city">
+          {event.city}
+        </p>
         <p className="event_key">Place</p>
         <p className="event_value">
           <img src="./img/icon_place.png" alt="" />

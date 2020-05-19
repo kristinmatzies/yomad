@@ -16,7 +16,7 @@ export default function SaveButton({
   saved,
 }) {
   return (
-    <SaveButtonStyled onClick={onClick} saved={saved}>
+    <SaveButtonStyled onClick={onClick} saved={saved} data-cy="save_button">
       {saved ? clickedText : defaultText}
     </SaveButtonStyled>
   )

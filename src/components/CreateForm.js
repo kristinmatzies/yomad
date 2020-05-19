@@ -20,7 +20,7 @@ export default function CreateForm({
   previewImage,
 }) {
   return (
-    <FormStyled onSubmit={submitNewEvent}>
+    <FormStyled data-cy="create_event" onSubmit={submitNewEvent}>
       <ImageUpload updateImage={updateImage} previewImage={previewImage} />
       <label htmlFor="city">City*</label>
       <input
@@ -87,7 +87,7 @@ export default function CreateForm({
         maxLength="120"
       />
       <p>*Mandatory fields</p>
-      <Button type="submit" text="Add new meet-up" />
+      <Button data-cy="submit_button" type="submit" text="Add new meet-up" />
     </FormStyled>
   )
 }

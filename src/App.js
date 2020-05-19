@@ -9,7 +9,6 @@ import { db, storage } from './firebase'
 import swal from 'sweetalert'
 import Profile from './pages/Profile'
 import CreateProfile from './pages/CreateProfile'
-import { saveToStorage } from './services'
 
 export default function App() {
   const [events, setEvents] = useState([])
