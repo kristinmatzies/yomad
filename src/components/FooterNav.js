@@ -64,8 +64,8 @@ const IconWrapper = styled.button`
   border-radius: 50%;
   border: none;
   margin-bottom: 28px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3), inset 0px 4px 1px 1px white,
-    inset 0px -4px 1px 1px rgba(204, 198, 197, 0.5);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), inset 0 4px 1px 1px white,
+    inset 0 -4px 1px 1px rgba(204, 198, 197, 0.5);
   height: 60px;
   width: 60px;
 `

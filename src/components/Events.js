@@ -94,6 +94,7 @@ const EventText = styled.section`
     width: 24px;
     text-align: center;
     background: var(--quaternary);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4), inset 0 0 1px 1px white;
   }
 
   img {
