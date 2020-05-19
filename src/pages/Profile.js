@@ -11,6 +11,7 @@ export default function Profile({
   deleteEvent,
 }) {
   const user = users.map((user) => user)
+  console.log(user)
 
   const filteredEventsById = events.filter((event) => event.userId !== user.id)
   console.log(filteredEventsById)

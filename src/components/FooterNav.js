@@ -8,7 +8,7 @@ import { IoIosSave } from 'react-icons/io'
 export default function FooterNav() {
   return (
     <Footer>
-      <LinkStyled to="/home">
+      <LinkStyled exact to="/">
         <TiHome className="home_icon" />
       </LinkStyled>
       <LinkStyled to="/create">

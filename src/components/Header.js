@@ -7,7 +7,7 @@ import { BsPersonFill } from 'react-icons/bs'
 export default function Header() {
   return (
     <HeaderStyled>
-      <LinkStyled exact to="/home">
+      <LinkStyled exact to="/">
         <img src={logo} alt="yomad" />
       </LinkStyled>
       <LinkStyled to="/profile">
