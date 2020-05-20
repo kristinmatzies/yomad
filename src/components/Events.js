@@ -59,14 +59,14 @@ export default function Events({ event, saveEvent, deleteEvent, users }) {
         />
       </EventText>
       <EventDetails>
-        <p className="details_headline">Details on meeting point</p>
-        <p className="details_body">{event.details}</p>
         {userById.map((user) => (
           <Username key={user.uid}>
-            <span>by </span>
+            <span>session by </span>
             {user.name}
           </Username>
         ))}
+        <p className="details_headline">Details on meeting point</p>
+        <p className="details_body">{event.details}</p>
       </EventDetails>
     </>
   )
@@ -129,6 +129,7 @@ const EventText = styled.section`
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
+    margin-top: 16px;
     margin-bottom: 0;
     color: var(--secondary);
   }
@@ -159,11 +160,16 @@ const EventDetails = styled.section`
   }
 `
 
-const Username = styled.p`
-  position: absolute;
-  bottom: -12px;
+const Username = styled.div`
   font-size: 12px;
   font-weight: bold;
+  background: var(--quaternary);
+  opacity: 0.7;
+  width: 180px;
+  position: absolute;
+  left: 0;
+  top: -32px;
+  padding-left: 14px;
 
   span {
     font-style: italic;

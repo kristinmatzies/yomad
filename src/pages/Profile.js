@@ -58,6 +58,7 @@ export default function Profile({
                 saveEvent={saveEvent}
                 event={event}
                 deleteEvent={deleteEvent}
+                users={users}
               />
             </ScrollContainer>
           ))}
