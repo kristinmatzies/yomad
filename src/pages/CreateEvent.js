@@ -21,17 +21,23 @@ export default function CreateEvent() {
     details: '',
   })
   const history = useHistory()
-  const profileId = loadFromStorage('profileId') || ''
+  const userId = loadFromStorage('profileId') || ''
 
   return (
     <FormWrapper>
-      <CreateForm
-        eventEntry={eventEntry}
-        updateEventEntry={updateEventEntry}
-        submitNewEvent={submitNewEvent}
-        updateImage={handleImageUpload}
-        previewImage={previewImage}
-      />
+      {userId !== '' ? (
+        <CreateForm
+          eventEntry={eventEntry}
+          updateEventEntry={updateEventEntry}
+          submitNewEvent={submitNewEvent}
+          updateImage={handleImageUpload}
+          previewImage={previewImage}
+        />
+      ) : (
+        <InfoStyled>
+          Please create a profile to add your own Yoga sessions.
+        </InfoStyled>
+      )}
     </FormWrapper>
   )
 
@@ -72,7 +78,7 @@ export default function CreateEvent() {
       yogastyle: eventEntry.yogastyle,
       details: eventEntry.details,
       saved: true,
-      userId: profileId,
+      userId: userId,
     }
 
     db.collection('events')
@@ -103,4 +109,8 @@ const FormWrapper = styled.main`
   grid-template-rows: auto;
   color: var(--primary);
   overflow-y: scroll;
+`
+
+const InfoStyled = styled.p`
+  padding: 12px;
 `
