@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
+import { loadFromStorage } from '../services'
 
 Events.propTypes = {
   event: PropTypes.object.isRequired,
@@ -10,15 +11,18 @@ Events.propTypes = {
 }
 
 export default function Events({ event, saveEvent, deleteEvent, users }) {
+  const userId = loadFromStorage('profileId') || ''
   const userById = users.filter((user) => event.userId === user.id)
 
   return (
     <>
       <ImgStyled src={event.imageSrc} alt="" />
       <EventText data-cy="eventtext">
-        <button className="delete-button" onClick={() => deleteEvent(event)}>
-          x
-        </button>
+        {event.userId === userId && (
+          <button className="delete-button" onClick={() => deleteEvent(event)}>
+            x
+          </button>
+        )}
         <p className="event_key">City</p>
         <p className="event_title" data-cy="event_city">
           {event.city}

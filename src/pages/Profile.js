@@ -19,30 +19,28 @@ export default function Profile({
       {userId === '' && (
         <LinkStyled to="/createprofile">create profile</LinkStyled>
       )}
-      <section>
-        {users.map((user, index) => (
-          <ProfileContainer key={index}>
-            {user.id === userId && (
-              <>
-                <img src={user.imageSrc} alt="" />
-                <ProfileText>
-                  <button
-                    className="delete_button"
-                    onClick={() => deleteProfile(user)}
-                  >
-                    x
-                  </button>
-                  <p className="profile_title">{user.name}</p>
-                  <span className="profile_key">from</span>
-                  <span className="profile_value">{user.city}</span> <br />
-                  <span className="profile_key">being a Yoga</span>
-                  <span className="profile_value">{user.yogalevel}</span>
-                </ProfileText>
-              </>
-            )}
-          </ProfileContainer>
-        ))}
-      </section>
+      {users.map((user, index) => (
+        <ProfileContainer key={index}>
+          {user.id === userId && (
+            <>
+              <img src={user.imageSrc} alt="" />
+              <ProfileText>
+                <button
+                  className="delete_button"
+                  onClick={() => deleteProfile(user)}
+                >
+                  x
+                </button>
+                <p className="profile_title">{user.name}</p>
+                <span className="profile_key">from</span>
+                <span className="profile_value">{user.city}</span> <br />
+                <span className="profile_key">being a Yoga</span>
+                <span className="profile_value">{user.yogalevel}</span>
+              </ProfileText>
+            </>
+          )}
+        </ProfileContainer>
+      ))}
       {userId !== '' && <h2 className="my_event_headline">My Yoga Sessions</h2>}
       <Scroller>
         {filteredEventsById
@@ -88,8 +86,8 @@ const Wrapper = styled.main`
 
 const ProfileContainer = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 20px;
+  grid-template-columns: 1fr 1.5fr;
+  margin-bottom: 4px;
   background: var(--background);
   margin-left: 4px;
 
