@@ -128,7 +128,7 @@ export default function App() {
 
   function deleteProfile(user) {
     const userId = loadFromStorage('profileId') || ''
-    const filteredEvents = events.filter((event) => event.userId === userId)
+    const filteredEventsById = events.filter((event) => event.userId === userId)
 
     swal({
       title: 'Are you sure?',
@@ -157,7 +157,7 @@ export default function App() {
             .then(() => console.log('Profile image deleted!'))
             .catch((error) => console.log('Profile image delete failed', error))
         localStorage.removeItem('profileId')
-        filteredEvents.forEach((event) =>
+        filteredEventsById.forEach((event) =>
           db
             .collection('events')
             .doc(event.id)
@@ -166,7 +166,7 @@ export default function App() {
             .catch((error) => console.log('Delete filteredEvent failed', error))
         )
 
-        filteredEvents.forEach(
+        filteredEventsById.forEach(
           (event) =>
             event.imageTitle !== '' &&
             storage

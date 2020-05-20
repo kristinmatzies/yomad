@@ -43,7 +43,7 @@ export default function Profile({
           </ProfileContainer>
         ))}
       </section>
-      <h2 className="my_event_headline">My Yoga Sessions</h2>
+      {userId !== '' && <h2 className="my_event_headline">My Yoga Sessions</h2>}
       <Scroller>
         {filteredEventsById
           .slice()
