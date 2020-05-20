@@ -20,6 +20,7 @@ export default function EventList({
   onSearchFilter,
   deleteEvent,
   onlySaved,
+  users,
 }) {
   const filteredEvents = events.filter(
     (event) =>
@@ -43,6 +44,7 @@ export default function EventList({
                 saveEvent={saveEvent}
                 event={event}
                 deleteEvent={deleteEvent}
+                users={users}
               />
             </ScrollContainer>
           ))}

@@ -48,6 +48,7 @@ export default function App() {
             saveEvent={saveEvent}
             onSearchFilter={setSearchFilter}
             deleteEvent={deleteEvent}
+            users={users}
           />
         </Route>
         <Route path="/create">
@@ -60,6 +61,7 @@ export default function App() {
             saveEvent={saveEvent}
             onSearchFilter={setSearchFilter}
             deleteEvent={deleteEvent}
+            users={users}
             onlySaved={true}
           />
         </Route>

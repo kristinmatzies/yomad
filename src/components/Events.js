@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
+import { loadFromStorage } from '../services'
 
 Events.propTypes = {
   event: PropTypes.object.isRequired,
@@ -9,7 +10,9 @@ Events.propTypes = {
   deleteEvent: PropTypes.func.isRequired,
 }
 
-export default function Events({ event, saveEvent, deleteEvent }) {
+export default function Events({ event, saveEvent, deleteEvent, users }) {
+  const userId = loadFromStorage('profileId') || ''
+
   return (
     <>
       <ImgStyled src={event.imageSrc} alt="" />
@@ -59,6 +62,11 @@ export default function Events({ event, saveEvent, deleteEvent }) {
       <EventDetails>
         <p className="details_headline">Details on meeting point</p>
         <p className="details_body">{event.details}</p>
+        {users.map((user) => (
+          <div key={user.uid}>
+            <p>{userId === event.userId && user.name}</p>
+          </div>
+        ))}
       </EventDetails>
     </>
   )
