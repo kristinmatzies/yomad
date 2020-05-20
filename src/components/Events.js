@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
-import { loadFromStorage } from '../services'
 
 Events.propTypes = {
   event: PropTypes.object.isRequired,
@@ -11,7 +10,7 @@ Events.propTypes = {
 }
 
 export default function Events({ event, saveEvent, deleteEvent, users }) {
-  const userId = loadFromStorage('profileId') || ''
+  const userById = users.filter((user) => event.userId === user.id)
 
   return (
     <>
@@ -62,10 +61,11 @@ export default function Events({ event, saveEvent, deleteEvent, users }) {
       <EventDetails>
         <p className="details_headline">Details on meeting point</p>
         <p className="details_body">{event.details}</p>
-        {users.map((user) => (
-          <div key={user.uid}>
-            <p>{userId === event.userId && user.name}</p>
-          </div>
+        {userById.map((user) => (
+          <Username key={user.uid}>
+            <span>by </span>
+            {user.name}
+          </Username>
         ))}
       </EventDetails>
     </>
@@ -143,6 +143,8 @@ const EventDetails = styled.section`
   justify-self: flex-start;
   align-self: flex-start;
   padding-left: 12px;
+  height: 140px;
+  position: relative;
 
   .details_headline {
     text-transform: uppercase;
@@ -154,5 +156,17 @@ const EventDetails = styled.section`
 
   .details_body {
     margin: 0;
+  }
+`
+
+const Username = styled.p`
+  position: absolute;
+  bottom: -12px;
+  font-size: 12px;
+  font-weight: bold;
+
+  span {
+    font-style: italic;
+    font-weight: normal;
   }
 `
