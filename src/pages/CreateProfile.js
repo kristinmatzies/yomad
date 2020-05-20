@@ -4,6 +4,8 @@ import { storage } from '../firebase'
 import { db } from '../firebase'
 import { useHistory } from 'react-router-dom'
 import ProfileForm from '../components/ProfileForm'
+import { v4 as uuidv4 } from 'uuid'
+import { saveToStorage } from '../services'
 
 export default function CreateProfile() {
   const [user, setUser] = useState({
@@ -19,6 +21,7 @@ export default function CreateProfile() {
   })
 
   const history = useHistory()
+  const uniqueProfileId = uuidv4()
 
   return (
     <FormWrapper>
@@ -68,14 +71,15 @@ export default function CreateProfile() {
       name: user.name,
       city: user.city,
       yogalevel: user.yogalevel,
+      id: uniqueProfileId,
     }
-
     db.collection('users')
       .add(newProfile)
       .then(() => console.log('New user added'))
       .catch((error) =>
         alert('Oops something went wrong. Try again later.', error)
       )
+    saveToStorage('profileId', newProfile.id)
     setUser({
       name: '',
       city: '',

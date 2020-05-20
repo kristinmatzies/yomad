@@ -4,8 +4,9 @@ import CreateForm from '../components/CreateForm'
 import { useHistory } from 'react-router-dom'
 import { storage } from '../firebase'
 import { db } from '../firebase'
+import { loadFromStorage } from '../services'
 
-export default function CreateEvent({ users }) {
+export default function CreateEvent() {
   const [previewImage, setPreviewImage] = useState({
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
@@ -20,11 +21,7 @@ export default function CreateEvent({ users }) {
     details: '',
   })
   const history = useHistory()
-
-  const user_Id = users
-    .filter((user) => user.name !== '')
-    .map((user) => user.id)
-    .toString()
+  const profileId = loadFromStorage('profileId') || ''
 
   return (
     <FormWrapper>
@@ -75,7 +72,7 @@ export default function CreateEvent({ users }) {
       yogastyle: eventEntry.yogastyle,
       details: eventEntry.details,
       saved: true,
-      userId: user_Id,
+      userId: profileId,
     }
 
     db.collection('events')

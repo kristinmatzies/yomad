@@ -9,6 +9,7 @@ import { db, storage } from './firebase'
 import swal from 'sweetalert'
 import Profile from './pages/Profile'
 import CreateProfile from './pages/CreateProfile'
+import { loadFromStorage } from './services'
 
 export default function App() {
   const [events, setEvents] = useState([])
@@ -28,7 +29,7 @@ export default function App() {
   useEffect(() => {
     db.collection('users').onSnapshot((snapshot) => {
       const allUsers = snapshot.docs.map((doc) => ({
-        id: doc.id,
+        uid: doc.id,
         ...doc.data(),
       }))
       setUsers(allUsers)
@@ -126,10 +127,8 @@ export default function App() {
   }
 
   function deleteProfile(user) {
-    const filteredEvents = events.filter((event) => event.userId === user.id)
-    const filteredEventForImg = events.filter(
-      (event) => event.userId === user.id
-    )
+    const userId = loadFromStorage('profileId') || ''
+    const filteredEvents = events.filter((event) => event.userId === userId)
 
     swal({
       title: 'Are you sure?',
@@ -140,7 +139,7 @@ export default function App() {
     }).then((willDelete) => {
       if (willDelete) {
         db.collection('users')
-          .doc(user.id)
+          .doc(user.uid)
           .delete()
           .then(
             swal('Ok. Your profile has been deleted!', {
@@ -157,7 +156,7 @@ export default function App() {
             .delete()
             .then(() => console.log('Profile image deleted!'))
             .catch((error) => console.log('Profile image delete failed', error))
-
+        localStorage.removeItem('profileId')
         filteredEvents.forEach((event) =>
           db
             .collection('events')
@@ -167,7 +166,7 @@ export default function App() {
             .catch((error) => console.log('Delete filteredEvent failed', error))
         )
 
-        filteredEventForImg.forEach(
+        filteredEvents.forEach(
           (event) =>
             event.imageTitle !== '' &&
             storage

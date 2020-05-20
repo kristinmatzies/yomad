@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Events from '../components/Events'
+import { loadFromStorage } from '../services'
 
 export default function Profile({
   users,
@@ -10,21 +11,18 @@ export default function Profile({
   saveEvent,
   deleteEvent,
 }) {
-  const user = users.map((user) => user)
-  console.log(user)
-
-  const filteredEventsById = events.filter((event) => event.userId !== user.id)
-  console.log(filteredEventsById)
+  const userId = loadFromStorage('profileId') || ''
+  const filteredEventsById = events.filter((event) => event.userId === userId)
 
   return (
     <Wrapper>
-      {users.length === 1 && (
+      {userId === '' && (
         <LinkStyled to="/createprofile">create profile</LinkStyled>
       )}
       <section>
         {users.map((user, index) => (
           <ProfileContainer key={index}>
-            {user.name !== '' && (
+            {user.id === userId && (
               <>
                 <img src={user.imageSrc} alt="" />
                 <ProfileText>
@@ -130,7 +128,7 @@ const ProfileText = styled.section`
   .delete_button {
     position: absolute;
     left: 108px;
-    top: -32px;
+    top: -20px;
     color: var(--primary);
     border-radius: 50%;
     border: none;
@@ -138,6 +136,7 @@ const ProfileText = styled.section`
     width: 24px;
     text-align: center;
     background: var(--quaternary);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4), inset 0 0 1px 1px white;
   }
 `
 
