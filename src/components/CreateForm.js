@@ -29,7 +29,7 @@ export default function CreateForm({
         name="city"
         onChange={updateEventEntry}
         value={eventEntry.city}
-        placeholder="e.g. Hamburg"
+        placeholder="e.g. Hamburg (max. 20)"
         maxLength="20"
         required
       />
@@ -38,7 +38,7 @@ export default function CreateForm({
         id="place"
         type="text"
         name="place"
-        placeholder="e.g. Schanzenpark"
+        placeholder="e.g. Schanzenpark (max. 25)"
         onChange={updateEventEntry}
         value={eventEntry.place}
         maxLength="25"
@@ -70,7 +70,7 @@ export default function CreateForm({
         id="yogastyle"
         type="text"
         name="yogastyle"
-        placeholder="e.g. Vinyasa"
+        placeholder="e.g. Vinyasa (max. 15)"
         onChange={updateEventEntry}
         value={eventEntry.yogastyle}
         maxLength="15"
@@ -96,7 +96,6 @@ const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   margin: 20px;
-  font-size: 12px;
   border-radius: 4px;
   padding-bottom: 20px;
 
@@ -106,6 +105,7 @@ const FormStyled = styled.form`
 
   label {
     text-transform: uppercase;
+    font-size: 12px;
   }
 
   input {
@@ -127,5 +127,6 @@ const FormStyled = styled.form`
 
   p {
     margin: 0;
+    font-size: 8px;
   }
 `

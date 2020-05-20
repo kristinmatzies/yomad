@@ -26,7 +26,7 @@ export default createGlobalStyle`
     }
 
     input, textarea {
-    font-size: 1.125em;
+    font-size: 1em;
     font-family: sans-serif;
   }
 
