@@ -57,7 +57,6 @@ const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   margin: 20px;
-  font-size: 12px;
   border-radius: 4px;
   padding-bottom: 20px;
 
@@ -67,6 +66,7 @@ const FormStyled = styled.form`
 
   label {
     text-transform: uppercase;
+    font-size: 12px;
   }
 
   input {
@@ -80,5 +80,6 @@ const FormStyled = styled.form`
 
   p {
     margin: 0;
+    font-size: 8px;
   }
 `
