@@ -175,6 +175,11 @@ const Username = styled.div`
   top: -32px;
   padding-left: 14px;
 
+  @media (max-height: 580px) {
+    top: -40px;
+    width: 120px;
+  }
+
   span {
     font-style: italic;
     font-weight: normal;
