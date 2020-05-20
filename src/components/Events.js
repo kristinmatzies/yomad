@@ -9,7 +9,9 @@ Events.propTypes = {
   deleteEvent: PropTypes.func.isRequired,
 }
 
-export default function Events({ event, saveEvent, deleteEvent }) {
+export default function Events({ event, saveEvent, deleteEvent, users }) {
+  const userById = users.filter((user) => event.userId === user.id)
+
   return (
     <>
       <ImgStyled src={event.imageSrc} alt="" />
@@ -59,6 +61,12 @@ export default function Events({ event, saveEvent, deleteEvent }) {
       <EventDetails>
         <p className="details_headline">Details on meeting point</p>
         <p className="details_body">{event.details}</p>
+        {userById.map((user) => (
+          <Username key={user.uid}>
+            <span>by </span>
+            {user.name}
+          </Username>
+        ))}
       </EventDetails>
     </>
   )
@@ -135,6 +143,8 @@ const EventDetails = styled.section`
   justify-self: flex-start;
   align-self: flex-start;
   padding-left: 12px;
+  height: 140px;
+  position: relative;
 
   .details_headline {
     text-transform: uppercase;
@@ -146,5 +156,17 @@ const EventDetails = styled.section`
 
   .details_body {
     margin: 0;
+  }
+`
+
+const Username = styled.p`
+  position: absolute;
+  bottom: -12px;
+  font-size: 12px;
+  font-weight: bold;
+
+  span {
+    font-style: italic;
+    font-weight: normal;
   }
 `
