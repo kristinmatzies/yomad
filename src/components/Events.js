@@ -84,7 +84,7 @@ const ImgStyled = styled.img`
   align-self: flex-start;
 
   @media (max-height: 580px) {
-    width: 120px;
+    width: 132px;
     height: 360px;
   }
 `
@@ -177,7 +177,7 @@ const Username = styled.div`
 
   @media (max-height: 580px) {
     top: -40px;
-    width: 120px;
+    width: 132px;
   }
 
   span {
