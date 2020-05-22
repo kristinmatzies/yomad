@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import CreateForm from '../components/CreateForm'
 import { useHistory, NavLink } from 'react-router-dom'
-import { storage } from '../firebase'
-import { db } from '../firebase'
+import { db, storage } from '../firebase'
 import { loadFromStorage } from '../services'
 
 export default function CreateEvent() {
