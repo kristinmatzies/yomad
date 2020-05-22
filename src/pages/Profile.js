@@ -17,7 +17,10 @@ export default function Profile({
   return (
     <Wrapper>
       {userId === '' && (
-        <LinkStyled to="/createprofile">create profile</LinkStyled>
+        <InfoStyled>
+          Please create a profile to add your own Yoga sessions:
+          <LinkStyled to="/createprofile">Click here</LinkStyled>
+        </InfoStyled>
       )}
       {users.map((user, index) => (
         <ProfileContainer key={index}>
@@ -66,11 +69,8 @@ export default function Profile({
 }
 
 const LinkStyled = styled(NavLink)`
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 20px;
   color: var(--primary);
-  padding: 4px 0;
+  margin-left: 8px;
 `
 
 const Wrapper = styled.main`
@@ -82,6 +82,10 @@ const Wrapper = styled.main`
     padding-left: 12px;
     margin-bottom: 0;
   }
+`
+
+const InfoStyled = styled.p`
+  padding: 12px;
 `
 
 const ProfileContainer = styled.section`
