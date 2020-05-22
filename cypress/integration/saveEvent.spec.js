@@ -1,9 +1,7 @@
 describe('last added event should automatically be on page /saved', () => {
   it('saves the newly added event to saved', () => {
     cy.visit('/saved')
-    cy.get(
-      ':nth-child(1) > [data-cy=eventtext] > [data-cy=save_button]'
-    ).should('exist')
+    cy.contains(':nth-child(1) > [data-cy=eventtext]').should('exist')
   })
 })
 
@@ -14,7 +12,7 @@ describe('last added event should not be on /saved page when false', () => {
       ':nth-child(1) > [data-cy=eventtext] > [data-cy=save_button]'
     ).click()
     cy.visit('/saved')
-    cy.get(
+    cy.contains(
       ':nth-child(1) > [data-cy=eventtext] > [data-cy=save_button]'
     ).should('not.exist')
   })
