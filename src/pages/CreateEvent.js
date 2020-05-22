@@ -8,8 +8,7 @@ import { loadFromStorage } from '../services'
 
 export default function CreateEvent() {
   const [previewImage, setPreviewImage] = useState({
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
+    imageUrl: '',
     imageName: '',
   })
   const [eventEntry, setEventEntry] = useState({
@@ -97,8 +96,7 @@ export default function CreateEvent() {
       details: '',
     })
     setPreviewImage({
-      imageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4',
+      imageUrl: '',
       imageName: '',
     })
     history.push('/')

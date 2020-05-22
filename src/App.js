@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import GlobalStyles from './common/GlobalStyles'
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
 import EventList from './pages/EventList'
@@ -38,7 +37,6 @@ export default function App() {
 
   return (
     <>
-      <GlobalStyles />
       <Header />
       <Switch>
         <Route exact path="/">

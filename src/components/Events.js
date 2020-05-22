@@ -16,7 +16,11 @@ export default function Events({ event, saveEvent, deleteEvent, users }) {
 
   return (
     <>
-      <ImgStyled src={event.imageSrc} alt="" />
+      {event.imageSrc === '' ? (
+        <ImgStyled src="./img/default_img.jpg" alt="" />
+      ) : (
+        <ImgStyled src={event.imageSrc} alt="" />
+      )}
       <EventText data-cy="eventtext">
         {event.userId === userId && (
           <button className="delete-button" onClick={() => deleteEvent(event)}>

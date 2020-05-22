@@ -15,8 +15,7 @@ export default function CreateProfile() {
   })
 
   const [previewProfileImage, setPreviewProfileImage] = useState({
-    profileImageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/profile%2Fuser_default.png?alt=media&token=19fad0bb-7eb8-4bef-b5de-b819b8152507',
+    profileImageUrl: '',
     profileImageName: '',
   })
 
@@ -86,8 +85,7 @@ export default function CreateProfile() {
       yogalevel: '',
     })
     setPreviewProfileImage({
-      profileImageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/profile%2Fuser_default.png?alt=media&token=19fad0bb-7eb8-4bef-b5de-b819b8152507',
+      profileImageUrl: '',
       profileImageName: '',
     })
     history.push('/profile')

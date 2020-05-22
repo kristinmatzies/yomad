@@ -18,7 +18,7 @@ export default function Profile({
     <Wrapper>
       {userId === '' && (
         <InfoStyled>
-          Please create a profile to add your own Yoga sessions:
+          Create your own profile:
           <LinkStyled to="/createprofile">Click here</LinkStyled>
         </InfoStyled>
       )}
@@ -26,7 +26,11 @@ export default function Profile({
         <ProfileContainer key={index}>
           {user.id === userId && (
             <>
-              <img src={user.imageSrc} alt="" />
+              {user.imageSrc === '' ? (
+                <img src="./img/user_default.png" alt="" />
+              ) : (
+                <img src={user.imageSrc} alt="" />
+              )}
               <ProfileText>
                 <button
                   className="delete_button"

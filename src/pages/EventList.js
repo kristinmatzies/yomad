@@ -38,8 +38,8 @@ export default function EventList({
               eventA.date.localeCompare(eventB.date) ||
               eventA.time.localeCompare(eventB.time)
           )
-          .map((event, index) => (
-            <ScrollContainer key={index}>
+          .map((event) => (
+            <ScrollContainer key={event.id}>
               <Events
                 saveEvent={saveEvent}
                 event={event}
