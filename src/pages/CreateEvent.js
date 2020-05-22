@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import CreateForm from '../components/CreateForm'
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import { storage } from '../firebase'
 import { db } from '../firebase'
 import { loadFromStorage } from '../services'
@@ -35,7 +35,8 @@ export default function CreateEvent() {
         />
       ) : (
         <InfoStyled>
-          Please create a profile to add your own Yoga sessions.
+          Please create a profile to add your own Yoga sessions:
+          <LinkStyled to="/createprofile">Click here</LinkStyled>
         </InfoStyled>
       )}
     </FormWrapper>
@@ -113,4 +114,9 @@ const FormWrapper = styled.main`
 
 const InfoStyled = styled.p`
   padding: 12px;
+`
+
+const LinkStyled = styled(NavLink)`
+  color: var(--primary);
+  margin-left: 8px;
 `
