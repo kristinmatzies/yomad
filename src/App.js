@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import useEvents from './hooks/useEvents'
-import useUsers from './hooks/useUsers'
+import useEventServices from './hooks/useEventServices'
+import useUserServices from './hooks/useUserServices'
 import Header from './components/Header'
 import EventList from './pages/EventList'
 import FooterNav from './components/FooterNav'
@@ -13,8 +13,8 @@ import CreateProfile from './pages/CreateProfile'
 import { loadFromStorage } from './services'
 
 export default function App() {
-  const { events, saveEvent } = useEvents()
-  const { users } = useUsers()
+  const { events, saveEvent, deleteEvent } = useEventServices()
+  const { users } = useUserServices()
 
   return (
     <>
@@ -56,38 +56,6 @@ export default function App() {
       <FooterNav />
     </>
   )
-
-  function deleteEvent(event) {
-    const image = storage.ref(`images/${event.imageTitle}`)
-    swal({
-      title: 'Are you sure?',
-      text: 'Once deleted, you will not be able to recover this event!',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        db.collection('events')
-          .doc(event.id)
-          .delete()
-          .then(
-            swal('Ok. Your event has been deleted!', {
-              icon: 'success',
-            })
-          )
-          .catch((error) =>
-            alert('Oops something went wrong. Try again later.', error)
-          )
-        event.imageTitle !== '' &&
-          image
-            .delete()
-            .then(() => console.log('Image successfully deleted!'))
-            .catch((error) => console.log('Image delete failed', error))
-      } else {
-        swal('Your event is safe!')
-      }
-    })
-  }
 
   function deleteProfile(user) {
     const userId = loadFromStorage('profileId') || ''
