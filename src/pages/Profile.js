@@ -42,6 +42,7 @@ export default function Profile({
               )}
               <ProfileText>
                 <button
+                  data-cy="delete_profile"
                   className="delete_button"
                   onClick={() => deleteProfile(user)}
                 >

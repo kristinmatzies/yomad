@@ -20,7 +20,7 @@ export default function ProfileForm({
   previewProfileImage,
 }) {
   return (
-    <FormStyled onSubmit={submitNewProfile}>
+    <FormStyled data-cy="create_profil" onSubmit={submitNewProfile}>
       <ImageUploadProfile
         updateProfileImage={updateProfileImage}
         previewProfileImage={previewProfileImage}
