@@ -24,7 +24,7 @@ export default function ImageUploadProfile({
         </ImageWrapper>
       )}
       <UploadWrapper>
-        <Button text="Upload Image" />
+        <Button>Upload Image</Button>
         <label htmlFor="image"></label>
         <input
           id="image"

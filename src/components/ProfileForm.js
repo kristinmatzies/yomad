@@ -48,7 +48,7 @@ export default function ProfileForm({
         value={user.yogalevel}
       />
       <p>*Mandatory fields</p>
-      <Button type="submit" text="Add your profile" />
+      <Button type="submit">Add your profile</Button>
     </FormStyled>
   )
 }

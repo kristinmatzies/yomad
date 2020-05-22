@@ -87,7 +87,9 @@ export default function CreateForm({
         maxLength="120"
       />
       <p>*Mandatory fields</p>
-      <Button data-cy="submit_button" type="submit" text="Add new meet-up" />
+      <Button data-cy="submit_button" type="submit">
+        Add new session
+      </Button>
     </FormStyled>
   )
 }

@@ -21,7 +21,7 @@ export default function ImageUpload({ updateImage, previewImage }) {
         </ImageWrapper>
       )}
       <UploadWrapper>
-        <Button text="Upload Image" />
+        <Button>Upload Image</Button>
         <label htmlFor="image"></label>
         <input
           id="image"
