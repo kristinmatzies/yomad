@@ -1,7 +1,7 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import SaveButton from './SaveButton'
-import { withKnobs, text, boolean } from '@storybook/addon-knobs'
+import { withKnobs, boolean } from '@storybook/addon-knobs'
 import withMobileWrapper from '../../.storybook/preview'
 
 export default {

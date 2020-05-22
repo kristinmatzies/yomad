@@ -6,7 +6,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 
 SearchFilter.propTypes = {
   events: PropTypes.array.isRequired,
-  onSearchFilter: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 }
 
 export default function SearchFilter({ events, onSelect }) {
