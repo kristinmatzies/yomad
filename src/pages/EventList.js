@@ -26,7 +26,7 @@ export default function EventList({
   )
   return (
     <Wrapper>
-      <SearchFilter onSearchFilter={setSearchFilter} events={events} />
+      <SearchFilter onSelect={setSearchFilter} events={events} />
       <Scroller>
         {filteredEvents
           .slice()

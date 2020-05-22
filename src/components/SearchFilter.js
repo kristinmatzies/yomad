@@ -9,7 +9,7 @@ SearchFilter.propTypes = {
   onSearchFilter: PropTypes.func.isRequired,
 }
 
-export default function SearchFilter({ events, onSearchFilter }) {
+export default function SearchFilter({ events, onSelect }) {
   return (
     <Form>
       <SearchField>
@@ -29,7 +29,7 @@ export default function SearchFilter({ events, onSearchFilter }) {
               label="Search your city"
               InputProps={{ ...params.InputProps, type: 'text' }}
               placeholder="Search your city"
-              onSelect={onSearchFilter}
+              onSelect={onSelect}
             />
           )}
         />
