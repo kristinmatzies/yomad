@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import useEvents from './hooks/useEvents'
+import useUsers from './hooks/useUsers'
 import Header from './components/Header'
 import EventList from './pages/EventList'
 import FooterNav from './components/FooterNav'
@@ -11,29 +13,8 @@ import CreateProfile from './pages/CreateProfile'
 import { loadFromStorage } from './services'
 
 export default function App() {
-  const [events, setEvents] = useState([])
-  const [users, setUsers] = useState([])
-  const [selectedCity, setSelectedCity] = useState('')
-
-  useEffect(() => {
-    db.collection('events').onSnapshot((snapshot) => {
-      const allEvents = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-      setEvents(allEvents)
-    })
-  }, [])
-
-  useEffect(() => {
-    db.collection('users').onSnapshot((snapshot) => {
-      const allUsers = snapshot.docs.map((doc) => ({
-        uid: doc.id,
-        ...doc.data(),
-      }))
-      setUsers(allUsers)
-    })
-  }, [])
+  const { events, saveEvent } = useEvents()
+  const { users } = useUsers()
 
   return (
     <>
@@ -42,9 +23,7 @@ export default function App() {
         <Route exact path="/">
           <EventList
             events={events}
-            selectedCity={selectedCity}
             saveEvent={saveEvent}
-            onSearchFilter={setSearchFilter}
             deleteEvent={deleteEvent}
             users={users}
           />
@@ -55,9 +34,7 @@ export default function App() {
         <Route path="/saved">
           <EventList
             events={events}
-            selectedCity={selectedCity}
             saveEvent={saveEvent}
-            onSearchFilter={setSearchFilter}
             deleteEvent={deleteEvent}
             users={users}
             onlySaved={true}
@@ -79,20 +56,6 @@ export default function App() {
       <FooterNav />
     </>
   )
-
-  function setSearchFilter(event) {
-    setSelectedCity(event.target.value)
-  }
-
-  function saveEvent(event) {
-    db.collection('events')
-      .doc(event.id)
-      .update({ saved: !event.saved })
-      .then(() => console.log('Save state updated!'))
-      .catch((error) =>
-        alert('Oops something went wrong. Try again later.', error)
-      )
-  }
 
   function deleteEvent(event) {
     const image = storage.ref(`images/${event.imageTitle}`)

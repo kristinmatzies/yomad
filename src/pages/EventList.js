@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from '../components/Events'
@@ -6,22 +6,19 @@ import SearchFilter from '../components/SearchFilter'
 
 EventList.propTypes = {
   events: PropTypes.array.isRequired,
-  selectedCity: PropTypes.string.isRequired,
   saveEvent: PropTypes.func.isRequired,
-  onSearchFilter: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
   onlySaved: PropTypes.bool,
 }
 
 export default function EventList({
   events,
-  selectedCity,
   saveEvent,
-  onSearchFilter,
   deleteEvent,
   onlySaved,
   users,
 }) {
+  const [selectedCity, setSelectedCity] = useState('')
   const filteredEvents = events.filter(
     (event) =>
       event.city.toLowerCase().includes(selectedCity.toLowerCase()) &&
@@ -29,7 +26,7 @@ export default function EventList({
   )
   return (
     <Wrapper>
-      <SearchFilter onSearchFilter={onSearchFilter} events={events} />
+      <SearchFilter onSearchFilter={setSearchFilter} events={events} />
       <Scroller>
         {filteredEvents
           .slice()
@@ -51,6 +48,9 @@ export default function EventList({
       </Scroller>
     </Wrapper>
   )
+  function setSearchFilter(event) {
+    setSelectedCity(event.target.value)
+  }
 }
 
 const Wrapper = styled.main`
