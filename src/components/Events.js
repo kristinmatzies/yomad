@@ -6,8 +6,9 @@ import { loadFromStorage } from '../services'
 
 Events.propTypes = {
   event: PropTypes.object.isRequired,
-  saveEvent: PropTypes.func,
+  saveEvent: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
+  users: PropTypes.array,
 }
 
 export default function Events({ event, saveEvent, deleteEvent, users }) {

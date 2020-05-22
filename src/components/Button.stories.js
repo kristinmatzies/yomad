@@ -1,5 +1,4 @@
 import React from 'react'
-import { action } from '@storybook/addon-actions'
 import Button from './Button'
 import withMobileWrapper from '../../.storybook/preview'
 
@@ -11,6 +10,6 @@ export default {
 
 export const button = () => (
   <div style={{ position: 'relative' }}>
-    <Button onClick={action('onClick')} text="Hello" />
+    <Button>Hello</Button>
   </div>
 )

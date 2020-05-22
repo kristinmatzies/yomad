@@ -1,7 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 import ImageUploadProfile from './ImageUploadProfile'
 import Button from './Button'
+
+ProfileForm.propTypes = {
+  user: PropTypes.object,
+  updateProfile: PropTypes.func,
+  submitNewProfile: PropTypes.func,
+  updateProfileImage: PropTypes.func,
+  previewProfileImage: PropTypes.object,
+}
 
 export default function ProfileForm({
   user,

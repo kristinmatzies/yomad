@@ -10,19 +10,21 @@ export default {
 }
 
 const event = {
-  event: [
-    {
-      imageSrc: './img/default_img.jpg',
-      city: 'Hamburg',
-      place: 'Planten un Blomen',
-      date: '2020-06-04',
-      time: '8:00',
-      yogastyle: 'Vinyasa',
-      details: 'Meet 10 minutes earlier at Café Seeterrassen.',
-    },
-  ],
+  event: {
+    imageSrc: './img/default_img.jpg',
+    city: 'Hamburg',
+    place: 'Planten un Blomen',
+    date: '2020-06-04',
+    time: '8:00',
+    yogastyle: 'Vinyasa',
+    details: 'Meet 10 minutes earlier at Café Seeterrassen.',
+  },
 }
 
 export const events = () => (
-  <Events event={event} deleteEvent={action('Delete Event')} />
+  <Events
+    event={event}
+    deleteEvent={action('Delete Event')}
+    saveEvent={action('Save Event')}
+  />
 )

@@ -1,14 +1,23 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from '../components/Events'
 import { loadFromStorage } from '../services'
 
+Profile.propTypes = {
+  users: PropTypes.array.isRequired,
+  events: PropTypes.array.isRequired,
+  saveEvent: PropTypes.func.isRequired,
+  deleteProfile: PropTypes.func.isRequired,
+  deleteEvent: PropTypes.func.isRequired,
+}
+
 export default function Profile({
   users,
-  deleteProfile,
   events,
   saveEvent,
+  deleteProfile,
   deleteEvent,
 }) {
   const userId = loadFromStorage('profileId') || ''
