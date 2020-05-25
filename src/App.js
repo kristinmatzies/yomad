@@ -13,8 +13,13 @@ import CreateProfile from './pages/CreateProfile'
 import { loadFromStorage } from './services'
 
 export default function App() {
-  const { events, saveEvent, deleteEvent } = useEventServices()
+  const { events, /* saveEvent */ deleteEvent } = useEventServices()
   const { users } = useUserServices()
+  const userId = loadFromStorage('profileId') || ''
+  const user = users.find((user) => userId === user.id)
+  const saved =
+    user &&
+    user.saved.some((saved) => saved === events.map((event) => event.id))
 
   return (
     <>
@@ -35,6 +40,7 @@ export default function App() {
           <EventList
             events={events}
             saveEvent={saveEvent}
+            saved={saved}
             deleteEvent={deleteEvent}
             users={users}
             onlySaved={true}
@@ -46,6 +52,7 @@ export default function App() {
             events={events}
             deleteProfile={deleteProfile}
             saveEvent={saveEvent}
+            saved={saved}
             deleteEvent={deleteEvent}
           />
         </Route>
@@ -56,6 +63,36 @@ export default function App() {
       <FooterNav />
     </>
   )
+
+  function saveEvent(event) {
+    let index = user.saved.indexOf(event.id)
+    index >= 0
+      ? db
+          .collection('users')
+          .doc(user.uid)
+          .update({
+            saved: [
+              ...user.saved.slice(0, index),
+              ...user.saved.slice(index + 1),
+            ],
+          })
+          /*  .then(() => {
+            console.log('event saved')
+          }) */
+          .catch((err) =>
+            alert('Something went wrong. Please try again later.', err)
+          )
+      : db
+          .collection('users')
+          .doc(user.uid)
+          .update({ saved: [...user.saved, event.id] })
+          /*   .then(() => {
+            console.log('event saved')
+          }) */
+          .catch((err) =>
+            alert('Something went wrong. Please try again later.', err)
+          )
+  }
 
   function deleteProfile(user) {
     const userId = loadFromStorage('profileId') || ''

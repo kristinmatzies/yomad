@@ -15,7 +15,7 @@ export default function useEvents() {
     })
   }, [])
 
-  function saveEvent(event) {
+  /* function saveEvent(event) {
     db.collection('events')
       .doc(event.id)
       .update({ saved: !event.saved })
@@ -23,7 +23,7 @@ export default function useEvents() {
       .catch((error) =>
         alert('Oops something went wrong. Try again later.', error)
       )
-  }
+  } */
 
   function deleteEvent(event) {
     const image = storage.ref(`images/${event.imageTitle}`)
@@ -59,7 +59,7 @@ export default function useEvents() {
 
   return {
     events,
-    saveEvent,
+    /*   saveEvent, */
     deleteEvent,
   }
 }
