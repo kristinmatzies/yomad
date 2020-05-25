@@ -18,7 +18,6 @@ export default function EventList({
   deleteEvent,
   onlySaved,
   users,
-  /* saved, */
 }) {
   const [selectedCity, setSelectedCity] = useState('')
   const userId = loadFromStorage('profileId') || ''
@@ -47,7 +46,6 @@ export default function EventList({
             <ScrollContainer key={event.id}>
               <Events
                 saveEvent={saveEvent}
-                /*  saved={saved} */
                 event={event}
                 deleteEvent={deleteEvent}
                 users={users}

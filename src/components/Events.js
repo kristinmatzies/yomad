@@ -11,13 +11,7 @@ Events.propTypes = {
   users: PropTypes.array,
 }
 
-export default function Events({
-  event,
-  saveEvent,
-  deleteEvent,
-  users,
-  /* saved, */
-}) {
+export default function Events({ event, saveEvent, deleteEvent, users }) {
   const userId = loadFromStorage('profileId') || ''
   const userById = users.filter((user) => event.userId === user.id)
   const user = users.find((user) => userId === user.id)

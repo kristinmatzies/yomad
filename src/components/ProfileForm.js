@@ -48,14 +48,15 @@ export default function ProfileForm({
         required
       />
       <label htmlFor="yogalevel">Your Yogalevel*</label>
-      <input
-        id="yogalevel"
-        type="text"
-        name="yogalevel"
-        placeholder="e.g. Beginner or Professional"
-        onChange={updateProfile}
-        value={user.yogalevel}
-      />
+      <select id="yogalevel" name="yogalevel" onChange={updateProfile} required>
+        <option value="" selected disabled hidden>
+          Choose here
+        </option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Profi">Profi</option>
+      </select>
+
       <p>*Mandatory fields</p>
       <Button type="submit">Add your profile</Button>
     </FormStyled>
@@ -85,6 +86,21 @@ const FormStyled = styled.form`
     border-radius: 4px;
     height: 35px;
     margin-bottom: 12px;
+
+    ::placeholder {
+      color: var(--primary);
+      font-size: 12px;
+    }
+  }
+
+  select {
+    display: hidden;
+    border: none;
+    padding: 8px;
+    background: var(--quaternary);
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+    color: var(--primary);
   }
 
   p {

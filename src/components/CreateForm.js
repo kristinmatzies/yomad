@@ -117,6 +117,11 @@ const FormStyled = styled.form`
     border-radius: 4px;
     height: 35px;
     margin-bottom: 12px;
+
+    ::placeholder {
+      color: var(--primary);
+      font-size: 12px;
+    }
   }
 
   textarea {
@@ -125,6 +130,11 @@ const FormStyled = styled.form`
     border: none;
     border-radius: 4px;
     height: 60px;
+
+    ::placeholder {
+      color: var(--primary);
+      font-size: 12px;
+    }
   }
 
   p {
