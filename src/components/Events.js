@@ -14,6 +14,7 @@ Events.propTypes = {
 export default function Events({ event, saveEvent, deleteEvent, users }) {
   const userId = loadFromStorage('profileId') || ''
   const userById = users.filter((user) => event.userId === user.id)
+  const user = users.find((user) => userId === user.id)
 
   return (
     <>
@@ -64,7 +65,9 @@ export default function Events({ event, saveEvent, deleteEvent, users }) {
           defaultText="save"
           clickedText="saved"
           onClick={() => saveEvent(event)}
-          saved={event.saved}
+          saved={
+            user ? user.saved.some((item) => item === event.id) : event.saved
+          }
         />
       </EventText>
       <EventDetails>

@@ -69,6 +69,7 @@ export default function CreateProfile() {
       name: user.name,
       city: user.city,
       yogalevel: user.yogalevel,
+      saved: [],
       id: uniqueProfileId,
     }
     db.collection('users')

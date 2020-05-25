@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from '../components/Events'
 import SearchFilter from '../components/SearchFilter'
+import { loadFromStorage } from '../services'
 
 EventList.propTypes = {
   events: PropTypes.array.isRequired,
@@ -19,10 +20,16 @@ export default function EventList({
   users,
 }) {
   const [selectedCity, setSelectedCity] = useState('')
+  const userId = loadFromStorage('profileId') || ''
+  const user = users.find((user) => userId === user.id)
   const filteredEvents = events.filter(
     (event) =>
       event.city.toLowerCase().includes(selectedCity.toLowerCase()) &&
-      (onlySaved ? event.saved : true)
+      (onlySaved
+        ? user
+          ? user.saved.some((item) => item === event.id)
+          : event.saved
+        : true)
   )
   return (
     <Wrapper>
