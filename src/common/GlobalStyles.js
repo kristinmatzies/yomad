@@ -25,7 +25,7 @@ export default createGlobalStyle`
         height: 100%;
     }
 
-    input, textarea {
+    input, textarea, select {
     font-size: 1em;
     font-family: sans-serif;
   }

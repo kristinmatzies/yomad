@@ -49,7 +49,7 @@ export default function ProfileForm({
       />
       <label htmlFor="yogalevel">Your Yogalevel*</label>
       <select id="yogalevel" name="yogalevel" onChange={updateProfile} required>
-        <option value="" selected disabled hidden>
+        <option className="select-placeholder" hidden>
           Choose here
         </option>
         <option value="Beginner">Beginner</option>
@@ -98,7 +98,6 @@ const FormStyled = styled.form`
     border: none;
     padding: 8px;
     background: var(--quaternary);
-    font-size: 12px;
     font-family: Helvetica, sans-serif;
     color: var(--primary);
   }
