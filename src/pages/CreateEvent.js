@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 import CreateForm from '../components/CreateForm'
 import { useHistory, NavLink } from 'react-router-dom'
 import { db, storage } from '../firebase'
-import { loadFromStorage } from '../services'
 
-export default function CreateEvent() {
+CreateEvent.propTypes = {
+  userId: PropTypes.string,
+}
+
+export default function CreateEvent({ userId }) {
   const [previewImage, setPreviewImage] = useState({
     imageUrl: '',
     imageName: '',
@@ -19,7 +23,6 @@ export default function CreateEvent() {
     details: '',
   })
   const history = useHistory()
-  const userId = loadFromStorage('profileId') || ''
 
   return (
     <FormWrapper>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { db, storage } from '../firebase'
+import useUserServices from './useUserServices'
 import swal from 'sweetalert'
 
 export default function useEvents() {
   const [events, setEvents] = useState([])
+  const { user } = useUserServices()
 
   useEffect(() => {
     db.collection('events').onSnapshot((snapshot) => {
@@ -14,6 +16,46 @@ export default function useEvents() {
       setEvents(allEvents)
     })
   }, [])
+
+  function saveEvent(event) {
+    if (user) {
+      let index = user.saved.indexOf(event.id)
+      index >= 0
+        ? db
+            .collection('users')
+            .doc(user.uid)
+            .update({
+              saved: [
+                ...user.saved.slice(0, index),
+                ...user.saved.slice(index + 1),
+              ],
+            })
+            .then(() => {
+              console.log('event saved')
+            })
+            .catch((err) =>
+              alert('Something went wrong. Please try again later.', err)
+            )
+        : db
+            .collection('users')
+            .doc(user.uid)
+            .update({ saved: [...user.saved, event.id] })
+            .then(() => {
+              console.log('event saved')
+            })
+            .catch((err) =>
+              alert('Something went wrong. Please try again later.', err)
+            )
+    } else {
+      db.collection('events')
+        .doc(event.id)
+        .update({ saved: !event.saved })
+        .then(() => console.log('Save state updated!'))
+        .catch((error) =>
+          alert('Oops something went wrong. Try again later.', error)
+        )
+    }
+  }
 
   function deleteEvent(event) {
     const image = storage.ref(`images/${event.imageTitle}`)
@@ -49,7 +91,7 @@ export default function useEvents() {
 
   return {
     events,
-    /*   saveEvent, */
+    saveEvent,
     deleteEvent,
   }
 }

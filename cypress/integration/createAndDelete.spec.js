@@ -14,7 +14,7 @@ describe('create a profile', () => {
     cy.visit('/createprofile')
     cy.get('input[name="name"]').type(testUser)
     cy.get('input[name="city"]').type('Hamburg')
-    cy.get('input[name="yogalevel"]').type('Beginner')
+    cy.get('select').select('Beginner')
     cy.get('[data-cy=create_profil]').submit()
   })
 

@@ -2,19 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './SaveButton'
-import { loadFromStorage } from '../services'
+import useUserServices from '../hooks/useUserServices'
 
 Events.propTypes = {
   event: PropTypes.object.isRequired,
+  users: PropTypes.array,
+  user: PropTypes.object,
+  userId: PropTypes.string,
   saveEvent: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
-  users: PropTypes.array,
 }
 
-export default function Events({ event, saveEvent, deleteEvent, users }) {
-  const userId = loadFromStorage('profileId') || ''
+export default function Events({ event, saveEvent, deleteEvent }) {
+  const { users, userId, user } = useUserServices()
   const userById = users.filter((user) => event.userId === user.id)
-  const user = users.find((user) => userId === user.id)
 
   return (
     <>

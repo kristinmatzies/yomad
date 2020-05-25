@@ -3,11 +3,10 @@ import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from '../components/Events'
-import { loadFromStorage } from '../services'
 
 Profile.propTypes = {
-  users: PropTypes.array.isRequired,
-  events: PropTypes.array.isRequired,
+  users: PropTypes.array,
+  userId: PropTypes.string,
   saveEvent: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
@@ -15,14 +14,12 @@ Profile.propTypes = {
 
 export default function Profile({
   users,
-  events,
+  userId,
+  filteredEventsByUserId,
   saveEvent,
   deleteProfile,
   deleteEvent,
 }) {
-  const userId = loadFromStorage('profileId') || ''
-  const filteredEventsById = events.filter((event) => event.userId === userId)
-
   return (
     <Wrapper>
       {userId === '' && (
@@ -60,7 +57,7 @@ export default function Profile({
       ))}
       {userId !== '' && <h2 className="my_event_headline">My Yoga Sessions</h2>}
       <Scroller>
-        {filteredEventsById
+        {filteredEventsByUserId
           .slice()
           .sort(
             (eventA, eventB) =>

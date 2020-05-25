@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Events from '../components/Events'
 import SearchFilter from '../components/SearchFilter'
-import { loadFromStorage } from '../services'
 
 EventList.propTypes = {
   events: PropTypes.array.isRequired,
+  users: PropTypes.array,
+  user: PropTypes.object,
+  userId: PropTypes.string,
   saveEvent: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
   onlySaved: PropTypes.bool,
@@ -14,14 +16,12 @@ EventList.propTypes = {
 
 export default function EventList({
   events,
+  user,
   saveEvent,
   deleteEvent,
   onlySaved,
-  users,
 }) {
   const [selectedCity, setSelectedCity] = useState('')
-  const userId = loadFromStorage('profileId') || ''
-  const user = users.find((user) => userId === user.id)
   const filteredEvents = events.filter(
     (event) =>
       event.city.toLowerCase().includes(selectedCity.toLowerCase()) &&
@@ -48,7 +48,6 @@ export default function EventList({
                 saveEvent={saveEvent}
                 event={event}
                 deleteEvent={deleteEvent}
-                users={users}
               />
             </ScrollContainer>
           ))}
