@@ -15,16 +15,6 @@ export default function useEvents() {
     })
   }, [])
 
-  /* function saveEvent(event) {
-    db.collection('events')
-      .doc(event.id)
-      .update({ saved: !event.saved })
-      .then(() => console.log('Save state updated!'))
-      .catch((error) =>
-        alert('Oops something went wrong. Try again later.', error)
-      )
-  } */
-
   function deleteEvent(event) {
     const image = storage.ref(`images/${event.imageTitle}`)
     swal({

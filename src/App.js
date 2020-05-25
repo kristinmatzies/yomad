@@ -17,9 +17,9 @@ export default function App() {
   const { users } = useUserServices()
   const userId = loadFromStorage('profileId') || ''
   const user = users.find((user) => userId === user.id)
-  const saved =
+  /* const saved =
     user &&
-    user.saved.some((saved) => saved === events.map((event) => event.id))
+    user.saved.some((saved) => saved === events.map((event) => event.id)) */
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function App() {
           <EventList
             events={events}
             saveEvent={saveEvent}
-            saved={saved}
+            /* saved={saved} */
             deleteEvent={deleteEvent}
             users={users}
             onlySaved={true}
@@ -52,7 +52,7 @@ export default function App() {
             events={events}
             deleteProfile={deleteProfile}
             saveEvent={saveEvent}
-            saved={saved}
+            /*  saved={saved} */
             deleteEvent={deleteEvent}
           />
         </Route>
@@ -65,33 +65,43 @@ export default function App() {
   )
 
   function saveEvent(event) {
-    let index = user.saved.indexOf(event.id)
-    index >= 0
-      ? db
-          .collection('users')
-          .doc(user.uid)
-          .update({
-            saved: [
-              ...user.saved.slice(0, index),
-              ...user.saved.slice(index + 1),
-            ],
-          })
-          /*  .then(() => {
-            console.log('event saved')
-          }) */
-          .catch((err) =>
-            alert('Something went wrong. Please try again later.', err)
-          )
-      : db
-          .collection('users')
-          .doc(user.uid)
-          .update({ saved: [...user.saved, event.id] })
-          /*   .then(() => {
-            console.log('event saved')
-          }) */
-          .catch((err) =>
-            alert('Something went wrong. Please try again later.', err)
-          )
+    if (user) {
+      let index = user.saved.indexOf(event.id)
+      index >= 0
+        ? db
+            .collection('users')
+            .doc(user.uid)
+            .update({
+              saved: [
+                ...user.saved.slice(0, index),
+                ...user.saved.slice(index + 1),
+              ],
+            })
+            .then(() => {
+              console.log('event saved')
+            })
+            .catch((err) =>
+              alert('Something went wrong. Please try again later.', err)
+            )
+        : db
+            .collection('users')
+            .doc(user.uid)
+            .update({ saved: [...user.saved, event.id] })
+            .then(() => {
+              console.log('event saved')
+            })
+            .catch((err) =>
+              alert('Something went wrong. Please try again later.', err)
+            )
+    } else {
+      db.collection('events')
+        .doc(event.id)
+        .update({ saved: !event.saved })
+        .then(() => console.log('Save state updated!'))
+        .catch((error) =>
+          alert('Oops something went wrong. Try again later.', error)
+        )
+    }
   }
 
   function deleteProfile(user) {

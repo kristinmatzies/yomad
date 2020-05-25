@@ -16,7 +16,7 @@ export default function Events({
   saveEvent,
   deleteEvent,
   users,
-  saved,
+  /* saved, */
 }) {
   const userId = loadFromStorage('profileId') || ''
   const userById = users.filter((user) => event.userId === user.id)
@@ -24,74 +24,68 @@ export default function Events({
 
   return (
     <>
-      {user && (
-        <>
-          {event.imageSrc === '' ? (
-            <ImgStyled src="./img/default_img.jpg" alt="" />
-          ) : (
-            <ImgStyled src={event.imageSrc} alt="" />
-          )}
-          <EventText data-cy="eventtext">
-            {event.userId === userId && (
-              <button
-                className="delete-button"
-                onClick={() => deleteEvent(event)}
-              >
-                x
-              </button>
-            )}
-            <p className="event_key">City</p>
-            <p className="event_title" data-cy="event_city">
-              {event.city}
-            </p>
-            <p className="event_key">Place</p>
-            <p className="event_value">
-              <img src="./img/icon_place.png" alt="" />
-              <a
-                href={
-                  'https://www.google.com/maps/search/?api=1&query=' +
-                  event.place
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {event.place}
-              </a>
-            </p>
-            <p className="event_key">Date</p>
-            <p className="event_value">
-              <img src="./img/icon_calendar.png" alt="" />
-              {event.date}
-            </p>
-            <p className="event_key">Time</p>
-            <p className="event_value">
-              <img src="./img/icon_clock.png" alt="" />
-              {event.time}
-            </p>
-            <p className="event_key">Yogastyle</p>
-            <p className="event_value">
-              <img src="./img/icon_yoga.png" alt="" />
-              {event.yogastyle}
-            </p>
-            <SaveButton
-              defaultText="save"
-              clickedText="saved"
-              onClick={() => saveEvent(event)}
-              saved={user.saved.some((item) => item === event.id)}
-            />
-          </EventText>
-          <EventDetails>
-            {userById.map((user) => (
-              <Username key={user.uid}>
-                <span>session by </span>
-                {user.name}
-              </Username>
-            ))}
-            <p className="details_headline">Details on meeting point</p>
-            <p className="details_body">{event.details}</p>
-          </EventDetails>
-        </>
+      {event.imageSrc === '' ? (
+        <ImgStyled src="./img/default_img.jpg" alt="" />
+      ) : (
+        <ImgStyled src={event.imageSrc} alt="" />
       )}
+      <EventText data-cy="eventtext">
+        {event.userId === userId && (
+          <button className="delete-button" onClick={() => deleteEvent(event)}>
+            x
+          </button>
+        )}
+        <p className="event_key">City</p>
+        <p className="event_title" data-cy="event_city">
+          {event.city}
+        </p>
+        <p className="event_key">Place</p>
+        <p className="event_value">
+          <img src="./img/icon_place.png" alt="" />
+          <a
+            href={
+              'https://www.google.com/maps/search/?api=1&query=' + event.place
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {event.place}
+          </a>
+        </p>
+        <p className="event_key">Date</p>
+        <p className="event_value">
+          <img src="./img/icon_calendar.png" alt="" />
+          {event.date}
+        </p>
+        <p className="event_key">Time</p>
+        <p className="event_value">
+          <img src="./img/icon_clock.png" alt="" />
+          {event.time}
+        </p>
+        <p className="event_key">Yogastyle</p>
+        <p className="event_value">
+          <img src="./img/icon_yoga.png" alt="" />
+          {event.yogastyle}
+        </p>
+        <SaveButton
+          defaultText="save"
+          clickedText="saved"
+          onClick={() => saveEvent(event)}
+          saved={
+            user ? user.saved.some((item) => item === event.id) : event.saved
+          }
+        />
+      </EventText>
+      <EventDetails>
+        {userById.map((user) => (
+          <Username key={user.uid}>
+            <span>session by </span>
+            {user.name}
+          </Username>
+        ))}
+        <p className="details_headline">Details on meeting point</p>
+        <p className="details_body">{event.details}</p>
+      </EventDetails>
     </>
   )
 }
