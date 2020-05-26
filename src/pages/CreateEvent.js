@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import CreateForm from '../components/CreateForm'
+import CreateForm from '../components/Forms/CreateForm'
 import { useHistory, NavLink } from 'react-router-dom'
 import { db, storage } from '../firebase'
 

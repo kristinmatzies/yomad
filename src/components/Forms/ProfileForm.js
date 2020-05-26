@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import ImageUploadProfile from './ImageUploadProfile'
-import Button from './Button'
+import ImageUploadProfile from '../ImageUpload/ImageUploadProfile'
+import Button from '../Buttons/Button'
 
 ProfileForm.propTypes = {
   user: PropTypes.object,

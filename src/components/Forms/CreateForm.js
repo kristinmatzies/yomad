@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import ImageUpload from './ImageUpload'
+import ImageUpload from '../ImageUpload/ImageUpload'
 import PropTypes from 'prop-types'
-import Button from './Button'
+import Button from '../Buttons/Button'
 
 CreateForm.propTypes = {
   eventEntry: PropTypes.object,

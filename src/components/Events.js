@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import SaveButton from './SaveButton'
+import SaveButton from './Buttons/SaveButton'
 import useUserServices from '../hooks/useUserServices'
 
 Events.propTypes = {

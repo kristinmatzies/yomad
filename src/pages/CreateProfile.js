@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { db, storage } from '../firebase'
 import { useHistory } from 'react-router-dom'
-import ProfileForm from '../components/ProfileForm'
+import ProfileForm from '../components/Forms/ProfileForm'
 import { v4 as uuidv4 } from 'uuid'
 import { saveToStorage } from '../services'
 

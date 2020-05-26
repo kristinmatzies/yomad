@@ -1,7 +1,7 @@
 import React from 'react'
 import CreateForm from './CreateForm'
 import { action } from '@storybook/addon-actions'
-import withMobileWrapper from '../../.storybook/preview'
+import withMobileWrapper from '../../../.storybook/preview'
 
 export default {
   title: 'CreateForm',
