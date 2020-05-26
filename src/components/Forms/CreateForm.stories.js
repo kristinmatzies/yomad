@@ -11,10 +11,10 @@ export default {
 
 export const form = () => (
   <CreateForm
-    eventEntry={'I am state related'}
-    previewImage={'I am state related'}
-    updateEventEntry={action('onInput')}
+    eventEntry={''}
+    previewImage={
+      'https://firebasestorage.googleapis.com/v0/b/yomad-2e8f7.appspot.com/o/images%2Fdefault_img.jpg?alt=media&token=903c68aa-aa04-405a-a39e-3c62097d8bb4'
+    }
     submitNewEvent={action('Submit new event')}
-    updateImage={action('Upload Image')}
   />
 )

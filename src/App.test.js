@@ -9,6 +9,6 @@ test('renders App', () => {
       <App />
     </MemoryRouter>
   )
-  const linkElement = getByPlaceholderText(/Search your city/i)
-  expect(linkElement).toBeInTheDocument()
+  const element = getByPlaceholderText(/Search your city/i)
+  expect(element).toBeInTheDocument()
 })

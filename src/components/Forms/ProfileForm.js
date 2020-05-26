@@ -5,11 +5,11 @@ import ImageUploadProfile from '../ImageUpload/ImageUploadProfile'
 import Button from '../Buttons/Button'
 
 ProfileForm.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.object.isRequired,
   updateProfile: PropTypes.func,
-  submitNewProfile: PropTypes.func,
+  submitNewProfile: PropTypes.func.isRequired,
   updateProfileImage: PropTypes.func,
-  previewProfileImage: PropTypes.object,
+  previewProfileImage: PropTypes.object.isRequired,
 }
 
 export default function ProfileForm({

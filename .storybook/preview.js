@@ -8,7 +8,7 @@ export default (renderComponent) => (
   <>
     <Router>
       <GlobalStyles />
-      <div style={{ padding: 20, width: 400, height: 1000 }}>
+      <div style={{ padding: 20, width: 400, height: 600 }}>
         {renderComponent()}
       </div>
     </Router>

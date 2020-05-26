@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 import Button from '../Buttons/Button'
 
 CreateForm.propTypes = {
-  eventEntry: PropTypes.object,
+  eventEntry: PropTypes.object.isRequired,
   updateEventEntry: PropTypes.func,
-  submitNewEvent: PropTypes.func,
+  submitNewEvent: PropTypes.func.isRequired,
   updateImage: PropTypes.func,
-  previewImage: PropTypes.object,
+  previewImage: PropTypes.object.isRequired,
 }
 
 export default function CreateForm({
