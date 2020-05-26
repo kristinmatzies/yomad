@@ -82,6 +82,7 @@ export default function Profile({
 const LinkStyled = styled(NavLink)`
   color: var(--primary);
   margin-left: 8px;
+  cursor: default;
 `
 
 const Wrapper = styled.main`

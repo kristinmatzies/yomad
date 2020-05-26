@@ -119,4 +119,5 @@ const InfoStyled = styled.p`
 const LinkStyled = styled(NavLink)`
   color: var(--primary);
   margin-left: 8px;
+  cursor: default;
 `
