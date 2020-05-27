@@ -17,7 +17,7 @@ Take a look at the Yomad app [here](https://yomad-2e8f7.web.app/)
 
 ---
 
-## Some impressions of the app
+## App impressions
 
 <div align="center">
   <img src="./public/img/kristin_matzies_yomad.gif"
@@ -43,27 +43,24 @@ Take a look at the Yomad app [here](https://yomad-2e8f7.web.app/)
 ---
 
 ## Tech stack, dependencies and all the nice stuff I used
-<ul align="left">
-<li>React</li>
-<li>React Router</li>
-<li>React Hooks</li>
-<li>styled-components</li>
-<li>Storybook</li>
-<li>Jest</li>
-<li>React Testing Library</li>
-  <li>Cypress</li>
-  <li>Firebase</li>
-  <ul>
-  <li>Cloud Firestore</li>
-  <li>Storage</li>
-  <li>Hosting</li>
-  </ul>
-  <li>localStorage</li>
-  <li>prop-types</li>
-  <li>Google Maps URLs</li>
-  <li>uuid</li>
-  <li>Material-UI</li>
-</ul>
+
+- React
+- React Router
+- React Hooks
+- styled-components
+- Storybook
+- Jest
+- React Testing Library
+- Cypress
+  - Firebase
+  - Cloud Firestore
+  - Storage
+  - Hosting
+- localStorage
+- prop-types
+- Google Maps URLs
+- uuid
+- Material-UI
 ---
 
 ## Want to set it up?
