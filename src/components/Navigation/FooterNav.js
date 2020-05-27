@@ -16,7 +16,7 @@ export default function FooterNav() {
           <BsPlusCircleFill className="create_icon" />
         </IconWrapper>
       </LinkStyled>
-      <LinkStyled to="/saved">
+      <LinkStyled data-cy="saved_icon" to="/saved">
         <IoIosSave className="save_icon" />
       </LinkStyled>
     </Footer>

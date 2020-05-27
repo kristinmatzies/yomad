@@ -25,7 +25,9 @@ export default function Profile({
       {userId === '' && (
         <InfoStyled>
           Create your own profile:
-          <LinkStyled to="/createprofile">Click here</LinkStyled>
+          <LinkStyled to="/createprofile" data-cy="create_profile_link">
+            Click here
+          </LinkStyled>
         </InfoStyled>
       )}
       {users.map((user, index) => (

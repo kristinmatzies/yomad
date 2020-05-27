@@ -3,9 +3,8 @@ describe('search for events in a city', () => {
     cy.visit('/')
     cy.get('input').click().type('hamburg')
     cy.get('[data-cy=event_city]').contains('Hamburg')
-  })
-
-  it('displays all search results when input is cleared', () => {
     cy.get('input').clear()
+    cy.get('input').click().type('Colog')
+    cy.get('[data-cy=event_city]').contains('Cologne')
   })
 })

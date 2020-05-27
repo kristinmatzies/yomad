@@ -7,10 +7,10 @@ export default function Header() {
   return (
     <HeaderStyled>
       <LinkStyled exact to="/">
-        <img src="./img/logo.png" alt="yomad" />
+        <img data-cy="logo" src="./img/logo.png" alt="yomad" />
       </LinkStyled>
       <LinkStyled to="/profile">
-        <BsPersonFill className="profile_icon" />
+        <BsPersonFill data-cy="profile_icon" className="profile_icon" />
       </LinkStyled>
     </HeaderStyled>
   )

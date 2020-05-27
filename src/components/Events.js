@@ -43,6 +43,7 @@ export default function Events({ event, saveEvent, deleteEvent }) {
             }
             target="_blank"
             rel="noopener noreferrer"
+            data-cy="google_link"
           >
             {event.place}
           </a>
