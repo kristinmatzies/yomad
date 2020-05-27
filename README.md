@@ -52,7 +52,7 @@ Take a look at the Yomad app [here](https://yomad-2e8f7.web.app/)
 - Jest
 - React Testing Library
 - Cypress
-  - Firebase
+- Firebase
   - Cloud Firestore
   - Storage
   - Hosting
