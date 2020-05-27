@@ -5,7 +5,7 @@
 
 ---
 
-## Yomad
+## Be a yoga nomad and meet new people
 
 Yomad shows you yoga spots in your city and allows you to pratice yoga together with others. Let new yoga sessions and styles inspire you and connect yourself with like-minded people - no more lonely YouTube practices or expensive yoga studios.
 
@@ -30,10 +30,10 @@ Take a look at the Yomad app [here](https://yomad-2e8f7.web.app/)
      height="400px"/>
   <img src="./public/img/kristin_matzies_yomad_3.png"
      height="400px"/>
-  <img src="./public/img/kristin_matzies_yomad_4.png"
-     height="400px"/>
 </div>
 <div align="center">
+<img src="./public/img/kristin_matzies_yomad_4.png"
+     height="400px"/>
   <img src="./public/img/kristin_matzies_yomad_5.png"
      height="400px"/>
   <img src="./public/img/kristin_matzies_yomad_6.png"
