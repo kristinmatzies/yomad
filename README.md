@@ -1,6 +1,6 @@
 <div align="center">
   <img src="./public/img/logo.png"
-     height="80px"/>
+     height="40px"/>
 </div>
 
 ---
@@ -35,7 +35,7 @@ Take a look at the Yomad app [here](https://yomad-2e8f7.web.app/)
 </div>
 <div align="center">
   <img src="./public/img/kristin_matzies_yomad_5.png"
-     style="height: 400px;"/>
+     height="400px"/>
   <img src="./public/img/kristin_matzies_yomad_6.png"
      height="400px"/>
 
