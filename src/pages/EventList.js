@@ -16,7 +16,9 @@ EventList.propTypes = {
 
 export default function EventList({
   events,
+  users,
   user,
+  userId,
   saveEvent,
   deleteEvent,
   onlySaved,
@@ -48,6 +50,9 @@ export default function EventList({
                 saveEvent={saveEvent}
                 event={event}
                 deleteEvent={deleteEvent}
+                users={users}
+                user={user}
+                userId={userId}
               />
             </ScrollContainer>
           ))}

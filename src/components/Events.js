@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import SaveButton from './Buttons/SaveButton'
-import useUserServices from '../hooks/useUserServices'
 
 Events.propTypes = {
   event: PropTypes.object.isRequired,
@@ -13,8 +12,14 @@ Events.propTypes = {
   deleteEvent: PropTypes.func.isRequired,
 }
 
-export default function Events({ event, saveEvent, deleteEvent }) {
-  const { users, userId, user } = useUserServices()
+export default function Events({
+  event,
+  saveEvent,
+  deleteEvent,
+  users,
+  user,
+  userId,
+}) {
   const userById = users.filter((user) => event.userId === user.id)
 
   return (
