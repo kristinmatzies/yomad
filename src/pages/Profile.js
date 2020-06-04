@@ -6,7 +6,9 @@ import Events from '../components/Events'
 
 Profile.propTypes = {
   users: PropTypes.array,
+  user: PropTypes.object,
   userId: PropTypes.string,
+  filteredEventsByUserId: PropTypes.array,
   saveEvent: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,

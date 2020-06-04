@@ -14,11 +14,11 @@ Events.propTypes = {
 
 export default function Events({
   event,
-  saveEvent,
-  deleteEvent,
   users,
   user,
   userId,
+  saveEvent,
+  deleteEvent,
 }) {
   const userById = users.filter((user) => event.userId === user.id)
 
