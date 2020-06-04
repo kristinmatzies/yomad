@@ -33,6 +33,8 @@ export default function EventList({
           : event.saved
         : true)
   )
+  console.log('localuser in EventList: ' + userId)
+
   return (
     <Wrapper>
       <SearchFilter onSelect={setSearchFilter} events={events} />

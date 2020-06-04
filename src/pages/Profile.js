@@ -14,6 +14,7 @@ Profile.propTypes = {
 
 export default function Profile({
   users,
+  user,
   userId,
   filteredEventsByUserId,
   saveEvent,
@@ -73,6 +74,8 @@ export default function Profile({
                 event={event}
                 deleteEvent={deleteEvent}
                 users={users}
+                userId={userId}
+                user={user}
               />
             </ScrollContainer>
           ))}

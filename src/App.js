@@ -49,6 +49,7 @@ export default function App() {
         <Route path="/profile">
           <Profile
             users={users}
+            user={user}
             userId={userId}
             filteredEventsByUserId={filteredEventsByUserId}
             deleteProfile={deleteProfile}

@@ -79,7 +79,7 @@ export default function CreateEvent({ userId }) {
       time: eventEntry.time,
       yogastyle: eventEntry.yogastyle,
       details: eventEntry.details,
-      saved: true,
+      saved: false,
       userId: userId,
     }
 
